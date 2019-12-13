@@ -21,6 +21,16 @@ PalTube will use YouTubes API to fetch appropriate content for the application t
 
 # Technologies and Challenges
 
+### Technologies
+* React
+* Express
+* GraphQL-Apollo
+* HTML
+* MongoDB
+* NodeJS
+
+### Challenges
+
 * Implementing YouTube's API for fetching appropriate content
 * Using Google's API for log in/sign up
 
