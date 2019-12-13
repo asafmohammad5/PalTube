@@ -12,10 +12,10 @@ PalTube will use YouTubes API to fetch appropriate content for the application t
  * User authorization: sign up and log in
  * Saving of user likes to the database
  * Saving of user comments to the database
- * Uploading of videos to YouTube, saving ids to the database.
+ * Uploading of videos to YouTube, saving ids to the database
+ * User favorites, liked, and uploaded page
  * User sidebar for navigation
  * Search functionality of videos
- * Chrome extension with landing page in new tab for login 
  * Production README
 
 
