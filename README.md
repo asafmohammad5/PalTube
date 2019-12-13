@@ -40,5 +40,5 @@ PalTube will use YouTubes API to fetch appropriate content for the application t
 
 # Group Members and Work Breakdown
 
+Asaf Mohammad, Tristan Mockler, Mohamed Abdelhalim
 
-..........
