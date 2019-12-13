@@ -4,21 +4,31 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "debugBackEnd": "nodemon --inspect index.js",
+    "client-install": "npm install --prefix client",
+    "client": "npm start --prefix client",
+    "server": "nodemon index.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "devDebugBackEnd": "concurrently \"npm run debugBackEnd\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-cache-inmemory": "^1.6.3",
+    "axios": "^0.19.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "concurrently": "^5.0.1",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
     "graphql": "^14.5.8",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.1",
     "nodemon": "^2.0.2",
-    "validator": "^12.1.0"
+    "react-router-dom": "^5.1.2",
+    "validator": "^12.1.0",
+    "youtube-search": "^1.1.4"
   }
 }
