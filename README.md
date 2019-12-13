@@ -21,7 +21,8 @@ PalTube will use YouTubes API to fetch appropriate content for the application t
 
 # Technologies and Challenges
 
-..........
+* Implementing YouTube's API for fetching appropriate content
+* Using Google's API for log in/sign up
 
 # Things Accomplished Over the Weekend
 
