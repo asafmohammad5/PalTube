@@ -10,7 +10,7 @@ const cors = require("cors");
 
 var search = require('youtube-search');
 const app = express();
-const cors = require("cors");
+
 
 if (!db) {
   throw new Error("You must provide a string to connect to MongoDB Atlas");

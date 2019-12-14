@@ -72,12 +72,14 @@ const login = async data => {
       throw new Error(message);
     }
 
-    const { email, username, password } = data;
+    const { emailOrUsername, password } = data;
     let existingUser; 
-    
-    if (email) {
+
+    if (emailOrUsername.includes("@")) {
+      let email = emailOrUsername;
       existingUser = await User.findOne({ email });
     } else {
+      let username = emailOrUsername;
       existingUser = await User.findOne({ username }); 
     }
 
