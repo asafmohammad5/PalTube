@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactPlayer from 'react-player';
 import { FETCH_VIDEOS } from '../../graphql/queries'
 import { graphql } from 'react-apollo';
+import NavBar from "../NavBar";
 
 class VideoIndex extends Component {
   renderVideos() {
@@ -26,6 +27,8 @@ class VideoIndex extends Component {
       return null;
     }
     return (
+      <div>
+        <NavBar/>
        <div class="container">
         <div class="flex-grid">
           <aside class="sidebar">
@@ -38,6 +41,7 @@ class VideoIndex extends Component {
             </div>
           </section>
         </div>
+      </div>
       </div>
     );
   }
