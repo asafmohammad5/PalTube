@@ -23,7 +23,6 @@ const client = new ApolloClient({
   link: ApolloLink.from([errorLink, httpLink]),
   cache,
   headers: {
-    // pass our token into the header of each request
     authorization: localStorage.getItem("auth-token")
   },
   onError: ({ networkError, graphQLErrors }) => {
