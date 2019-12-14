@@ -19,8 +19,14 @@ const register = async data => {
 
     const existingUser = await User.findOne({ email });
 
+    const existingUsername = await User.findOne({ username })
+
     if (existingUser) {
       throw new Error("This user already exists");
+    }
+
+    if (existingUsername) {
+      throw new Error("This username already exists");
     }
 
     if (password !== password2) {
@@ -68,19 +74,20 @@ const login = async data => {
 
     const { email, username, password } = data;
     let existingUser; 
+    
     if (email) {
-    existingUser = await User.findOne({ email });
+      existingUser = await User.findOne({ email });
     } else {
-    existingUser = await User.findOne({ username }); 
+      existingUser = await User.findOne({ username }); 
     }
 
     if (!existingUser) {
-      throw new Error("Incorrect login combination");
+      throw new Error("Incorrect log in combination");
     }
 
     const isPassword = await bcrypt.compare(password, existingUser.password)
     if (!isPassword) {
-      throw new Error("Incorrect login combination");
+      throw new Error("Incorrect log in combination");
     } else {
       const token = jwt.sign({ id: existingUser._id }, keys.secretOrKey);
       return { token, loggedIn: true, ...existingUser._doc, password: null };

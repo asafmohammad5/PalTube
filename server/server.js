@@ -24,7 +24,8 @@ var opts = {
 };
 
 let videoResults;
-search('cats,dogs,', opts, function (err, results) {
+search('cats', opts, function (err, results) {
+  debugger
   if (err) return console.log(err);
 
   videoResults = results;
@@ -40,4 +41,5 @@ app.use(
     graphiql: true
   })
 );
+
 module.exports = app;
