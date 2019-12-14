@@ -1,5 +1,5 @@
 const graphql = require("graphql");
-const { GraphQLObjectType, GraphQLString, GraphQLInt } = graphql;
+const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull } = graphql;
 const mongoose = require("mongoose");
 const UserType = require("./types/user_type");
 
