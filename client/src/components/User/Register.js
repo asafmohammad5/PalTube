@@ -37,7 +37,7 @@ class Register extends Component {
         update={(client, data) => this.updateCache(client, data)}
       >
         {registerUser => (
-          <div>
+          <div className="sign-up-form-page">
             <form
               onSubmit={e => {
                 e.preventDefault();
