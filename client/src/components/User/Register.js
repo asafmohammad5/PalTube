@@ -43,7 +43,7 @@ class Register extends Component {
                 e.preventDefault();
                 registerUser({
                   variables: {
-                    name: this.state.username,
+                    username: this.state.username,
                     email: this.state.email,
                     password: this.state.password,
                     password2: this.state.password2
