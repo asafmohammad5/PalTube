@@ -12,7 +12,6 @@ class VideoList extends Component {
       .then(res => res.json())
       .then((searchResult) => {
         this.setState({ videos: searchResult });
-        console.log(searchResult)
       });
   }
 

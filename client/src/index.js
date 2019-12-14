@@ -12,7 +12,6 @@ const client = new ApolloClient({
   link: "http://localhost:5000/graphql",
   cache,
   headers: {
-    // pass our token into the header of each request
     authorization: localStorage.getItem("auth-token")
   },
   onError: ({ networkError, graphQLErrors }) => {
