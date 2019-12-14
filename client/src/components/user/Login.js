@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
-import Mutations from "../graphql/mutations";
+import Mutations from "../../graphql/mutations";
 const { LOGIN_USER } = Mutations;
 
 class Login extends Component {
@@ -29,7 +29,6 @@ class Login extends Component {
       <Mutation
         mutation={LOGIN_USER}
         onCompleted={data => {
-          debugger;
           const { token } = data.login;
           localStorage.setItem("auth-token", token);
           this.props.history.push("/");
