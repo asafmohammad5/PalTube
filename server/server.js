@@ -6,10 +6,11 @@ const youtube_key = require("../config/keys").YOUTUBE_KEY;
 const models = require("./models/index");
 const expressGraphQL = require("express-graphql");
 const schema = require("./schema/schema");
-const cors = require("cors");
-
-var search = require('youtube-search');
 const app = express();
+<<<<<<< HEAD
+const cors = require('cors')
+=======
+>>>>>>> 9e2560e28d258961387d3de3cdad8e8453ba795f
 
 
 if (!db) {
@@ -17,6 +18,12 @@ if (!db) {
 }
 
 mongoose
+<<<<<<< HEAD
+  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("Connected to MongoDB successfully"))
+  .catch(err => console.log(err));
+console.log(youtube_key)
+=======
 .connect(db, { useNewUrlParser: true })
 .then(() => console.log("Connected to MongoDB successfully"))
 .catch(err => console.log(err));
@@ -35,11 +42,10 @@ search('cats', opts, function (err, results) {
 
 app.get('/api/videos', (req, res) => res.send({ videoResults }));
 app.use(cors());
+>>>>>>> 9e2560e28d258961387d3de3cdad8e8453ba795f
 
 app.use(bodyParser.json());
-
 app.use(cors());
-
 app.use(
   "/graphql",
   expressGraphQL({
