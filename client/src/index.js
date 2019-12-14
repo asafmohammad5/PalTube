@@ -8,6 +8,9 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { createHttpLink } from "apollo-link-http";
 import { onError } from "apollo-link-error";
 import { ApolloLink } from "apollo-link";
+import Mutation from "./graphql/mutations";
+const { VERIFY_USER } = Mutation;
+const token = localStorage.getItem("auth-token");
 
 const cache = new InMemoryCache({ dataIdFromObject: object => object.id || null});
 
@@ -30,6 +33,26 @@ const client = new ApolloClient({
     console.log("networkError", networkError);
   }
 });
+
+cache.writeData({
+  data: {
+    isLoggedIn: Boolean(token)
+  }
+});
+
+if (token) {
+  client
+    // use the VERIFY_USER mutation directly use the returned data to know if the returned
+    // user is loggedIn
+    .mutate({ mutation: VERIFY_USER, variables: { token } })
+    .then(({ data }) => {
+      cache.writeData({
+        data: {
+          isLoggedIn: data.verifyUser.loggedIn
+        }
+      });
+    });
+}
 
 const Root = () => {
   return (

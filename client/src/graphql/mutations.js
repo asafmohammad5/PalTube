@@ -17,5 +17,12 @@ export default {
       loggedIn
     }
   }
- `
+ `,
+  VERIFY_USER: gql`
+  mutation VerifyUser($token: String!) {
+    verifyUser(token: $token) {
+      loggedIn
+    }
+  }
+`
 }
