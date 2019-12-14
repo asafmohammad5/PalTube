@@ -1,0 +1,59 @@
+.container {
+  width: 100wh;
+  margin: auto;
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+.flex-grid {
+  display: flex;
+  margin: auto -1rem 1rem;
+}
+
+.sidebar {
+  flex: 0.5;
+  height: 85vh;
+  background-color: lightgreen;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 1rem;
+}
+
+.main {
+  flex: 3.5;
+  background-color: lightcyan;
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
+  padding: 1rem;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: red;
+  border: 1px solid black;
+}
+
+.video-container{
+  background-color: lightgray;
+  width: 292px;
+  height: auto;
+  margin: 0px 12px 12px 0px;
+}
+
+.video-player{
+   max-width: 100% !important;
+   /* height: 20em !important; */
+     height: 164px !important;
+
+}
+
+.video-info{
+  display: block;
+}
+
+.video-title{
+  padding: 0.4em;
+  font-size: 0.7em;
+}
