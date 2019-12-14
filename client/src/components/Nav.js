@@ -23,9 +23,9 @@ const Nav = props => {
         </button>
           )} else {
           return (
-            <div>
-              <Link to="/login">Login</Link>
-              <Link to="/register">Sign Up</Link>
+            <div className="nav-links">
+              <Link to="/register" className="nav-sign-up">SIGN UP</Link>
+              <Link to="/login" className="nav-sign-in">SIGN IN</Link>
             </div>
           );
         }
