@@ -6,6 +6,8 @@ const youtube_key = require("../config/keys").YOUTUBE_KEY;
 const models = require("./models/index");
 const expressGraphQL = require("express-graphql");
 const schema = require("./schema/schema");
+const cors = require("cors");
+
 var search = require('youtube-search');
 const app = express();
 
@@ -34,6 +36,9 @@ search('cats', opts, function (err, results) {
 app.get('/api/videos', (req, res) => res.send({ videoResults }));
 
 app.use(bodyParser.json());
+
+app.use(cors());
+
 app.use(
   "/graphql",
   expressGraphQL({

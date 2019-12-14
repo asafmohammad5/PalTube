@@ -1,5 +1,5 @@
 const Validator = require("validator");
-const validText = require("./valid_text");
+const validText = require("./valid-text");
 
 module.exports = function validateInputs(data) {
   data.email = validText(data.email) ? data.email : "";
