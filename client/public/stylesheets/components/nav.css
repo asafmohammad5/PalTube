@@ -17,11 +17,13 @@
 
 .nav-sign-in {
   border: 1px solid #065FD4;
+  border-radius: 2px; 
   padding: 10px; 
 }
 
 .nav-sign-up {
   border: 1px solid #065FD4;
+  border-radius: 2px; 
   margin-right: 14px; 
   padding: 10px;
 }
