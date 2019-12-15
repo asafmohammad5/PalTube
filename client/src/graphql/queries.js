@@ -10,6 +10,20 @@ export const FETCH_VIDEOS = gql`{
     keywords
   }
 }`;
+
+export const FETCH_VIDEO = gql`
+  query queryVideo($id:ID!){
+  video(_id:$id){
+    _id
+    title
+    description
+    category
+    url
+    keywords
+  }
+}
+`;
+
 export default {
   IS_LOGGED_IN: gql`
     query IsUserLoggedIn {

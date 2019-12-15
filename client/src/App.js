@@ -1,17 +1,19 @@
 import React from 'react'
-import { Route, Switch} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import VideoIndex from './components/videosList/VideoIndex';
+import VideoDetail from './components/videosList/VideoDetail';
 import Register from "./components/User/Register";
 import Login from "./components/User/Login";
 import AuthRoute from "./util/route_util";
-import { getArgumentValues } from 'graphql/execution/values';
-
-const App = ()=>(
-  <div>     
+import NavBar from './components/NavBar'
+const App = () => (
+  <div>
+    <NavBar path="/" />
     <Switch>
+      <AuthRoute path="/register" component={Register} routeType="auth" />
       <Route exact path="/" component={VideoIndex} />
-      <AuthRoute path="/login" component={Login} routeType="auth"/>
-      <AuthRoute path="/register" component={Register} routeType="auth"/>
+      <Route  path="/videos/:id" component={VideoDetail} />
+      <AuthRoute path="/login" component={Login} routeType="auth" />
     </Switch>
   </div>
 )
