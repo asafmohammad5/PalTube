@@ -12,10 +12,40 @@ class Login extends Component {
       emailOrUsername: "",
       password: ""
     };
+
+    this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
   }
 
   update(field) {
     return e => this.setState({ [field]: e.target.value });
+  }
+
+  demoEffect(demoUser) {
+    const that = this;
+    let index = 0;
+    const demoIntervalId = setInterval(() => {
+      if (index < demoUser.emailOrUsername.length) {
+        that.setState({
+          emailOrUsername: this.state.emailOrUsername + demoUser.emailOrUsername[index]
+        })
+      }
+      if (index < demoUser.password.length) {
+        that.setState({
+          password: this.state.password + demoUser.password[index]
+        })
+      }
+      index++;
+      if (index > demoUser.password.length && index > demoUser.emailOrUsername.length) {
+        clearInterval(demoIntervalId);
+      }
+    }, 200)
+  }
+
+  handleDemoSubmit(e) {
+    e.preventDefault();
+    const demoUser = { emailOrUsername: "GuestUser", password: "password" };
+    this.demoEffect(demoUser)
+  
   }
 
   updateCache(client, { data }) {
@@ -70,9 +100,10 @@ class Login extends Component {
                 className="login-password"
               />
               <div className="login-direct">
-                <Link to="/register" className="link-login">Sign up instead</Link>
                 <button type="submit" className="login-button">Sign In</button>
+                <button onClick={this.handleDemoSubmit} type="submit" className="demo-button">Guest User</button>
               </div> 
+                <Link to="/register" className="link-signup">Sign up instead</Link>
             </form>
           </div>
         )}

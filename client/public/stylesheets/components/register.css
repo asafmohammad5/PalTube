@@ -90,8 +90,13 @@
 .link-login {
   font-family: Roboto; 
   margin: 10px 0px 0px 0px; 
-  color: #065FD4;
+  color: red;
   font-weight: bold; 
+}
+
+.link-login:hover {
+  transition: 1s; 
+  text-decoration: underline; 
 }
 
 .signup-button:hover {
