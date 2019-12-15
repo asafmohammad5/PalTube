@@ -1,7 +1,9 @@
 const graphql = require("graphql");
-const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull } = graphql;
+const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLID } = graphql;
 const mongoose = require("mongoose");
 const UserType = require("./types/user_type");
+const CommentType = require("./types/comment_type");
+const Comment = mongoose.model("comments");
 const AuthService = require("../services/auth");
 
 const mutation = new GraphQLObjectType({
@@ -36,6 +38,28 @@ const mutation = new GraphQLObjectType({
       },
       resolve(_, args) {
         return AuthService.verifyUser(args);
+      }
+    },
+    addVideoComment: {
+      type: CommentType,
+      args: {
+        text: { type: new GraphQLNonNull(GraphQLString) },
+        author: { type: new GraphQLNonNull(GraphQLID) },
+        videoId: { type: new GraphQLNonNull(GraphQLID)}
+      },
+      resolve(_, {text, author, videoId}) {
+        return Comment.addVideoComment(videoId, text, author);
+      }
+    },
+    addReplyComment: {
+      type: CommentType,
+      args: {
+        text: { type: new GraphQLNonNull(GraphQLString) },
+        author: { type: new GraphQLNonNull(GraphQLID) },
+        parentCommentId: { type: new GraphQLNonNull(GraphQLID) }
+      },
+      resolve(_, {text, author, parentCommentId}) {
+        return Comment.addReplyComment(parentCommentId, text, author)
       }
     }
   }
