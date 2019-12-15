@@ -36,4 +36,19 @@ CommentSchema.statics.addReplyComment = (parentCommentId, text, author) => {
   })
 }
 
+CommentSchema.statics.addVideoComment = (videoId, text, author) => {
+  const Video = mongoose.model("videos");
+  const Comment = mongoose.model("comments");
+
+  return Video.find({
+    _id: videoId
+  }).then(video => {
+    const comment = new Comment(text, author).save();
+    video.comments.push(comment._id);
+    video.save();
+
+    return video;
+  })
+}
+
 module.exports = mongoose.model("comments", CommentSchema);
