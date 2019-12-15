@@ -42,3 +42,12 @@ PalTube will use YouTubes API to fetch appropriate content for the application t
 
 Asaf Mohammad, Tristan Mockler, Mohamed Abdelhalim
 
+#### Day 1
+* Asaf/Tristan -  User Auth backend/frontend
+* Mohamed - Integrating YouTube search API to show desired results
+
+#### Day 2
+* Tristan - Styling User sign up forms.
+* Asaf - Comments component(backend)
+* Mohamed - Video playlist component(frontend and backend)
+
