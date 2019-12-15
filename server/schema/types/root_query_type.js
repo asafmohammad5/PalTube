@@ -18,6 +18,12 @@ const RootQueryType = new GraphQLObjectType({
         return User.findById(args._id);
       }
     },
+    users: {
+      type: new GraphQLList(UserType),
+      resolve() {
+        return User.find({});
+      }
+    },
     videos: {
       type: GraphQLList(VideoType),
       args: { criteria: { type: GraphQLString } },

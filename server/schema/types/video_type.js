@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLList } = graphql;
 const Video = require("../../models/Video");
-const CommentType = require("./comment_type")
+const CommentType = require("./comment_type");
+
 
 const VideoType = new GraphQLObjectType({
   name: "VideoType",
