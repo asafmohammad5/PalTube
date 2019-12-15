@@ -25,10 +25,10 @@ const CommentSchema = new Schema({
 CommentSchema.statics.addReplyComment = (parentCommentId, text, author) => {
   const Comment = mongoose.model("comments");
 
-  return Comment.find({
+  return Comment.findById({
     _id: parentCommentId
   }).then(comment => {
-    const child = new Comment(text, author).save(); 
+    const child = new Comment({text, author}).save(); 
     comment.replies.push(child._id);
     comment.save();
 
@@ -36,18 +36,18 @@ CommentSchema.statics.addReplyComment = (parentCommentId, text, author) => {
   })
 }
 
-CommentSchema.statics.addVideoComment = (videoId, text, author) => {
+CommentSchema.statics.addVideoComment = async (videoId, text, author) => {
   const Video = mongoose.model("videos");
   const Comment = mongoose.model("comments");
 
-  return Video.find({
+
+  return Video.findById({
     _id: videoId
   }).then(video => {
-    const comment = new Comment(text, author).save();
-    video.comments.push(comment._id);
-    video.save();
-
-    return video;
+    const comment = new Comment({ text, author })
+    video.comments.push(comment)
+    return Promise.all([comment.save(), video.save()])
+      .then(([comment, video]) => comment)
   })
 }
 
