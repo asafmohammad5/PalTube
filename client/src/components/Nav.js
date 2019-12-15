@@ -9,7 +9,7 @@ const Nav = props => {
     <ApolloConsumer>
     {client => (
     <Query query={IS_LOGGED_IN}>
-      {({ data }) => {
+      {({ data }) => { 
         if (data.isLoggedIn) {
           return (
             <button

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import Mutations from "../../graphql/mutations";
+import { Link } from "react-router-dom";
 const { LOGIN_USER } = Mutations;
 
 class Login extends Component {
@@ -11,10 +12,40 @@ class Login extends Component {
       emailOrUsername: "",
       password: ""
     };
+
+    this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
   }
 
   update(field) {
     return e => this.setState({ [field]: e.target.value });
+  }
+
+  demoEffect(demoUser) {
+    const that = this;
+    let index = 0;
+    const demoIntervalId = setInterval(() => {
+      if (index < demoUser.emailOrUsername.length) {
+        that.setState({
+          emailOrUsername: this.state.emailOrUsername + demoUser.emailOrUsername[index]
+        })
+      }
+      if (index < demoUser.password.length) {
+        that.setState({
+          password: this.state.password + demoUser.password[index]
+        })
+      }
+      index++;
+      if (index > demoUser.password.length && index > demoUser.emailOrUsername.length) {
+        clearInterval(demoIntervalId);
+      }
+    }, 200)
+  }
+
+  handleDemoSubmit(e) {
+    e.preventDefault();
+    const demoUser = { emailOrUsername: "GuestUser", password: "password" };
+    this.demoEffect(demoUser)
+  
   }
 
   updateCache(client, { data }) {
@@ -29,15 +60,21 @@ class Login extends Component {
       <Mutation
         mutation={LOGIN_USER}
         onCompleted={data => {
-          const { token } = data.login;
+          const { token, _id, username } = data.login;
           localStorage.setItem("auth-token", token);
+          localStorage.setItem("user", JSON.stringify({id: _id, username}));
           this.props.history.push("/");
         }}
         update={(client, data) => this.updateCache(client, data)}
       >
         {loginUser => (
-          <div>
+          <div className="login-form-page">
+            <div className="login-pic">
+              <img src="/stylesheets/images/loginpic.png" />
+              <p className="login-pic-info">Welcome back to PalTube!</p>
+            </div>
             <form
+              className="login-form"
               onSubmit={e => {
                 e.preventDefault();
                 loginUser({
@@ -48,18 +85,26 @@ class Login extends Component {
                 });
               }}
             >
+              <Link to="/"><img className="login-logo" src="/stylesheets/images/paltube.png" /></Link>
+              <p className="form-title">Sign into your account</p>
               <input
                 value={this.state.emailOrUsername}
                 onChange={this.update("emailOrUsername")}
                 placeholder="Email or Username"
+                className="login-email"
               />
               <input
                 value={this.state.password}
                 onChange={this.update("password")}
                 type="password"
                 placeholder="Password"
+                className="login-password"
               />
-              <button type="submit">Log In</button>
+              <div className="login-direct">
+                <button type="submit" className="login-button">Sign In</button>
+                <button onClick={this.handleDemoSubmit} type="submit" className="demo-button">Guest User</button>
+              </div> 
+                <Link to="/register" className="link-signup">Sign up instead</Link>
             </form>
           </div>
         )}

@@ -32,8 +32,9 @@ class Register extends Component {
       <Mutation
         mutation={REGISTER_USER}
         onCompleted={data => {
-          const { token } = data.register;
+          const { token, _id, username } = data.register;
           localStorage.setItem("auth-token", token);
+          localStorage.setItem("user", JSON.stringify({ id: _id, username }));
         }}
         update={(client, data) => this.updateCache(client, data)}
       >
@@ -81,7 +82,10 @@ class Register extends Component {
                   placeholder="Confirm"
                   className="signup-password2"
                 />
-                <button type="submit" className="signup-button">Sign up</button>
+                <div className="signup-direct">
+                  <Link to="/login" className="link-login">Sign in instead</Link>
+                  <button type="submit" className="signup-button">Sign up</button>
+                </div> 
               </form>
               <div className="signup-pic">
                 <img src="/stylesheets/images/signuppic.png" />
