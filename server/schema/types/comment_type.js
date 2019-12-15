@@ -6,7 +6,8 @@ const CommentType = new GraphQLObjectType({
   name: "CommentType",
   fields: () => ({
     _id: { type: GraphQLString },
-    text: { type: new GraphQLNonNull(GraphQLString) },
+    text: { type: GraphQLString },
+    date: { type: GraphQLString },
     author: { 
       type: require("./user_type"),
       resolve(parentValue) {

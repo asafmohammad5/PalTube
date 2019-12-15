@@ -29,5 +29,19 @@ export default {
       loggedIn
     }
   }
-`
+`,
+  VIDEO_COMMENT: gql`
+    mutation VideoComment($text: String!, $author: ID!, $videoId: ID!) {
+      addVideoComment(text: $text, author: $author, videoId: $videoId) {
+        text
+        author {
+          username
+        }
+        replies {
+          _id
+        }
+        date
+      }
+    }
+  `
 }
