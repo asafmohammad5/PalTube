@@ -1,40 +1,53 @@
 import React, { Component } from 'react';
-import ReactPlayer from 'react-player';
 import { FETCH_VIDEOS } from '../../graphql/queries'
 import { graphql } from 'react-apollo';
+import {Link} from 'react-router-dom';
 
 class VideoIndex extends Component {
   renderVideos() {
-    // debugger
     return this.props.data.videos.map((
       { _id, title, url }) => {
       return (
         <div key={_id} className="video-container">
-          <ReactPlayer url={url} className="video-player"
-            config={{ playerVars: { showinfo: 0 } }}
-          />
+          <div>
+            <object className="video-player">
+              <param name="movie" value={`${url}?modestbranding=1&amp;version=3&amp;hl=en_US;showinfo=0`}></param>
+              <param name="allowFullScreen" value="true"></param>
+              <param name="allowscriptaccess" value="always"></param>
+              <embed src={`${url}?modestbranding=1&amp;version=3&amp;hl=en_US&amp;showinfo=0`}
+                type="application/x-shockwave-flash"
+                className="video-player" allowscriptaccess="always" allowFullScreen="true"></embed>
+            </object>          
+          </div>
           <div className="video-info">
-          <p className="video-title">{title}</p>
+
+            <Link to={`/videos/${_id}`}>
+              <p className="video-title">
+              {title}
+              </p>
+              </Link>
+
           </div>
         </div>
       );
     });
   }
 
+
   render() {
     if (this.props.data.loading || !this.props.data.videos) {
       return null;
     }
     return (
-       <div class="container">
-        <div class="flex-grid">
-          <aside class="sidebar">
+      <div className="container">
+        <div className="flex-grid">
+          <aside className="sidebar">
             sidebar here
           </aside>
-          <section class="main">
+          <section className="main">
             <h3>Recommended Videos</h3>
             <div className="row">
-            {this.renderVideos()}
+              {this.renderVideos()}
             </div>
           </section>
         </div>

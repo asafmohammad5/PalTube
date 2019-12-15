@@ -1,6 +1,5 @@
 import gql from "graphql-tag";
 
-<<<<<<< HEAD
 export const FETCH_VIDEOS = gql`{
 	videos{
     _id
@@ -11,7 +10,20 @@ export const FETCH_VIDEOS = gql`{
     keywords
   }
 }`;
-=======
+
+export const FETCH_VIDEO = gql`
+  query queryVideo($id:ID!){
+  video(_id:$id){
+    _id
+    title
+    description
+    category
+    url
+    keywords
+  }
+}
+`;
+
 export default {
   IS_LOGGED_IN: gql`
     query IsUserLoggedIn {
@@ -19,4 +31,3 @@ export default {
     }
   `
 };
->>>>>>> 9e2560e28d258961387d3de3cdad8e8453ba795f
