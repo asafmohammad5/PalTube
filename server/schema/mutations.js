@@ -24,7 +24,7 @@ const mutation = new GraphQLObjectType({
     login: {
       type: UserType,
       args: {
-        emailOrUsername: {type: GraphQLString },
+        emailOrUsername: { type: GraphQLString },
         password: { type: GraphQLString }
       },
       resolve(_, args) {
@@ -45,9 +45,9 @@ const mutation = new GraphQLObjectType({
       args: {
         text: { type: new GraphQLNonNull(GraphQLString) },
         author: { type: new GraphQLNonNull(GraphQLID) },
-        videoId: { type: new GraphQLNonNull(GraphQLID)}
+        videoId: { type: new GraphQLNonNull(GraphQLID) }
       },
-      resolve(_, {text, author, videoId}) {
+      resolve(_, { text, author, videoId }) {
         return Comment.addVideoComment(videoId, text, author);
       }
     },
@@ -58,7 +58,7 @@ const mutation = new GraphQLObjectType({
         author: { type: new GraphQLNonNull(GraphQLID) },
         parentCommentId: { type: new GraphQLNonNull(GraphQLID) }
       },
-      resolve(_, {text, author, parentCommentId}) {
+      resolve(_, { text, author, parentCommentId }) {
         return Comment.addReplyComment(parentCommentId, text, author)
       }
     }
