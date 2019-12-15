@@ -1,5 +1,5 @@
 # PalTube
-A video platform for pets.
+A platform for pet videos.
 
 
 # Background and Overview
