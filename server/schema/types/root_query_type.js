@@ -27,7 +27,7 @@ const RootQueryType = new GraphQLObjectType({
     },
     video: {
       type: VideoType,
-      args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
+      args: { _id: {type: new GraphQLNonNull(GraphQLID) } },
       resolve(_, args) {
         return Video.findById(args._id)
       }

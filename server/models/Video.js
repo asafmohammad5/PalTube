@@ -22,6 +22,12 @@ const VideoSchema = new Schema({
     type: String,
     required: true
   },
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "comments"
+    }
+  ]
 })
 
 module.exports = mongoose.model("videos", VideoSchema);

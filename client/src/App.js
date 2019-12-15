@@ -4,9 +4,8 @@ import VideoIndex from './components/videosList/VideoIndex';
 import VideoDetail from './components/videosList/VideoDetail';
 import Register from "./components/User/Register";
 import Login from "./components/User/Login";
-import NavBar from "./components/NavBar";
 import AuthRoute from "./util/route_util";
-
+import NavBar from './components/NavBar'
 const App = () => (
   <div>
     <NavBar path="/" />
