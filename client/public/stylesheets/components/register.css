@@ -1,7 +1,8 @@
 .sign-up-form-page {
   display: flex; 
   justify-content: space-between;
-  border: 1px solid lightgray; 
+  border: 1px solid lightgray;
+  box-shadow: 2px 4px 3px lightgray; 
   border-radius: 12px; 
   height: 550px; 
   width: 700px;
@@ -72,13 +73,25 @@
 
 .signup-button {
   background:#065FD4;
-  border-radius: 2px; 
+  border-radius: 4px; 
   text-align: center; 
-  padding: 10px;
+  padding: 10px 20px;
   color: white; 
   font-family: Roboto;
-  width: 90px; 
-  align-self: flex-end; 
+  width: 110px; 
+}
+
+.signup-direct {
+  width: 320px; 
+  display: flex; 
+  justify-content: space-between; 
+}
+
+.link-login {
+  font-family: Roboto; 
+  margin: 10px 0px 0px 0px; 
+  color: #065FD4;
+  font-weight: bold; 
 }
 
 .signup-button:hover {

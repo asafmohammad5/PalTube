@@ -81,7 +81,10 @@ class Register extends Component {
                   placeholder="Confirm"
                   className="signup-password2"
                 />
-                <button type="submit" className="signup-button">Sign up</button>
+                <div className="signup-direct">
+                  <Link to="/login" className="link-login">Sign in instead</Link>
+                  <button type="submit" className="signup-button">Sign up</button>
+                </div> 
               </form>
               <div className="signup-pic">
                 <img src="/stylesheets/images/signuppic.png" />
