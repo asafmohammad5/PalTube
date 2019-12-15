@@ -28,11 +28,10 @@ CommentSchema.statics.addReplyComment = (parentCommentId, text, author) => {
   return Comment.findById({
     _id: parentCommentId
   }).then(comment => {
-    const child = new Comment({text, author}).save(); 
-    comment.replies.push(child._id);
-    comment.save();
-
-    return comment;
+    const child = new Comment({text, author})
+    comment.replies.push(child);
+    return Promise.all([child.save(), comment.save()])
+      .then(([child, comment]) => child)
   })
 }
 

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { FETCH_VIDEO } from '../../graphql/queries'
+import Queries from '../../graphql/queries';
 import { graphql } from 'react-apollo';
-import { Link } from 'react-router-dom';
+import CommentIndex from "../Comments/CommentIndex";
+import CommentCreate from "../Comments/CommentCreate";
+
+const {FETCH_VIDEO} = Queries;
 
 class VideoDetail extends Component {
   renderVideoDetail() {
@@ -20,8 +23,7 @@ class VideoDetail extends Component {
           </object>
         </div>
         <div className="video-info">
-          <p>{description}</p>
-          
+          <p>{description}</p>   
         </div>
       </div>
     );
@@ -39,7 +41,11 @@ class VideoDetail extends Component {
           </aside>
           <section className="main">
             {this.renderVideoDetail()}
+            <h1>Comments</h1>
+            <div><CommentCreate videoId={this.props.data.video._id}/> </div>
+            <div className="commentIndex"><CommentIndex comments={this.props.data.video.comments} /></div>
           </section>
+          
         </div>
       </div>
     );
