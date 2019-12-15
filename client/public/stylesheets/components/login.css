@@ -1,0 +1,105 @@
+.login-form-page {
+  display: flex; 
+  justify-content: space-between;
+  border: .5px solid lightgray; 
+  box-shadow: 2px 4px 3px lightgray;
+  border-radius: 12px; 
+  height: 550px; 
+  width: 700px;
+  margin: 30px auto; 
+}
+
+.login-pic {
+  width: 250px; 
+  margin-left: 40px;
+  padding-top: 100px; 
+}
+
+.login-pic-info {
+  color: gray;
+  font-family: Roboto; 
+  text-align: right;
+  padding-right: 22px; 
+}
+
+.login-button:hover {
+  transition-duration: 1s; 
+  background:#064ed4; 
+}
+
+.login-direct {
+  width: 320px; 
+  display: flex; 
+  justify-content: space-between; 
+  margin-top: 16px; 
+}
+
+.login-button {
+  background:#065FD4;
+  border-radius: 4px; 
+  text-align: center; 
+  padding: 10px 20px;
+  color: white; 
+  font-family: Roboto;
+  width: 150px; 
+}
+
+.demo-button {
+  background:#065FD4;
+  border-radius: 4px; 
+  text-align: center; 
+  padding: 10px 20px;
+  color: white; 
+  font-family: Roboto;
+  width: 150px; 
+  align-self: flex-end; 
+}
+
+.demo-button:hover {
+  transition-duration: 1s; 
+  background:#064ed4; 
+}
+
+.login-password:focus, .login-email:focus {
+  border: 2px solid #065FD4; 
+  border-radius: 5px; 
+}
+
+.link-signup {
+  font-family: Roboto; 
+  margin: 14px 0px 0px 0px; 
+  color: red;
+  font-weight: bold; 
+  align-self: center; 
+  padding-right: 5px; 
+}
+
+.link-signup:hover {
+  transition: 1s; 
+  text-decoration: underline; 
+}
+
+
+.login-logo {
+  width: 140px; 
+  height: auto; 
+  margin-bottom: 18px;
+  margin-top: 70px;
+}
+
+.login-form {
+  margin: 35px 35px 0px 0px;
+  width: 320px; 
+  display: flex;
+  flex-direction: column; 
+  font-family: Roboto; 
+  font-size: 14px; 
+}
+
+.login-email, .login-password {
+  margin-bottom: 18px; 
+  width: 320px;
+  border: 1px solid lightgray;
+  border-radius: 2px; 
+  padding: 10px;
+}

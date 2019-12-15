@@ -6,7 +6,8 @@ import Register from "./components/User/Register";
 import Login from "./components/User/Login";
 import AuthRoute from "./util/route_util";
 import NavBar from './components/NavBar'
-const App = () => (
+const App = () => {
+ return(
   <div>
     <NavBar path="/" />
     <Switch>
@@ -16,6 +17,6 @@ const App = () => (
       <AuthRoute path="/login" component={Login} routeType="auth" />
     </Switch>
   </div>
-)
+ )}
 
 export default App;
