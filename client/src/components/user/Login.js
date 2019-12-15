@@ -29,8 +29,9 @@ class Login extends Component {
       <Mutation
         mutation={LOGIN_USER}
         onCompleted={data => {
-          const { token } = data.login;
+          const { token, _id, username } = data.login;
           localStorage.setItem("auth-token", token);
+          localStorage.setItem("user", JSON.stringify({id: _id, username}));
           this.props.history.push("/");
         }}
         update={(client, data) => this.updateCache(client, data)}

@@ -6,6 +6,9 @@ export default {
     login(emailOrUsername: $emailOrUsername, password: $password) {
       token
       loggedIn
+      _id
+      email
+      username
     }
   }
   `,
@@ -15,6 +18,8 @@ export default {
       email
       token
       loggedIn
+      _id
+      username
     }
   }
  `,
