@@ -19,9 +19,15 @@ const RootQueryType = new GraphQLObjectType({
         return User.findById(args._id);
       }
     },
+    users: {
+      type: new GraphQLList(UserType),
+      resolve() {
+        return User.find({});
+      }
+    },
     videos: {
-      type: GraphQLList(VideoType),
-      resolve(_, args) {
+      type: new GraphQLList(VideoType),
+      resolve() {
         return Video.find({});
       }
     },
