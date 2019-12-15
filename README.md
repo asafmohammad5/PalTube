@@ -31,12 +31,16 @@ PalTube will use YouTubes API to fetch appropriate content for the application t
 
 ### Challenges
 
-* Implementing YouTube's API for fetching appropriate content
+* Displaying nested comments on the Video Show page
 * Using Google's API for log in/sign up
 
 # Things Accomplished Over the Weekend
 
-..........
+* Project Proposal/README
+* User Auth (frontend/backend/styling)
+* YouTube vidoes seed data
+* Video Index compenent
+* Comment Component
 
 # Group Members and Work Breakdown
 
@@ -44,10 +48,10 @@ Asaf Mohammad, Tristan Mockler, Mohamed Abdelhalim
 
 #### Day 1
 * Asaf/Tristan -  User Auth backend/frontend
-* Mohamed - Integrating YouTube search API to show desired results
+* Mohamed - Integrating YouTube videos as seed data & Video Index component.
 
 #### Day 2
 * Tristan - Styling User sign up forms.
 * Asaf - Comments component(backend)
-* Mohamed - Video playlist component(frontend and backend)
+* Mohamed - Video Index component(frontend and backend)
 
