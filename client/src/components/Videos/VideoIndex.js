@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Queries from '../../graphql/queries';
 import { graphql } from 'react-apollo';
 import {Link} from 'react-router-dom';
+import gql from "graphql-tag";
 
 const {FETCH_VIDEOS} = Queries;
 
@@ -34,9 +35,11 @@ class VideoIndex extends Component {
   }
 
   render() {
+
     if (this.props.data.loading || !this.props.data.videos) {
       return null;
     }
+    // debugger
     return (
       <div className="container">
         <div className="flex-grid">
