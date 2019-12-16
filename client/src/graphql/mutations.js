@@ -33,6 +33,7 @@ export default {
   VIDEO_COMMENT: gql`
     mutation VideoComment($text: String!, $author: ID!, $videoId: ID!) {
       addVideoComment(text: $text, author: $author, videoId: $videoId) {
+        _id
         text
         author {
           username
@@ -47,6 +48,7 @@ export default {
   REPLY_COMMENT: gql`
     mutation ReplyComment($text: String!, $author: ID!, $parentCommentId: ID!) {
       addReplyComment(text: $text, author: $author, parentCommentId: $parentCommentId) {
+        _id
         text
         author {
           username

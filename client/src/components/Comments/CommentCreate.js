@@ -43,18 +43,32 @@ class CommentCreate extends React.Component {
       })
   };
 
+  updateCache(cache, { data: { addVideoComment } }) {
+    let video;
+    try {
+      video = cache.readQuery({ query: FETCH_VIDEO, variables: {id: this.props.videoId} });
+    } catch (err) {
+      return;
+    }
+    
+    if (video) {
+     
+      let commentArray = video.video.comments;
+      video = Object.assign({}, video.video, {comments: commentArray.concat(addVideoComment)})
+
+      cache.writeQuery({
+        query: FETCH_VIDEO,
+        variables: {id: this.props.videoId},
+        data: { video: video }
+      });
+    }
+  }
+
   render() {
     return (
       <Mutation
         mutation={VIDEO_COMMENT}
-        refetchQueries={() => {
-          return [
-            {
-              query: FETCH_VIDEO,
-              variables: { id: this.props.videoId }
-            }
-          ];
-        }}
+        update={(cache, data) => this.updateCache(cache, data)}
       >
         {(addVideoComment, { data }) => (
           <div>

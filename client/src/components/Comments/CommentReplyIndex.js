@@ -1,23 +1,42 @@
 import React from 'react';
 import CommentReplyItem from "./CommentReplyItem";
+import { Query } from "react-apollo";
+import Queries from '../../graphql/queries';
+
+const { FETCH_VIDEO} = Queries;
 
 class CommentReplyIndex extends React.Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      comments: this.props.comments
-    }
   }
   render() {
-    const comments = this.state.comments.map(comment => {
-      return <div>
-        <div><CommentReplyItem comment={comment} /> </div>
-      </div>
-    })
-    return <div>
-      {comments}
-    </div>
+    return <Query query={FETCH_VIDEO} variables={{ id: this.props.videoId }}>
+      {({ loading, error, data }) => {
+        if (loading) return <p>Loading...</p>;
+        if (error) return <p>Error</p>;
+      
+       const comments = data.video.comments;
+
+       let comment;
+       for (let i = 0; i < comments.length; i++) {
+         if (this.props.commentId === comments[i]._id) {
+            comment = comments[i].replies;
+         }
+       }
+      //  debugger
+         const replies = comment.map(reply => {
+            return <div>
+             <div><CommentReplyItem comment={reply} videoId={this.props.videoId} /> </div>
+            </div>
+        })
+        // debugger
+     return (
+       <div>
+       {replies}
+       </div>
+     )
+      }}
+    </Query>
   }
 }
 

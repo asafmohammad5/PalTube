@@ -5,6 +5,7 @@ import Queries from '../../graphql/queries';
 import { currentUser } from "../../util/util";
 
 const { REPLY_COMMENT} = Mutations;
+const { FETCH_VIDEO } = Queries;
 
 class CommentReplyCreate extends React.Component {
   constructor(props) {
@@ -39,10 +40,36 @@ class CommentReplyCreate extends React.Component {
       })
   };
 
+  updateCache(cache, { data: { addReplyComment } }) {
+    let video;
+    try {
+      video = cache.readQuery({ query: FETCH_VIDEO, variables: { id: this.props.videoId } });
+    } catch (err) {
+      return;
+    }
+
+    if (video) {
+      video = Object.assign({}, video.video)
+      let commentsArray = video.comments;
+      for (let i = 0; i < commentsArray.length; i++) {
+        if (this.props.parentId === commentsArray[i]._id) {
+          commentsArray[i].replies.push(addReplyComment) 
+        }
+      
+      }
+      cache.writeQuery({
+        query: FETCH_VIDEO,
+        variables: { id: this.props.videoId },
+        data: { video: video }
+      });
+    }
+  }
+
   render() {
     return (
       <Mutation
         mutation={REPLY_COMMENT}
+        update={(cache, data) => this.updateCache(cache, data)}
       >
         {(addReplyComment, { data }) => (
           <div>

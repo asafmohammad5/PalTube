@@ -44,7 +44,7 @@ class VideoDetail extends React.Component {
             {this.renderVideoDetail()}
             <h1>Comments</h1>
             <div className="commentCreate"><CommentCreate videoId={this.props.data.video._id}/></div>
-            <div className="commentIndex"><CommentIndex comments={this.props.data.video.comments} /></div>
+            <div className="commentIndex"><CommentIndex videoId={this.props.data.video._id}/></div>
           </section>   
         </div>
       </div>
