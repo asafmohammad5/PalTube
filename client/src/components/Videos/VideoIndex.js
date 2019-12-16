@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { FETCH_VIDEOS } from '../../graphql/queries'
+import Queries from '../../graphql/queries';
 import { graphql } from 'react-apollo';
 import {Link} from 'react-router-dom';
+
+const {FETCH_VIDEOS} = Queries;
 
 class VideoIndex extends Component {
   renderVideos() {
@@ -30,7 +32,6 @@ class VideoIndex extends Component {
       );
     });
   }
-
 
   render() {
     if (this.props.data.loading || !this.props.data.videos) {

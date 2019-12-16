@@ -1,3 +1,3 @@
-export const currentUser = ()=> {
-  return user = JSON.parse(localStorage.getItem("user"));
+export const currentUser = () => {
+  return JSON.parse(localStorage.getItem("user"));
 }
