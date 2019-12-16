@@ -6,7 +6,8 @@ import CommentCreate from "../Comments/CommentCreate";
 
 const {FETCH_VIDEO} = Queries;
 
-class VideoDetail extends Component {
+class VideoDetail extends React.Component {
+  
   renderVideoDetail() {
     const { _id, title, url, description } = this.props.data.video;
     return (
@@ -42,10 +43,9 @@ class VideoDetail extends Component {
           <section className="main">
             {this.renderVideoDetail()}
             <h1>Comments</h1>
-            <div><CommentCreate videoId={this.props.data.video._id}/> </div>
+            <div className="commentCreate"><CommentCreate videoId={this.props.data.video._id}/></div>
             <div className="commentIndex"><CommentIndex comments={this.props.data.video.comments} /></div>
-          </section>
-          
+          </section>   
         </div>
       </div>
     );

@@ -1,8 +1,12 @@
 import React from "react";
 import { Mutation } from "react-apollo";
 import Mutations from "../../graphql/mutations";
+import Queries from '../../graphql/queries';
+import {currentUser} from "../../util/util";
+import {withRouter} from "react-router-dom";
 
 
+const { FETCH_VIDEO } = Queries;
 const {VIDEO_COMMENT} = Mutations;
 
 class CommentCreate extends React.Component {
@@ -27,14 +31,15 @@ class CommentCreate extends React.Component {
     addVideoComment({
       variables: {
         text: text,
-        // author: ?,
+        author: currentUser().id,
         videoId: this.props.videoId
       }
     })
       .then(data => {
         this.setState({
           text: ""
-        });
+        })
+        
       })
   };
 
@@ -42,6 +47,14 @@ class CommentCreate extends React.Component {
     return (
       <Mutation
         mutation={VIDEO_COMMENT}
+        refetchQueries={() => {
+          return [
+            {
+              query: FETCH_VIDEO,
+              variables: { id: this.props.videoId }
+            }
+          ];
+        }}
       >
         {(addVideoComment, { data }) => (
           <div>
@@ -49,7 +62,7 @@ class CommentCreate extends React.Component {
               <textarea
                 value={this.state.text}
                 onChange={this.update("text")}
-                placeholder={`Commenting publicly`}
+                placeholder={`Commenting publicly as ${currentUser().username}`}
               />
               <button type="submit">Create Comment</button>
             </form>
@@ -60,4 +73,4 @@ class CommentCreate extends React.Component {
   }
 }
 
-export default CommentCreate;
+export default withRouter(CommentCreate);

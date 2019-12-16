@@ -12,10 +12,10 @@ import Mutation from "./graphql/mutations";
 const { VERIFY_USER } = Mutation;
 const token = localStorage.getItem("auth-token");
 
-const cache = new InMemoryCache({ dataIdFromObject: object => object.id || null});
+const cache = new InMemoryCache({ dataIdFromObject: object => object._id || null});
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:5000/graphql"
+  uri: "http://localhost:5000/graphql"  
 });
 
 const errorLink = onError(({ graphQLErrors }) => {
