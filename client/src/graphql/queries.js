@@ -15,6 +15,43 @@ export default {
     category
     url
     keywords
+    comments {
+      _id
+      text
+      date
+      author {
+        username
+      }
+      replies {
+        _id
+        text
+        date
+        author {
+          username
+        }
+      }
+    }
+     }
+    }
+  `,
+ FETCH_COMMENT: gql`
+  query FetchComment($id: ID!){
+  comment (_id: $id) {
+    _id
+    text
+    date
+    author {
+      username
+    }
+    date
+    replies {
+      _id
+      text
+      date
+      author {
+        username
+      }
+    }
   }
 }
 `,
