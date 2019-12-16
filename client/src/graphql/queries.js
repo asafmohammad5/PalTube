@@ -23,7 +23,6 @@ export default {
   `,
   FETCH_VIDEOS: gql`{
 	videos{
-
     _id
     title
     description

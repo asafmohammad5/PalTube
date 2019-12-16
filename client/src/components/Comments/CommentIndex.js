@@ -2,8 +2,15 @@ import React from 'react';
 import CommentIndexItem from "./CommentIndexItem";
 
 class CommentIndex extends React.Component {
+  constructor(props) {
+    super(props) 
+
+    this.state = {
+      comments: this.props.comments
+    }
+  }
   render () {
-    const comments = this.props.comments.map(comment => {
+    const comments = this.state.comments.map(comment => {
       return <div>
                <div><CommentIndexItem comment={comment} /> </div>
             </div>
