@@ -20,7 +20,7 @@ class VideoDetail extends React.Component {
             <param name="allowscriptaccess" value="always"></param>
             <embed src={`${url}?modestbranding=1&amp;version=3&amp;hl=en_US&amp;showinfo=0`}
               type="application/x-shockwave-flash"
-              className="video-player" allowscriptaccess="always" allowFullScreen="true"></embed>
+              className="video-player" allowscriptaccess="always" allowFullScreen={true}></embed>
           </object>
         </div>
         <div className="video-info">
