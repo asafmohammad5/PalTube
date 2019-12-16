@@ -8,7 +8,10 @@ export const FETCH_VIDEOS = gql`
       description
       category
       url
-      keywords
+      keywords    
+      comments{
+        _id
+      }
     }
   }
 `;
