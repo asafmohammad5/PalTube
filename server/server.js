@@ -16,7 +16,7 @@ mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
-mongoose.set('useCreateIndex', true);
+// mongoose.set('useCreateIndex', true);
 
 app.use(bodyParser.json());
 app.use(cors());

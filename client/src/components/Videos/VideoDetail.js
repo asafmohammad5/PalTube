@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 import Queries from '../../graphql/queries';
 import { graphql } from 'react-apollo';
 import CommentIndex from "../Comments/CommentIndex";
+import Like from "../Like/Like";
 import CommentCreate from "../Comments/CommentCreate";
-
+import Mutations from "../../graphql/mutations";
+import { Mutation } from "react-apollo";
+import { currentUser } from "../../util/util";
+const{FETCH_VIDEO_LIKES} = Queries; 
+const {ADD_VIDEO_LIKE} = Mutations; 
 const {FETCH_VIDEO} = Queries;
 
 class VideoDetail extends React.Component {
-  
+ 
   renderVideoDetail() {
     const { _id, title, url, description } = this.props.data.video;
     return (
@@ -30,6 +35,24 @@ class VideoDetail extends React.Component {
     );
   }
 
+  updateCache(cache, {data: {newLike}}) {
+    
+    let likes;
+    try {
+      likes = cache.readQuery({ query: FETCH_VIDEO_LIKES, variables: { id: this.props.data.video._id} });
+    } catch (err) {
+      return;
+    } 
+    if (likes) {
+      // take care of un-nesting things before we write to our cache
+      let likesArray = likes.likes;
+      cache.writeQuery({
+        query: FETCH_VIDEO_LIKES,
+        data: { likes: likesArray.concat(newLike) }
+      });
+    }
+  }
+
   render() {
     if (this.props.data.loading || !this.props.data.video) {
       return null;
@@ -42,6 +65,9 @@ class VideoDetail extends React.Component {
           </aside>
           <section className="main">
             {this.renderVideoDetail()}
+            <div className="rate-likes">
+              <Like videoId={this.props.data.video._id} />
+            </div>
             <h1>Comments</h1>
             <div className="commentCreate"><CommentCreate videoId={this.props.data.video._id}/></div>
             <div className="commentIndex"><CommentIndex comments={this.props.data.video.comments} /></div>
