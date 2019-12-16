@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { FETCH_VIDEOS } from '../../graphql/queries'
+import Queries from '../../graphql/queries'
 import { graphql, Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
+const { FETCH_VIDEOS } = Queries;
+
 
 class VideoSearch extends Component {
   constructor(props) {

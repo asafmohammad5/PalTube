@@ -6,7 +6,7 @@ import Register from "./components/User/Register";
 import Login from "./components/User/Login";
 import AuthRoute from "./util/route_util";
 import NavBar from './components/NavBar';
-import VideoSearch from './components/videosList/VideoSearch';
+import VideoSearch from './components/Videos/VideoSearch';
 const App = () => {
  return(
   <div>
