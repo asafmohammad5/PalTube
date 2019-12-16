@@ -43,5 +43,19 @@ export default {
         date
       }
     }
+  `,
+  REPLY_COMMENT: gql`
+    mutation ReplyComment($text: String!, $author: ID!, $parentCommentId: ID!) {
+      addReplyComment(text: $text, author: $author, parentCommentId: $parentCommentId) {
+        text
+        author {
+          username
+        }
+        replies {
+          _id
+        }
+        date
+      }
+    }
   `
 }

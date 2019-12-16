@@ -1,9 +1,10 @@
 import React from 'react';
 import Queries from '../../graphql/queries';
 import { Query } from "react-apollo";
+import CommentReplyIndex from "./CommentReplyIndex";
+import CommentReplyCreate from "./CommentReplyCreate";
 
 const {FETCH_COMMENT} = Queries;
-
 
 
 const CommentIndexItem = props => {
@@ -18,11 +19,14 @@ const CommentIndexItem = props => {
           const month = date.getMonth();
           const day = date.getDate()
          
-        return (
+        const comments = data.comment.replies.length > 0 ? data.comment.replies : [];
+         return (
           <div>
             <div>{data.comment.author.username}</div>
             <div>{year + "-" + month + "-" + day }</div>
             <div>{data.comment.text}</div>
+            <div><CommentReplyCreate parentId={props.comment._id}/></div>
+            <div className="comment-reply-index"><CommentReplyIndex comments={comments}/></div>
           </div>
         )
         }}
