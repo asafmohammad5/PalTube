@@ -8,12 +8,12 @@ const {REGISTER_USER} = Mutations;
 class Register extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       username: "",
       email: "",
       password: "",
-      password2: ""
+      password2: "",
+      image: "/stylesheets/images/default_avatar_2.png"
     };
   }
 
@@ -27,14 +27,28 @@ class Register extends Component {
     });
   }
 
+  updateImage = (e) => {
+    if (e.target.files.length === 0) {
+      return;
+    }
+    let file = e.target.files[0];
+    let reader = new FileReader();
+
+    reader.onloadend = (e) => {
+      this.setState({image: reader.result});
+    };
+    
+    reader.readAsDataURL(file);
+  }
+
   render() {
     return (
       <Mutation
         mutation={REGISTER_USER}
         onCompleted={data => {
-          const { token, _id, username } = data.register;
+          const { token, _id, username, image } = data.register;
           localStorage.setItem("auth-token", token);
-          localStorage.setItem("user", JSON.stringify({ id: _id, username }));
+          localStorage.setItem("user", JSON.stringify({ id: _id, username, image }));
         }}
         update={(client, data) => this.updateCache(client, data)}
       >
@@ -49,7 +63,8 @@ class Register extends Component {
                       username: this.state.username,
                       email: this.state.email,
                       password: this.state.password,
-                      password2: this.state.password2
+                      password2: this.state.password2,
+                      image: this.state.image
                     }
                   });
                 }}
@@ -82,12 +97,15 @@ class Register extends Component {
                   placeholder="Confirm"
                   className="signup-password2"
                 />
+              <input type="file" onChange={this.updateImage} className="signup-password2"/>
+              
                 <div className="signup-direct">
                   <Link to="/login" className="link-login">Sign in instead</Link>
                   <button type="submit" className="signup-button">Sign up</button>
                 </div> 
               </form>
               <div className="signup-pic">
+              <img src={this.state.image} className="signup-avatar"/>
                 <img src="/stylesheets/images/signuppic.png" />
                 <p className="signup-pic-info">Join. Watch. Laugh.</p>
               </div>
