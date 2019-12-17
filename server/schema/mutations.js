@@ -104,10 +104,20 @@ const mutation = new GraphQLObjectType({
         userId: { type: new GraphQLNonNull(GraphQLID) }
       },
       resolve(parentValue, { videoId, userId }) { 
-        console.log("here we are");
         return Video.addLike(videoId, userId);
       }
     },
+add-removelike
+    removeVideoLike: {
+      type: VideoType,
+      args: {
+        videoId: { type: new GraphQLNonNull(GraphQLID) },
+        userId: { type: new GraphQLNonNull(GraphQLID) }
+      },
+      resolve(parentValue, { videoId, userId }) {
+        return Video.removeLike(videoId, userId);
+      }
+    }
 
   }
 });
