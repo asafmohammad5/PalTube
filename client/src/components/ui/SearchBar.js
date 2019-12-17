@@ -16,7 +16,6 @@ const renderSuggestion = suggestion => (
   </div>
 );
 
-
 class SearchBar extends Component {
   constructor() {
     super();
@@ -27,10 +26,10 @@ class SearchBar extends Component {
     document.addEventListener("keydown", this.handleKeydown);
   }
   handleKeydown = (event) => {
-    if (event.key == 'Enter' || event.keyCode == 13) {
-      // if (!window.location.href.includes('search')){
+    if (event.target.getAttribute("aria-controls") === "react-autowhatever-txtSearchVideos") {
+      if (event.key == 'Enter' || event.keyCode == 13) {
         window.location.href = `#/search/${this.state.value}`
-      // }
+      }
     }
   }
   onSuggestionsFetchRequested = ({ value }) => {
@@ -47,9 +46,9 @@ class SearchBar extends Component {
     this.setState({ value: newValue })
   }
 
-    render() {
+  render() {
     const { value, suggestions, referrer } = this.state;
- 
+
     const inputProps = {
       placeholder: 'search...',
       value,
