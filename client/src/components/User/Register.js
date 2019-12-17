@@ -33,11 +33,9 @@ class Register extends Component {
     }
     let file = e.target.files[0];
     let reader = new FileReader();
-
     reader.onloadend = (e) => {
       this.setState({image: reader.result});
     };
-    
     reader.readAsDataURL(file);
   }
 
