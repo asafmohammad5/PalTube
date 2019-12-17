@@ -107,7 +107,6 @@ const mutation = new GraphQLObjectType({
         return Video.addLike(videoId, userId);
       }
     },
-add-removelike
     removeVideoLike: {
       type: VideoType,
       args: {

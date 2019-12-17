@@ -16,6 +16,6 @@ export const initializeTheme = () => {
   if (isThemeExist) {
     changeTheme();
   } else {
-    localStorage.set("theme", "dark");
+    localStorage.setItem("theme", "dark");
   }
 }
