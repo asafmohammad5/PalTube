@@ -59,5 +59,27 @@ export default {
         date
       }
     }
-  `
+  `,
+  DELETE_COMMENT: gql`
+    mutation DeleteComment($id: ID!) {
+      deleteComment(id: $id) {
+        _id
+      }
+    }
+  `,
+  UPDATE_COMMENT: gql`
+  mutation UpdateComment($id: ID!, $text: String) {
+    updateComment(id: $id, text: $text) {
+      _id
+      text
+      date
+      author {
+        username
+      }
+      replies {
+        _id
+       }
+    }
+  }
+`
 }
