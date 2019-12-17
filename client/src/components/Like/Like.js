@@ -24,7 +24,7 @@ class Like extends React.Component {
   }
 
   handleLike(e, VideoLike) {
-
+    debugger; 
     e.preventDefault();
     
       VideoLike({

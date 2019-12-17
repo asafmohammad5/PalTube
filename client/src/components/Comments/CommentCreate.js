@@ -65,7 +65,16 @@ class CommentCreate extends React.Component {
   }
 
   render() {
-    return (
+    const user = currentUser();
+   
+    if (!user) {
+      return <textarea
+        value={this.state.text}
+        onChange={this.update("text")}
+        placeholder="Must Be Signed In to Comment"
+      />
+    } else {
+      return (
       <Mutation
         mutation={VIDEO_COMMENT}
         update={(cache, data) => this.updateCache(cache, data)}
@@ -83,7 +92,7 @@ class CommentCreate extends React.Component {
           </div>
         )}
       </Mutation>
-    );
+    )};
   }
 }
 
