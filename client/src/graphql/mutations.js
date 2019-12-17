@@ -90,5 +90,12 @@ export default {
         _id
       }
     }
+  `,
+  REMOVE_VIDEO_LIKE: gql`
+    mutation VideoRemoveLike($videoId: ID!, $userId: ID!) {
+      removeVideoLike(videoId: $videoId, userId: $userId) {
+        _id
+      }
+    }
   `
 }
