@@ -9,17 +9,19 @@ export default {
       _id
       email
       username
+      image
     }
   }
   `,
   REGISTER_USER: gql`
-  mutation RegisterUser($username: String!, $email: String!, $password: String!, $password2: String!) {
-    register(username: $username, email: $email, password: $password, password2: $password2) {
+  mutation RegisterUser($username: String!, $email: String!, $password: String!, $password2: String!, $image:String!) {
+    register(username: $username, email: $email, password: $password, password2: $password2, image: $image) {
       email
       token
       loggedIn
       _id
       username
+      image
     }
   }
  `,
@@ -57,6 +59,42 @@ export default {
           _id
         }
         date
+      }
+    }
+  `,
+  DELETE_COMMENT: gql`
+    mutation DeleteComment($id: ID!) {
+      deleteComment(id: $id) {
+        _id
+      }
+    }
+  `,
+  UPDATE_COMMENT: gql`
+  mutation UpdateComment($id: ID!, $text: String) {
+    updateComment(id: $id, text: $text) {
+      _id
+      text
+      date
+      author {
+        username
+      }
+      replies {
+        _id
+       }
+    }
+  }
+`,
+  ADD_VIDEO_LIKE: gql`
+    mutation VideoLike($videoId: ID!, $userId: ID!) {
+      addVideoLike(videoId: $videoId, userId: $userId) {
+        _id
+      }
+    }
+  `,
+  REMOVE_VIDEO_LIKE: gql`
+    mutation VideoRemoveLike($videoId: ID!, $userId: ID!) {
+      removeVideoLike(videoId: $videoId, userId: $userId) {
+        _id
       }
     }
   `

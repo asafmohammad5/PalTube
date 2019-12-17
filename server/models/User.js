@@ -10,6 +10,12 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  videos_liked: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "videos"
+    }
+  ],
   date: {
     type: Date,
     default: Date.now
@@ -19,7 +25,11 @@ const UserSchema = new Schema({
     required: true,
     min: 8,
     max: 32
-  }
+  }, 
+  image: {
+    type: String,
+    required: true
+  },
 })
 
 module.exports = mongoose.model("users", UserSchema);

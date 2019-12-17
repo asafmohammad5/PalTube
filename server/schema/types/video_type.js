@@ -3,7 +3,7 @@ const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLList } = graphql;
 const Video = require("../../models/Video");
 const CommentType = require("./comment_type");
-
+const UserType = require("./user_type");
 
 const VideoType = new GraphQLObjectType({
   name: "VideoType",
@@ -14,6 +14,14 @@ const VideoType = new GraphQLObjectType({
     title: { type: GraphQLString },
     category: { type: GraphQLString },
     description: { type: GraphQLString },
+    likes: {
+      type: new GraphQLList(UserType),
+      resolve(parentValue) {
+        return Video.findById(parentValue.id)
+          .populate("likes")
+          .then(video => video.likes);
+      }
+    },
     comments: {
       type: new GraphQLList(CommentType),
       resolve(parentValue) {

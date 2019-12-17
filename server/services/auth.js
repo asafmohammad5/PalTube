@@ -8,13 +8,14 @@ const validateRegisterInput = require("../validation/register");
 
 const register = async data => {
   try {
+    debugger
     const { message, isValid } = validateRegisterInput(data);
 
     if (!isValid) {
       throw new Error(message);
     }
 
-    const { username, email, password, password2 } = data;
+    const { username, email, password, password2, image } = data;
 
 
     const existingUser = await User.findOne({ email });
@@ -39,7 +40,8 @@ const register = async data => {
       {
         username,
         email,
-        password: hashedPassword
+        password: hashedPassword,
+        image
       },
       err => {
         if (err) throw err;
