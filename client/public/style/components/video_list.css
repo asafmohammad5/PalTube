@@ -20,11 +20,13 @@
 }
 
 .main {
+  
   flex: 3.5;
   background-color: lightcyan;
   margin-left: 0.3rem;
   margin-right: 0.3rem;
   padding: 1rem;
+  padding-left: 50px;
 }
 
 .row {
@@ -59,4 +61,11 @@
 }
 .video-title:hover {
   text-decoration: underline;
+}
+
+.show{
+  max-width: 175px;
+}
+.hide{
+  max-width: 25px;
 }

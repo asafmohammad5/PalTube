@@ -3,7 +3,9 @@ const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLID 
 const mongoose = require("mongoose");
 const UserType = require("./types/user_type");
 const CommentType = require("./types/comment_type");
+const VideoType = require("./types/video_type");
 const Comment = mongoose.model("comments");
+const Video = mongoose.model("videos");
 const AuthService = require("../services/auth");
 
 const mutation = new GraphQLObjectType({
@@ -15,7 +17,8 @@ const mutation = new GraphQLObjectType({
         username: { type: new GraphQLNonNull(GraphQLString) },
         email: { type: new GraphQLNonNull(GraphQLString) },
         password: { type: new GraphQLNonNull(GraphQLString) },
-        password2: { type: new GraphQLNonNull(GraphQLString) }
+        password2: { type: new GraphQLNonNull(GraphQLString) },
+        image:{type: GraphQLString}
       },
       resolve(parentValue, data) {
         return AuthService.register(data);
@@ -39,7 +42,7 @@ const mutation = new GraphQLObjectType({
       resolve(_, args) {
         return AuthService.verifyUser(args);
       }
-    },
+    }, 
     addVideoComment: {
       type: CommentType,
       args: {
@@ -61,7 +64,18 @@ const mutation = new GraphQLObjectType({
       resolve(_, { text, author, parentCommentId }) {
         return Comment.addReplyComment(parentCommentId, text, author)
       }
-    }
+    },
+    addVideoLike: {
+      type: VideoType,
+      args: {
+        videoId: { type: new GraphQLNonNull(GraphQLID) },
+        userId: { type: new GraphQLNonNull(GraphQLID) }
+      },
+      resolve(parentValue, { videoId, userId }) { 
+        console.log("here we are");
+        return Video.addLike(videoId, userId);
+      }
+    },
   }
 });
 

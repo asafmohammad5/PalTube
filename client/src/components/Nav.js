@@ -16,10 +16,12 @@ const Nav = props => {
               onClick={e => {
                 e.preventDefault();
                 localStorage.removeItem("auth-token");
+                localStorage.removeItem("user");
                 client.writeData({ data: { isLoggedIn: false } });
+                
               }}
             >
-              Logout
+              <Link to="/" className="nav-sign-up">LOG OUT</Link>
         </button>
           )} else {
           return (
