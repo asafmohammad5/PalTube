@@ -37,7 +37,11 @@ class EditComment extends React.Component {
 
 
   render() {
-    if (this.props.comment.author.username === currentUser().username) {
+    const user = currentUser();
+
+    if (!user) {
+      return <div></div>
+    } else if (this.props.comment.author.username === currentUser().username) {
       return (
         <Mutation
           mutation={UPDATE_COMMENT}
@@ -62,7 +66,7 @@ class EditComment extends React.Component {
           )}
         </Mutation>
       )
-    } else {
+    } else  {
       return <div></div>
     }
   }
