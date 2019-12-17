@@ -27,3 +27,12 @@
   margin-right: 14px; 
   padding: 10px;
 }
+
+/* Burger-Menu */
+.burger-menu-icon{
+  max-height: 30px;
+  max-width: 30px;
+  padding: 0px;
+  margin: 0px;
+  cursor: pointer;
+}

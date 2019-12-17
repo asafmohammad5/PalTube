@@ -25,7 +25,11 @@ const UserSchema = new Schema({
     required: true,
     min: 8,
     max: 32
-  }
+  }, 
+  image: {
+    type: String,
+    required: true
+  },
 })
 
 module.exports = mongoose.model("users", UserSchema);

@@ -12,6 +12,7 @@ const UserType = new GraphQLObjectType({
     username: { type: GraphQLString },
     loggedIn: { type: GraphQLBoolean },
     token: { type: GraphQLString },
+    image: { type: GraphQLString }
     videos_liked: {
       type: new GraphQLList(require("./video_type")),
       resolve(parentValue) {
