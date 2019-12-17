@@ -66,6 +66,15 @@ class CommentReplyCreate extends React.Component {
   }
 
   render() {
+    const user = currentUser();
+
+    if (!user) {
+      return <textarea
+        value={this.state.text}
+        onChange={this.update("text")}
+        placeholder="Must Be Signed In to Comment"
+      />}
+      else {
     return (
       <Mutation
         mutation={REPLY_COMMENT}
@@ -84,7 +93,7 @@ class CommentReplyCreate extends React.Component {
           </div>
         )}
       </Mutation>
-    );
+      )};
   }
 }
 

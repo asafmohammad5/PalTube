@@ -65,6 +65,38 @@ const mutation = new GraphQLObjectType({
         return Comment.addReplyComment(parentCommentId, text, author)
       }
     },
+    deleteComment: {
+      type: CommentType,
+      args: { 
+        id: { type: new GraphQLNonNull(GraphQLID) } 
+      },
+      resolve(parentValue, { id }) {
+        return Comment.remove({ _id: id });
+      }
+    },
+    updateComment: {
+      type: CommentType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+        text: { type: GraphQLString },
+      },
+      resolve(parentValue, { id, text}) {
+        const updateObj = {};
+
+        if (id) updateObj.id = id;
+        if (text) updateObj.text = text;
+        if (id) updateObj.date = Date.now()
+
+        return Comment.findOneAndUpdate(
+          { _id: id },
+          { $set: updateObj },
+          { new: true },
+          (err, comment) => {
+            return comment;
+          }
+        );
+      }
+    },
     addVideoLike: {
       type: VideoType,
       args: {
@@ -72,10 +104,21 @@ const mutation = new GraphQLObjectType({
         userId: { type: new GraphQLNonNull(GraphQLID) }
       },
       resolve(parentValue, { videoId, userId }) { 
-        console.log("here we are");
         return Video.addLike(videoId, userId);
       }
     },
+add-removelike
+    removeVideoLike: {
+      type: VideoType,
+      args: {
+        videoId: { type: new GraphQLNonNull(GraphQLID) },
+        userId: { type: new GraphQLNonNull(GraphQLID) }
+      },
+      resolve(parentValue, { videoId, userId }) {
+        return Video.removeLike(videoId, userId);
+      }
+    }
+
   }
 });
 

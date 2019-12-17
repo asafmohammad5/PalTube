@@ -65,25 +65,35 @@ class CommentCreate extends React.Component {
   }
 
   render() {
-    return (
+    const user = currentUser();
+   
+    if (!user) {
+      return <textarea
+        value={this.state.text}
+        onChange={this.update("text")}
+        placeholder="Must Be Signed In to Comment"
+      />
+    } else {
+      return (
       <Mutation
         mutation={VIDEO_COMMENT}
         update={(cache, data) => this.updateCache(cache, data)}
       >
         {(addVideoComment, { data }) => (
-          <div>
+          <div className="create-form">
             <form onSubmit={e => this.handleSubmit(e, addVideoComment)}>
-              <textarea
+              <input 
+                className="comment-create-input"
                 value={this.state.text}
                 onChange={this.update("text")}
                 placeholder={`Commenting publicly as ${currentUser().username}`}
               />
-              <button type="submit">Create Comment</button>
+              <button className="create-comment-button" type="submit">COMMENT</button>
             </form>
           </div>
         )}
       </Mutation>
-    );
+    )};
   }
 }
 

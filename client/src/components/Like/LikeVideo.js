@@ -19,7 +19,6 @@ class LikeVideo extends React.Component {
   
   render() {
 
-      let codeChange;
     return <Query query={FETCH_VIDEO} variables={{ id: this.props.videoId }}>
       {({ loading, error, data }) => {
         if (loading) return <p>Loading...</p>;

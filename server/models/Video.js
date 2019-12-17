@@ -46,8 +46,7 @@ VideoSchema.statics.addLike = (videoId, userId) => {
 
   return Video.findById(videoId).then(video => {
     return User.findById(userId).then(user => {
-      console.log(video);
-      console.log(user);
+     
       video.likes.push(user._id);
       user.videos_liked.push(video);
 
@@ -58,6 +57,23 @@ VideoSchema.statics.addLike = (videoId, userId) => {
       );
     });
   });
+};
+
+VideoSchema.statics.removeLike = (videoId, userId) => {
+  const Video = mongoose.model("videos");
+  const User = mongoose.model("users");
+
+  return Video.findById(videoId).then(video => {
+      return User.findById(userId).then(user => {
+          video.likes.pull(user);
+          user.videos_liked.pull(video);
+
+          return Promise.all([video.save(), user.save()])
+            .then(([video, user]) => {
+              return user;
+            });
+        });
+    });
 };
 
 
