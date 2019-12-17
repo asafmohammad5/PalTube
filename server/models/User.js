@@ -10,6 +10,12 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  videos_liked: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "videos"
+    }
+  ],
   date: {
     type: Date,
     default: Date.now

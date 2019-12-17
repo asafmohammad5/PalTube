@@ -59,5 +59,12 @@ export default {
         date
       }
     }
+  `,
+  ADD_VIDEO_LIKE: gql`
+    mutation VideoLike($videoId: ID!, $userId: ID!) {
+      addVideoLike(videoId: $videoId, userId: $userId) {
+        _id
+      }
+    }
   `
 }

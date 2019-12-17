@@ -20,7 +20,7 @@ class Login extends Component {
     return e => this.setState({ [field]: e.target.value });
   }
 
-  demoEffect(demoUser) {
+  demoEffect(demoUser, loginUser) {
     const that = this;
     let index = 0;
     const demoIntervalId = setInterval(() => {
@@ -37,15 +37,17 @@ class Login extends Component {
       index++;
       if (index > demoUser.password.length && index > demoUser.emailOrUsername.length) {
         clearInterval(demoIntervalId);
+        loginUser({ variables: demoUser }).then(() => this.props.history.push("/"));
       }
     }, 200)
   }
 
-  handleDemoSubmit(e) {
+  handleDemoSubmit(e, loginUser) {
     e.preventDefault();
     const demoUser = { emailOrUsername: "GuestUser", password: "password" };
-    this.demoEffect(demoUser)
-  
+    this.demoEffect(demoUser, loginUser)
+    
+    // debugger; 
   }
 
   updateCache(client, { data }) {
@@ -56,11 +58,13 @@ class Login extends Component {
   }
 
   render() {
+     
     return (
       <Mutation
         mutation={LOGIN_USER}
         onCompleted={data => {
-          const { token, _id, username } = data.login;
+          console.log(data);
+          const { token, _id, username} = data.login;
           localStorage.setItem("auth-token", token);
           localStorage.setItem("user", JSON.stringify({id: _id, username}));
           this.props.history.push("/");
@@ -102,7 +106,7 @@ class Login extends Component {
               />
               <div className="login-direct">
                 <button type="submit" className="login-button">Sign In</button>
-                <button onClick={this.handleDemoSubmit} type="submit" className="demo-button">Guest User</button>
+                <button onClick={(e) => this.handleDemoSubmit(e, loginUser)} type="submit" className="demo-button">Guest User</button>
               </div> 
                 <Link to="/register" className="link-signup">Sign up instead</Link>
             </form>
