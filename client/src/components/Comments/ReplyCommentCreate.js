@@ -66,6 +66,15 @@ class ReplyCommentCreate extends React.Component {
   }
 
   render() {
+    const user = currentUser();
+    if (!user) {
+      return <textarea
+        value={this.state.text}
+        onChange={this.update("text")}
+        placeholder="Must Be Signed In to Comment"
+      />
+    }
+    else {
     if (currentUser().username !== this.props.user) {
     return (
       <Mutation
@@ -91,7 +100,7 @@ class ReplyCommentCreate extends React.Component {
          <div></div>
        )
      }
-  }
+  }}
 }
 
 export default ReplyCommentCreate;

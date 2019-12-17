@@ -46,8 +46,7 @@ VideoSchema.statics.addLike = (videoId, userId) => {
 
   return Video.findById(videoId).then(video => {
     return User.findById(userId).then(user => {
-      console.log(video);
-      console.log(user);
+     
       video.likes.push(user._id);
       user.videos_liked.push(video);
 
