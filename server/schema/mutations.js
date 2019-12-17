@@ -61,6 +61,38 @@ const mutation = new GraphQLObjectType({
       resolve(_, { text, author, parentCommentId }) {
         return Comment.addReplyComment(parentCommentId, text, author)
       }
+    },
+    deleteComment: {
+      type: CommentType,
+      args: { 
+        id: { type: new GraphQLNonNull(GraphQLID) } 
+      },
+      resolve(parentValue, { id }) {
+        return Comment.remove({ _id: id });
+      }
+    },
+    updateComment: {
+      type: CommentType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+        text: { type: GraphQLString },
+      },
+      resolve(parentValue, { id, text}) {
+        const updateObj = {};
+
+        if (id) updateObj.id = id;
+        if (text) updateObj.text = text;
+        if (id) updateObj.date = Date.now()
+
+        return Comment.findOneAndUpdate(
+          { _id: id },
+          { $set: updateObj },
+          { new: true },
+          (err, comment) => {
+            return comment;
+          }
+        );
+      }
     }
   }
 });
