@@ -26,7 +26,7 @@ class CommentReplyIndex extends React.Component {
       //  debugger
          const replies = comment.map(reply => {
             return <div>
-             <div><CommentReplyItem comment={reply} videoId={this.props.videoId} /> </div>
+             <div><CommentReplyItem comment={reply} videoId={this.props.videoId} parentId={this.props.commentId}/> </div>
             </div>
         })
         // debugger
