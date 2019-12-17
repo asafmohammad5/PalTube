@@ -80,14 +80,15 @@ class CommentCreate extends React.Component {
         update={(cache, data) => this.updateCache(cache, data)}
       >
         {(addVideoComment, { data }) => (
-          <div>
+          <div className="create-form">
             <form onSubmit={e => this.handleSubmit(e, addVideoComment)}>
-              <textarea
+              <input 
+                className="comment-create-input"
                 value={this.state.text}
                 onChange={this.update("text")}
                 placeholder={`Commenting publicly as ${currentUser().username}`}
               />
-              <button type="submit">Create Comment</button>
+              <button className="create-comment-button" type="submit">COMMENT</button>
             </form>
           </div>
         )}
