@@ -27,7 +27,11 @@ class CommentRootDelete extends React.Component {
 
 
   render() {
-    if (this.props.user === currentUser().username) {
+    const user = currentUser();
+
+    if (!user) {
+      return <div></div>
+    } else if (this.props.user === currentUser().username) {
       return (
         <Mutation
           mutation={UPDATE_COMMENT}

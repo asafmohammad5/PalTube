@@ -68,9 +68,8 @@ class CommentCreate extends React.Component {
     const user = currentUser();
    
     if (!user) {
-      return <textarea
-        value={this.state.text}
-        onChange={this.update("text")}
+      return <input
+        className="comment-create-input"
         placeholder="Must Be Signed In to Comment"
       />
     } else {
