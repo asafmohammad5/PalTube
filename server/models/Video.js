@@ -53,7 +53,7 @@ VideoSchema.statics.addLike = (videoId, userId) => {
 
       return Promise.all([video.save(), user.save()]).then(
         ([video, user]) => {
-          return video;
+          return user;
         }
       );
     });

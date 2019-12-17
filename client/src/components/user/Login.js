@@ -58,11 +58,13 @@ class Login extends Component {
   }
 
   render() {
+     
     return (
       <Mutation
         mutation={LOGIN_USER}
         onCompleted={data => {
-          const { token, _id, username } = data.login;
+          console.log(data);
+          const { token, _id, username} = data.login;
           localStorage.setItem("auth-token", token);
           localStorage.setItem("user", JSON.stringify({id: _id, username}));
           this.props.history.push("/");

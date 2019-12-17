@@ -14,6 +14,9 @@ export default {
     description
     category
     url
+    likes {
+      _id
+    }
     keywords
     comments {
       _id
@@ -48,10 +51,10 @@ export default {
   }
  `,
   FETCH_VIDEO_LIKES: gql`
-    query FetchVideoLikes($id:ID!) {
+    query FetchVideoLikes($id: ID!) {
       video(_id: $id){ 
         likes {
-          _id,
+          _id
           username
         }
       }

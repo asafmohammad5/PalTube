@@ -26,15 +26,15 @@ class Register extends Component {
       data: { isLoggedIn: data.register.loggedIn }
     });
   }
-
+  
   render() {
     return (
       <Mutation
         mutation={REGISTER_USER}
         onCompleted={data => {
-          const { token, _id, username } = data.register;
+          const { token, _id, username} = data.register;
           localStorage.setItem("auth-token", token);
-          localStorage.setItem("user", JSON.stringify({ id: _id, username }));
+          localStorage.setItem("user", JSON.stringify({ id: _id, username}));
         }}
         update={(client, data) => this.updateCache(client, data)}
       >

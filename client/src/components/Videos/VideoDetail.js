@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Queries from '../../graphql/queries';
 import { graphql } from 'react-apollo';
 import CommentIndex from "../Comments/CommentIndex";
-import Like from "../Like/Like";
+import LikeVideo from "../Like/LikeVideo";
 import CommentCreate from "../Comments/CommentCreate";
 import Mutations from "../../graphql/mutations";
 import { Mutation } from "react-apollo";
@@ -66,7 +66,7 @@ class VideoDetail extends React.Component {
           <section className="main">
             {this.renderVideoDetail()}
             <div className="rate-likes">
-              <Like videoId={this.props.data.video._id} />
+              <LikeVideo videoId={this.props.data.video._id} video={this.props.data.video} />
             </div>
             <h1>Comments</h1>
             <div className="commentCreate"><CommentCreate videoId={this.props.data.video._id}/></div>
