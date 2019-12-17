@@ -42,8 +42,6 @@ cache.writeData({
 
 if (token) {
   client
-    // use the VERIFY_USER mutation directly use the returned data to know if the returned
-    // user is loggedIn
     .mutate({ mutation: VERIFY_USER, variables: { token } })
     .then(({ data }) => {
       cache.writeData({

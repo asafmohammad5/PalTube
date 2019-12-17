@@ -1,43 +1,78 @@
-// import React, { Component } from 'react';
+import React, { Component } from 'react';
+import Autosuggest from 'react-autosuggest';
+import searchSuggestions from '../../json_files/search_suggestions';
+import { FETCH_VIDEOS } from '../../graphql/queries'
+import { graphql } from 'react-apollo';
 
-// class SearchBar extends Component {
-//   constructor() {
-//     super();
-//     this.state = { value: '', suggestions: [] }
-//   }
+const getSuggestions = value => {
+  const inputValue = value.trim().toLowerCase();
+  const inputLength = inputValue.length;
+  return inputLength === 0 ? [] : searchSuggestions.filter(item =>
+    item.name.toLowerCase().slice(0, inputLength) === inputValue
+  );
+};
+const getSuggestionValue = suggestion => suggestion.name;
+const renderSuggestion = suggestion => (
+  <div>
+    {suggestion.name}
+  </div>
+);
 
-//   onSuggestionsFetchRequested = ({ value }) => {
-//     this.setState({
-//       suggestions: getSuggestions(value)
-//     });
-//   };
 
-//   onSuggestionsClearRequested = () => {
-//     this.setState({ suggestions: [] });
-//   };
+class SearchBar extends Component {
+  constructor() {
+    super();
+    this.state = { value: '', suggestions: [], referrer: null }
+  }
 
-//   render() {
-//     const { value, suggestions } = this.state;
+  componentDidMount() {
+    document.addEventListener("keydown", this.handleKeydown);
+  }
+  handleKeydown = (event) => {
+    if (event.key == 'Enter' || event.keyCode == 13) {
+      // if (!window.location.href.includes('search')){
+        window.location.href = `#/search/${this.state.value}`
+      // }
+    }
+  }
+  onSuggestionsFetchRequested = ({ value }) => {
+    this.setState({
+      suggestions: getSuggestions(value)
+    });
+  };
 
-//     // Autosuggest will pass through all these props to the input.
-//     const inputProps = {
-//       placeholder: 'Type a programming language',
-//       value,
-//       onChange: this.onChange
-//     };
+  onSuggestionsClearRequested = () => {
+    this.setState({ suggestions: [] });
+  };
 
-//     // Finally, render it!
-//     return (
-//       <Autosuggest
-//         suggestions={suggestions}
-//         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-//         onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-//         getSuggestionValue={getSuggestionValue}
-//         renderSuggestion={renderSuggestion}
-//         inputProps={inputProps}
-//       />
-//     );
-//   }
-// }
+  onChange = (event, { newValue, method }) => {
+    this.setState({ value: newValue })
+  }
 
-// export default SearchBar;
+    render() {
+    const { value, suggestions, referrer } = this.state;
+ 
+    const inputProps = {
+      placeholder: 'search...',
+      value,
+      onChange: this.onChange,
+    };
+
+    return (
+      <div id="div">
+        <Autosuggest
+          id="txtSearchVideos"
+          suggestions={suggestions}
+          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+          getSuggestionValue={getSuggestionValue}
+          renderSuggestion={renderSuggestion}
+          inputProps={inputProps}
+          highlightFirstSuggestion={true}
+        />
+      </div>
+    );
+  }
+}
+
+export default SearchBar;
