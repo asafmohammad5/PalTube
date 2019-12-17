@@ -73,7 +73,7 @@ class ReplyCommentCreate extends React.Component {
         onChange={this.update("text")}
         placeholder="Must Be Signed In to Comment"
       />
-    }
+    } 
     else {
     if (currentUser().username !== this.props.user) {
     return (
