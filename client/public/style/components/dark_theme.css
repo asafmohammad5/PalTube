@@ -1,0 +1,13 @@
+:root{
+  --main-bg-color: #1F1F1F;
+  --secondary-bg-color: #272727;
+  --main-font-color: #F0FFFF;
+  --hover-text-color: #065FD4;
+}
+body{
+  color: var(--main-font-color);
+  background-color: var(--main-bg-color);
+}
+.sidebar{
+  background-color: var(--secondary-bg-color);
+}

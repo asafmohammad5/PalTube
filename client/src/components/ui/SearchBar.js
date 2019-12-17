@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Autosuggest from 'react-autosuggest';
 import searchSuggestions from '../../json_files/search_suggestions';
-import { FETCH_VIDEOS } from '../../graphql/queries'
-import { graphql } from 'react-apollo';
 
 const getSuggestions = value => {
   const inputValue = value.trim().toLowerCase();

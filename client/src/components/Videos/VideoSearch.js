@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Queries from '../../graphql/queries'
-import { graphql, Query } from 'react-apollo';
-import { Link } from 'react-router-dom';
+import { Query } from 'react-apollo';
+import SideBar from '../ui/SideBar'
 const { FETCH_VIDEOS } = Queries;
 
 
@@ -9,7 +9,6 @@ class VideoSearch extends Component {
   constructor(props) {
     super(props)
     this.state = { videosLength: 0 }
-
   }
 
   renderSearchResult = () => {
@@ -56,9 +55,7 @@ class VideoSearch extends Component {
     return (
       <div className="container">
         <div className="flex-grid">
-          <aside className="sidebar">
-            sidebar here
-          </aside>
+          <SideBar/>
           <section className="main">
             <div>
               <h5>we found {this.state.videosLength} videos matches your search...</h5>
