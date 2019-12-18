@@ -16,6 +16,12 @@ const UserSchema = new Schema({
       ref: "videos"
     }
   ],
+  videos_disliked: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "videos"
+    }
+  ],
   date: {
     type: Date,
     default: Date.now
@@ -30,6 +36,6 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-})
+});
 
 module.exports = mongoose.model("users", UserSchema);

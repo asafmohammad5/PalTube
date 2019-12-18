@@ -20,6 +20,14 @@ const UserType = new GraphQLObjectType({
           .populate("videos_liked")
           .then(user => user.videos_liked);
       }
+    },
+    videos_disliked: {
+      type: new GraphQLList(require("./video_type")),
+      resolve(parentValue) {
+        return User.findById(parentValue.id)
+          .populate("videos_disliked")
+          .then(user => user.videos_disliked);
+      }
     }
   })
 });

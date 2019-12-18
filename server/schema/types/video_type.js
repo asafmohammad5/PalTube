@@ -22,6 +22,14 @@ const VideoType = new GraphQLObjectType({
           .then(video => video.likes);
       }
     },
+    dislikes: {
+      type: new GraphQLList(UserType),
+      resolve(parentValue) {
+        return Video.findById(parentValue.id)
+          .populate("dislikes")
+          .then(video => video.dislikes);
+      }
+    },
     comments: {
       type: new GraphQLList(CommentType),
       resolve(parentValue) {
