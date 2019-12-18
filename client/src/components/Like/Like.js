@@ -65,7 +65,7 @@ class Like extends React.Component {
     } catch (err) {
       return;
     }
-    debugger; 
+    
     if (video && addVideoLike) {
 
       let likeArray = video.video.likes;
@@ -118,12 +118,12 @@ class Like extends React.Component {
   }
 
   hasLiked() {
- 
+    const dislikes = this.props.dislikes;
     const likes = this.props.likes;
     const user = currentUser(); 
     if (!user) {
       return (
-      <div className="popup" onClick={(e) => this.handleToggle(e)}><i className="fas fa-thumbs-up unliked-thumb"></i>
+        <div className="popup" onClick={(e) => this.handleToggle(e)}><i className="far fa-thumbs-up unliked-thumb"></i>{this.getLikeCount()}
         <div class="popuptext" id="myPopup"><Link className="like-sign-in"to="/login">Sign in!</Link></div>
       </div>
       )}
@@ -140,16 +140,33 @@ class Like extends React.Component {
       }
     
     }
- 
-    return liked ? (<Mutation
-      mutation={REMOVE_VIDEO_LIKE}
-      update={(cache, data) => this.updateCache(cache, data)}
+    let disliked;
+    for (let i = 0; i < dislikes.length; i++) {
+      const el = dislikes[i];
+      if (dislikes[i]._id === this.state.currentUser.id) {
+        disliked = true;
+        break;
+      } else {
+        disliked = false;
+      }
+    }
+    
+    if (disliked) {
+      return (
+        <div className="like-display">
+          <i className="far fa-thumbs-up unliked-thumb"></i>{this.getLikeCount()}
+        </div>
+      )
+    } else {
+      return liked ? (<Mutation
+        mutation={REMOVE_VIDEO_LIKE}
+        update={(cache, data) => this.updateCache(cache, data)}
     >
       {(VideoRemoveLike, { data }) => {
         return (
           <div>
-            <form onSubmit={(e) => this.handleRemoveLike(e, VideoRemoveLike)}>
-              <button type="submit"><i className="fas fa-thumbs-up liked-thumb"></i></button>
+            <form className="like-display" onSubmit={(e) => this.handleRemoveLike(e, VideoRemoveLike)}>
+              <button type="submit"><i className="far fa-thumbs-up liked-thumb"></i></button>
               {this.getLikeCount()}
             </form>
           </div>
@@ -164,7 +181,7 @@ class Like extends React.Component {
         {(VideoLike, { data }) => {
           return (
             <div>
-              <form onSubmit={(e) => this.handleLike(e, VideoLike)}>
+              <form className="like-display" onSubmit={(e) => this.handleLike(e, VideoLike)}>
                 <button type="submit"><i class="far fa-thumbs-up unliked-thumb"></i></button>
                 {this.getLikeCount()}
               </form>
@@ -172,7 +189,7 @@ class Like extends React.Component {
           )
         }}
       </Mutation>
-    )
+    )}
         
   
   }

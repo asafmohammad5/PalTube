@@ -12,6 +12,10 @@
   border-bottom: 1px solid lightblue; 
 }
 
+.like-bar {
+  display: flex; 
+}
+
 .liked-thumb {
   padding: 6px;
   background: lightblue;
@@ -34,6 +38,18 @@
 
 .like-sign-in:hover {
   text-decoration: underline; 
+}
+
+.like-display {
+  display: flex; 
+}
+
+.dislike-display {
+  display: flex; 
+}
+
+.popup {
+  display: flex; 
 }
 
 .popup .popuptext {
