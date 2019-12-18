@@ -3,6 +3,7 @@
   --secondary-bg-color: #272727;
   --main-font-color: #F0FFFF;
   --hover-text-color: #065FD4;
+  --signin-link-color: #FFFFFF; 
 }
 body{
   color: var(--main-font-color);

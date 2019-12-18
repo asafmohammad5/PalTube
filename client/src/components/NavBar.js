@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Nav from "./Nav";
-import SearchBar from './ui/SearchBar'
-import { initializeTheme} from '../util/util'
+import SearchBar from './ui/SearchBar';
+import { initializeTheme, getCurrentTheme } from '../util/util';
+
 
 class NavBar extends Component {
 
-  componentDidMount(){
-    initializeTheme();
-  }
+  // componentDidMount(){
+  //   initializeTheme();
+  // }
 
   toggleMenu = ()=>{
     let sideBar = document.getElementsByClassName("sidebar")[0];
@@ -19,11 +20,12 @@ class NavBar extends Component {
   }
 
   render(){
+    initializeTheme();
     return (
       <div className="navbar">
         <div className="logo-container">
           <span onClick={this.toggleMenu} className="burger-menu-icon" id="nav-toggle">&#9776;</span>
-        <Link to="/"><img className="navbar-logo" src="/stylesheets/images/paltube.png" /></Link>
+          <Link to="/"><img id="site-logo" className="navbar-logo" src={window.darkTheme} /></Link>
         </div>
         <SearchBar />
         <Nav />
