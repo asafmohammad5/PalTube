@@ -35,7 +35,7 @@ CommentSchema.statics.addReplyComment = (parentCommentId, text, author, gif) => 
     const child = new Comment({text, author, gif})
     comment.replies.push(child);
     return Promise.all([child.save(), comment.save()])
-      .then(([child, comment]) => child)
+      .then(([child, comment]) => child).catch(err => err.message)
   })
 }
 
@@ -43,14 +43,14 @@ CommentSchema.statics.addVideoComment = async (videoId, text, author, gif) => {
   const Video = mongoose.model("videos");
   const Comment = mongoose.model("comments");
 
-
+ 
   return Video.findById({
     _id: videoId
   }).then(video => {
     const comment = new Comment({ text, author, gif })
     video.comments.push(comment)
     return Promise.all([comment.save(), video.save()])
-      .then(([comment, video]) => comment)
+      .then(([comment, video]) => comment).catch(err => err.message)
   })
 }
 
