@@ -40,7 +40,7 @@ class SideBar extends Component {
             <>
               <li className="clickable sidebar-section-header">
                 <i className="far fa-thumbs-up">&nbsp;</i>
-                <span className="">Liked Videos</span>
+              <Link to="/videos/likes" className="">Liked Videos</Link>
               </li>
               <li className="clickable sidebar-section-header">
                 <i className="fas fa-hand-holding-heart">&nbsp;</i>
@@ -64,8 +64,12 @@ class SideBar extends Component {
             <Link to="/search/kids">kids</Link>
           </li>
           <li className="sidebar-item clickable">
-            <i class="fas fa-dove">&nbsp;</i>
+            <i className="fas fa-dove">&nbsp;</i>
             <Link to="/search/birds">birds</Link>
+          </li>
+          <li className="sidebar-item clickable">
+            <i className="fas fa-horse">&nbsp;</i>
+            <Link to="/search/horse">horses</Link>
           </li>
         </ul>
       </aside>

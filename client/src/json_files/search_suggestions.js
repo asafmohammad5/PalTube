@@ -16,6 +16,12 @@ const gendersJson = [
   { name: "trolling", value: 15 },
   { name: "birds", value: 16 },
   { name: "birds talk like human", value: 17 },
+  { name: "horse", value: 18 },
+  { name: "horses", value: 19 },
+  { name: "funny horse", value: 20 },
+  { name: "horses are much more funny than cats", value: 21 },
+  { name: "cute and funny horse", value: 22 },
+  { name: "funnies horse", value: 23 },
 ]
 
 export default gendersJson
