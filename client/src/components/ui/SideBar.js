@@ -15,28 +15,55 @@ class SideBar extends Component {
   }
 
   render() {
-
     let profileSrc = currentUser() ? currentUser().image : "/stylesheets/images/default_avatar_2.png";
-    let userName = currentUser() ? currentUser().userName : "guest user";
+    let username = currentUser() ? currentUser().username : "guest user";
     return (
       <aside className="sidebar show">
         <div className="sidebar-user-info">
           <img src={profileSrc} className="sidebar-avatar" />
-          <p className="sidebar-username">{userName}</p>
-          <label class="switch">
+          <p className="sidebar-username">{username}</p>
+          <label className="switch">
             <input type="checkbox" onChange={this.changeTheme} />>
-            <span class="slider"></span>
+            <span className="slider"></span>
           </label>
         </div>
 
         <hr />
         <ul>
-          <li><p className="sidebar-section-header">Categories</p></li>
-          <li className="sidebar-item">
-            <i className="fas fa-cat"></i>
+          <li className="clickable sidebar-section-header">
+            <Link to="/">
+              <i className="fas fa-home">&nbsp;</i>
+              <span className="">Home</span>
+            </Link>
+          </li>
+          {currentUser() &&
+            <>
+              <li className="clickable sidebar-section-header">
+                <i className="far fa-thumbs-up">&nbsp;</i>
+                <span className="">Liked Videos</span>
+              </li>
+              <li className="clickable sidebar-section-header">
+                <i className="fas fa-hand-holding-heart">&nbsp;</i>
+                <span className="">Favorite Videos</span>
+              </li>
+            </>
+          }
+          <li className="sidebar-section-header">
+            <i className="fas fa-th-list">&nbsp;</i>
+            <span >Categories</span></li>
+          <li className="sidebar-item clickable">
+            <i className="fas fa-cat">&nbsp;</i>
             <Link to="/search/cats">Funny Cats</Link>
-            </li>
-          <li className="sidebar-item"><Link to="/search/dog">Funny Dogs</Link></li>
+          </li>
+          <li className="sidebar-item clickable">
+            <i className="fas fa-dog">&nbsp;</i>
+            <Link to="/search/dog">Funny Dogs</Link>
+          </li>
+          <li className="sidebar-item clickable">
+            <i className="fas fa-child">&nbsp;</i>
+            <Link to="/search/kids">kids</Link>
+          </li>
+
         </ul>
       </aside>
     );

@@ -6,7 +6,7 @@ const getSuggestions = value => {
   const inputValue = value.trim().toLowerCase();
   const inputLength = inputValue.length;
   return inputLength === 0 ? [] : searchSuggestions.filter(item =>
-    item.name.toLowerCase().slice(0, inputLength) === inputValue
+    item.name.toLocaleLowerCase().includes(inputValue)
   );
 };
 const getSuggestionValue = suggestion => suggestion.name;
@@ -25,13 +25,21 @@ class SearchBar extends Component {
   componentDidMount() {
     document.addEventListener("keydown", this.handleKeydown);
   }
+
   handleKeydown = (event) => {
     if (event.target.getAttribute("aria-controls") === "react-autowhatever-txtSearchVideos") {
-      if (event.key == 'Enter' || event.keyCode == 13) {
+      if (event.key === 'Enter' || event.keyCode === 13) {
         window.location.href = `#/search/${this.state.value}`
       }
     }
   }
+
+  handleSearchClick = (event) => {
+    if (event.target.id === "searchBtn") {
+        window.location.href = `#/search/${this.state.value}`
+    }
+  }
+
   onSuggestionsFetchRequested = ({ value }) => {
     this.setState({
       suggestions: getSuggestions(value)
@@ -47,8 +55,7 @@ class SearchBar extends Component {
   }
 
   render() {
-    const { value, suggestions, referrer } = this.state;
-
+    const { value, suggestions } = this.state;
     const inputProps = {
       placeholder: 'search...',
       value,
@@ -56,7 +63,7 @@ class SearchBar extends Component {
     };
 
     return (
-      <div id="div">
+      <div id="div" style={{ display: 'flex' }}>
         <Autosuggest
           id="txtSearchVideos"
           suggestions={suggestions}
@@ -67,6 +74,8 @@ class SearchBar extends Component {
           inputProps={inputProps}
           highlightFirstSuggestion={true}
         />
+        <i className="fas fa-search clickable search-icon" id="searchBtn"
+          onClick={this.handleSearchClick}></i>
       </div>
     );
   }

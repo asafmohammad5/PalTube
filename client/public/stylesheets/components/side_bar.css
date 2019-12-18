@@ -97,11 +97,12 @@ margin-bottom: 5px;
 }
 
 .sidebar-item{
-  padding-left: 10px;
+  padding-left: 7px;
   padding-bottom: 5px;
   font-size: 0.9rem;
   text-transform: lowercase;
 }
-.sidebar-item:hover{
+.clickable:hover{
   color: var(--hover-text-color);
+  cursor: pointer;
 }

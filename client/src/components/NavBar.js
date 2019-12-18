@@ -22,7 +22,7 @@ class NavBar extends Component {
     return (
       <div className="navbar">
         <div className="logo-container">
-          <a onClick={this.toggleMenu} className="burger-menu-icon" id="nav-toggle" href="#">&#9776;</a>
+          <span onClick={this.toggleMenu} className="burger-menu-icon" id="nav-toggle">&#9776;</span>
         <Link to="/"><img className="navbar-logo" src="/stylesheets/images/paltube.png" /></Link>
         </div>
         <SearchBar />

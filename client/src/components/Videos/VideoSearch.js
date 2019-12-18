@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import Queries from '../../graphql/queries'
 import { Query } from 'react-apollo';
 import SideBar from '../ui/SideBar'
 const { FETCH_VIDEOS } = Queries;
-
 
 class VideoSearch extends Component {
   constructor(props) {
@@ -39,7 +39,12 @@ class VideoSearch extends Component {
                     </object>
                   </div>
                   <div className="video-detail-info-container">
-                    <p>{title}</p>
+                    {/* <p>{title}</p> */}
+                    <Link to={`/videos/${_id}`}>
+                      <p className="clickable">
+                        {title}
+                      </p>
+                    </Link>
                     <p>{description}</p>
                     <p>{comments.length} comments</p>
                   </div>
