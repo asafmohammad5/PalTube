@@ -48,10 +48,11 @@ const mutation = new GraphQLObjectType({
       args: {
         text: { type: new GraphQLNonNull(GraphQLString) },
         author: { type: new GraphQLNonNull(GraphQLID) },
-        videoId: { type: new GraphQLNonNull(GraphQLID) }
+        videoId: { type: new GraphQLNonNull(GraphQLID) },
+        gif: { type: GraphQLString }
       },
-      resolve(_, { text, author, videoId }) {
-        return Comment.addVideoComment(videoId, text, author);
+      resolve(_, { text, author, videoId, gif }) {
+        return Comment.addVideoComment(videoId, text, author, gif);
       }
     },
     addReplyComment: {
@@ -59,10 +60,11 @@ const mutation = new GraphQLObjectType({
       args: {
         text: { type: new GraphQLNonNull(GraphQLString) },
         author: { type: new GraphQLNonNull(GraphQLID) },
-        parentCommentId: { type: new GraphQLNonNull(GraphQLID) }
+        parentCommentId: { type: new GraphQLNonNull(GraphQLID) },
+        gif: { type: GraphQLString }
       },
-      resolve(_, { text, author, parentCommentId }) {
-        return Comment.addReplyComment(parentCommentId, text, author)
+      resolve(_, { text, author, parentCommentId, gif }) {
+        return Comment.addReplyComment(parentCommentId, text, author, gif)
       }
     },
     deleteComment: {

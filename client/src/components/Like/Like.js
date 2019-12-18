@@ -124,7 +124,7 @@ class Like extends React.Component {
     if (!user) {
       return (
       <div className="popup" onClick={(e) => this.handleToggle(e)}><i className="fas fa-thumbs-up unliked-thumb"></i>
-        <div class="popuptext" id="myPopup"><Link className="like-sign-in"to="/login">Sign in!</Link></div>
+        <div className="popuptext" id="myPopup"><Link className="like-sign-in"to="/login">Sign in!</Link></div>
       </div>
       )}
 
@@ -165,7 +165,7 @@ class Like extends React.Component {
           return (
             <div>
               <form onSubmit={(e) => this.handleLike(e, VideoLike)}>
-                <button type="submit"><i class="far fa-thumbs-up unliked-thumb"></i></button>
+                <button type="submit"><i className="far fa-thumbs-up unliked-thumb"></i></button>
                 {this.getLikeCount()}
               </form>
             </div>

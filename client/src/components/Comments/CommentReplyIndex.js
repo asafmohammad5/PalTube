@@ -6,9 +6,7 @@ import Queries from '../../graphql/queries';
 const { FETCH_VIDEO} = Queries;
 
 class CommentReplyIndex extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+  
   render() {
     return <Query query={FETCH_VIDEO} variables={{ id: this.props.videoId }}>
       {({ loading, error, data }) => {

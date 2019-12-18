@@ -11,6 +11,8 @@ const CommentIndexItem = props => {
     const month = date.getMonth();
     const day = date.getDate()
 
+  const gif = props.comment.gif ? <img className="main-comment-gif" src={props.comment.gif} />: null
+
   if (props.comment.text !== "!(!DELETE!)!" ) {
     return (
           <div className="main-comment-index">
@@ -19,7 +21,8 @@ const CommentIndexItem = props => {
               <div className="main-comment-year">{year + "-" + month + "-" + day }</div>
            </div>
             <div className="main-comment-text">{props.comment.text}</div>
-            <div><CommentReplyCreate parentId={props.comment._id} videoId={props.videoId}/></div>
+            {gif}
+            <div className="comment-index-reply"><CommentReplyCreate parentId={props.comment._id} videoId={props.videoId}/></div>
             <div className="comment-index-item-delete"><CommentRootDelete commentId={props.comment._id} videoId={props.videoId} user={props.comment.author.username} /></div>
             <div className="comment-index-item-edit"><EditComment videoId={props.videoId} comment={props.comment} /></div>
             <div className="comment-reply-index"><CommentReplyIndex commentId={props.comment._id} videoId={props.videoId}/></div>

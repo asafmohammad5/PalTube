@@ -4,6 +4,7 @@ import Mutations from "../../graphql/mutations";
 import Queries from '../../graphql/queries';
 import {currentUser} from "../../util/util";
 import {withRouter} from "react-router-dom";
+import Picker from 'react-giphy-component';
 
 
 const { FETCH_VIDEO } = Queries;
@@ -14,8 +15,10 @@ class CommentCreate extends React.Component {
     super(props)
 
     this.state = {
-      text: ""
+      text: "",
+      gif: ""
     }
+
   }
 
   update(field) {
@@ -27,17 +30,20 @@ class CommentCreate extends React.Component {
   handleSubmit(e, addVideoComment) {
     e.preventDefault();
     let text = this.state.text;
+    let gif = this.state.gif;
 
     addVideoComment({
       variables: {
         text: text,
         author: currentUser().id,
-        videoId: this.props.videoId
+        videoId: this.props.videoId,
+        gif: gif
       }
     })
       .then(data => {
         this.setState({
-          text: ""
+          text: "",
+          gif: ""
         })
         
       })
@@ -64,14 +70,21 @@ class CommentCreate extends React.Component {
     }
   }
 
+  updategif (gif) {
+    this.setState({ gif: gif.downsized.url}, () => console.log(this.state))
+  }
+
   render() {
     const user = currentUser();
    
     if (!user) {
-      return <input
+      return <div className="create-form"> 
+      <input
         className="comment-create-input"
+        value={this.state.text}
         placeholder="Must Be Signed In to Comment"
       />
+      </div>
     } else {
       return (
       <Mutation
@@ -89,6 +102,7 @@ class CommentCreate extends React.Component {
               />
               <button className="create-comment-button" type="submit">COMMENT</button>
             </form>
+            <div className="giphy"> <Picker apiKey="EeZhW081PZQ2Abce60Y4EQulHVTzcbRA" onSelected={this.updategif.bind(this)}/></div>
           </div>
         )}
       </Mutation>
