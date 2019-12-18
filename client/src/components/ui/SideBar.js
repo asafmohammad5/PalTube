@@ -63,7 +63,10 @@ class SideBar extends Component {
             <i className="fas fa-child">&nbsp;</i>
             <Link to="/search/kids">kids</Link>
           </li>
-
+          <li className="sidebar-item clickable">
+            <i class="fas fa-dove">&nbsp;</i>
+            <Link to="/search/birds">birds</Link>
+          </li>
         </ul>
       </aside>
     );
