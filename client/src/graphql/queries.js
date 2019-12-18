@@ -17,6 +17,9 @@ export default {
     likes {
       _id
     }
+    dislikes {
+      _id
+    }
     keywords
     comments {
       _id

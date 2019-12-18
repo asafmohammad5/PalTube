@@ -116,6 +116,26 @@ const mutation = new GraphQLObjectType({
       resolve(parentValue, { videoId, userId }) {
         return Video.removeLike(videoId, userId);
       }
+    },
+    addVideoDislike: {
+      type: VideoType,
+      args: {
+        videoId: { type: new GraphQLNonNull(GraphQLID) },
+        userId: { type: new GraphQLNonNull(GraphQLID) }
+      },
+      resolve(parentValue, { videoId, userId }) {
+        return Video.addDislike(videoId, userId);
+      }
+    },
+    removeVideoDislike: {
+      type: VideoType,
+      args: {
+        videoId: { type: new GraphQLNonNull(GraphQLID) },
+        userId: { type: new GraphQLNonNull(GraphQLID) }
+      },
+      resolve(parentValue, { videoId, userId }) {
+        return Video.removeDislike(videoId, userId);
+      }
     }
 
   }
