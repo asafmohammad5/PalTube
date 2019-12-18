@@ -7,9 +7,6 @@ import { initializeTheme, getCurrentTheme } from '../util/util';
 
 class NavBar extends Component {
 
-  // componentDidMount(){
-  //   initializeTheme();
-  // }
 
   toggleMenu = ()=>{
     let sideBar = document.getElementsByClassName("sidebar")[0];
@@ -21,11 +18,12 @@ class NavBar extends Component {
 
   render(){
     initializeTheme();
+    let src = localStorage.theme === "dark" ? window.darkTheme : window.lightTheme;
     return (
       <div className="navbar">
         <div className="logo-container">
           <span onClick={this.toggleMenu} className="burger-menu-icon" id="nav-toggle">&#9776;</span>
-          <Link to="/"><img id="site-logo" className="navbar-logo" src={window.darkTheme} /></Link>
+          <Link to="/"><img id="site-logo" className="navbar-logo" src={src} /></Link>
         </div>
         <SearchBar />
         <Nav />

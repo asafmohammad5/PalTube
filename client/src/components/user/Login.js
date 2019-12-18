@@ -57,6 +57,9 @@ class Login extends Component {
   }
 
   render() {
+
+    let src = localStorage.theme === "dark" ? window.darkTheme : window.lightTheme;
+
     let error;
     if (this.state.error === "password and username is required" ) {
       error = "password and username is required" 
@@ -67,14 +70,15 @@ class Login extends Component {
     } else if (this.state.error === "GraphQL error: Incorrect log in combination") {
       error = "Incorrect log in combination"
     }
+
     return (
       <Mutation
         onError={error => { this.setState({ error: error.message }) }}
         mutation={LOGIN_USER}
         onCompleted={data => {
-          const { token, _id, username, image } = data.login;
+          const { token, _id, username, image, email } = data.login;
           localStorage.setItem("auth-token", token);
-          localStorage.setItem("user", JSON.stringify({id: _id, username, image}));
+          localStorage.setItem("user", JSON.stringify({id: _id, username, image, email}));
           this.props.history.push("/");
         }}
         update={(client, data) => this.updateCache(client, data)}
@@ -107,7 +111,7 @@ class Login extends Component {
                 });
               }}
             >
-              <Link to="/"><img className="login-logo" src="/stylesheets/images/paltube.png" /></Link>
+              <Link to="/"><img className="login-logo" src={src} /></Link>
               <p className="form-title">Sign into your account</p>
               <div>{error}</div>
               <input
