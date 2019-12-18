@@ -24,7 +24,7 @@ class VideoIndex extends Component {
           </div>
           <div className="video-info">
             <Link to={`/videos/${_id}`}>
-              <p className="video-title">
+              <p className="video-title clickable">
               {title}
               </p>
               </Link>

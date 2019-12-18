@@ -5,7 +5,7 @@ export const currentUser = () => {
 export const changeTheme = () => {
   let currentTheme = localStorage.getItem("theme");
   var link = document.createElement("link");
-  link.href = currentTheme === "dark" ? "style/components/light_theme.css" : "style/components/dark_theme.css";
+  link.href = currentTheme === "dark" ? "../stylesheets/components/light_theme.css" : "../stylesheets/components/dark_theme.css";
   link.rel = "stylesheet";
   link.type = "text/css";
   document.body.appendChild(link);

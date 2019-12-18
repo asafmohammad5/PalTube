@@ -1,14 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Queries from '../../graphql/queries';
 import { graphql } from 'react-apollo';
 import CommentIndex from "../Comments/CommentIndex";
 import LikeVideo from "../Like/LikeVideo";
 import CommentCreate from "../Comments/CommentCreate";
-import Mutations from "../../graphql/mutations";
-import { Mutation } from "react-apollo";
-import { currentUser } from "../../util/util";
+import SideBar from '../ui/SideBar'
 const{FETCH_VIDEO_LIKES} = Queries; 
-const {ADD_VIDEO_LIKE} = Mutations; 
 const {FETCH_VIDEO} = Queries;
 
 class VideoDetail extends React.Component {
@@ -60,9 +57,7 @@ class VideoDetail extends React.Component {
     return (
       <div className="container">
         <div className="flex-grid">
-          <aside className="sidebar">
-            sidebar here
-          </aside>
+          <SideBar />
           <section className="main">
             {this.renderVideoDetail()}
             <hr></hr>
