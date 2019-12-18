@@ -1,6 +1,5 @@
 import React from 'react';
-import Like from "./Like";
-import Dislike from "./Dislike";
+import LikeDislike from "./LikeDislike";
 import { Query } from "react-apollo";
 import Queries from '../../graphql/queries';
 import { currentUser } from "../../util/util";
@@ -28,8 +27,7 @@ class LikeVideo extends React.Component {
         const dislikes = data.video.dislikes; 
         return (
         <div className="like-bar">
-          <Like likes={likes} dislikes={dislikes} videoId={this.props.videoId} /> 
-          <Dislike likes={likes} dislikes={dislikes} videoId={this.props.videoId} />
+          <LikeDislike likes={likes} dislikes={dislikes} videoId={this.props.videoId} /> 
         </div>
         )     
 
