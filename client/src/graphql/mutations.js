@@ -97,5 +97,19 @@ export default {
         _id
       }
     }
+  `,
+  ADD_VIDEO_DISLIKE: gql`
+    mutation VideoDislike($videoId: ID!, $userId: ID!) {
+      addVideoDislike(videoId: $videoId, userId: $userId) {
+        _id
+      }
+    }
+  `,
+  REMOVE_VIDEO_DISLIKE: gql`
+    mutation VideoRemoveDislike($videoId: ID!, $userId: ID!) {
+      removeVideoDislike(videoId: $videoId, userId: $userId) {
+        _id
+      }
+    }
   `
 }

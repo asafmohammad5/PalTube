@@ -36,6 +36,12 @@ const VideoSchema = new Schema({
       type: Schema.Types.ObjectId, 
       ref: "users"
     }
+  ],
+  dislikes: [
+    {
+      type: Schema.Types.ObjectId, 
+      ref: "users"
+    }
   ]
 });
 
@@ -46,7 +52,7 @@ VideoSchema.statics.addLike = (videoId, userId) => {
 
   return Video.findById(videoId).then(video => {
     return User.findById(userId).then(user => {
-     
+      video.dislikes.pull(user._id);
       video.likes.push(user._id);
       user.videos_liked.push(video);
 
@@ -76,6 +82,41 @@ VideoSchema.statics.removeLike = (videoId, userId) => {
     });
 };
 
+VideoSchema.statics.addDislike = (videoId, userId) => {
+  const Video = mongoose.model("videos");
+  const User = mongoose.model("users");
+
+  return Video.findById(videoId).then(video => {
+    return User.findById(userId).then(user => {
+      video.likes.pull(user._id);
+      video.dislikes.push(user._id);
+      user.videos_disliked.push(video);
+
+      return Promise.all([video.save(), user.save()]).then(
+        ([video, user]) => {
+          return user;
+        }
+      );
+    });
+  });
+};
+
+VideoSchema.statics.removeDislike = (videoId, userId) => {
+  const Video = mongoose.model("videos");
+  const User = mongoose.model("users");
+
+  return Video.findById(videoId).then(video => {
+    return User.findById(userId).then(user => {
+      video.dislikes.pull(user);
+      user.videos_disliked.pull(video);
+
+      return Promise.all([video.save(), user.save()])
+        .then(([video, user]) => {
+          return user;
+        });
+    });
+  });
+};
 
 VideoSchema.statics.searchVideos = (criteria) => {
   const regCriteria = new RegExp(criteria, 'i');
