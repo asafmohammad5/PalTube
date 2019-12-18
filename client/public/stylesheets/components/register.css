@@ -90,7 +90,7 @@
 .link-login {
   font-family: Roboto; 
   margin: 10px 0px 0px 0px; 
-  color: red;
+  color: var(--signin-link-color);
   font-weight: bold; 
 }
 
