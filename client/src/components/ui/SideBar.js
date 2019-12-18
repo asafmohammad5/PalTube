@@ -22,7 +22,7 @@ class SideBar extends Component {
       <aside className="sidebar show">
         <div className="sidebar-user-info">
           <img src={profileSrc} className="sidebar-avatar" />
-          <p className="sidebar-username">{userName}</p>
+          <p className="sidebar-username">{username}</p>
           <label className="switch">
             <input type="checkbox" onChange={this.changeTheme} />>
             <span className="slider"></span>
