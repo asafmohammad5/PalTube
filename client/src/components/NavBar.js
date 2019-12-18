@@ -7,9 +7,6 @@ import { initializeTheme, getCurrentTheme } from '../util/util';
 
 class NavBar extends Component {
 
-  // componentDidMount(){
-  //   initializeTheme();
-  // }
 
   toggleMenu = ()=>{
     let sideBar = document.getElementsByClassName("sidebar")[0];

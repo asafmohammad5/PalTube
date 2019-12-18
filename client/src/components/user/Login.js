@@ -57,14 +57,14 @@ class Login extends Component {
   }
 
   render() {
-     
+    let src = localStorage.theme === "dark" ? window.darkTheme : window.lightTheme;
     return (
       <Mutation
         mutation={LOGIN_USER}
         onCompleted={data => {
-          const { token, _id, username, image } = data.login;
+          const { token, _id, username, image, email } = data.login;
           localStorage.setItem("auth-token", token);
-          localStorage.setItem("user", JSON.stringify({id: _id, username, image}));
+          localStorage.setItem("user", JSON.stringify({id: _id, username, image, email}));
           this.props.history.push("/");
         }}
         update={(client, data) => this.updateCache(client, data)}
@@ -87,7 +87,7 @@ class Login extends Component {
                 });
               }}
             >
-              <Link to="/"><img className="login-logo" src="/stylesheets/images/paltube.png" /></Link>
+              <Link to="/"><img className="login-logo" src={src} /></Link>
               <p className="form-title">Sign into your account</p>
               <input
                 value={this.state.emailOrUsername}

@@ -17,9 +17,9 @@ class SideBar extends Component {
 
   render() {
     let profileSrc = currentUser() ? currentUser().image : "/stylesheets/images/default_avatar_2.png";
-    let username = currentUser() ? currentUser().username : "guest user";
+    let username = currentUser() ? currentUser().username : "guest";
     return (
-      <aside className="sidebar show">
+      <aside className="sidebar hide">
         <div className="sidebar-user-info">
           <img src={profileSrc} className="sidebar-avatar" />
           <p className="sidebar-username">{username}</p>

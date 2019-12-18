@@ -40,13 +40,14 @@ class Register extends Component {
   }
 
   render() {
+    let src = localStorage.theme === "dark" ? window.darkTheme : window.lightTheme;
     return (
       <Mutation
         mutation={REGISTER_USER}
         onCompleted={data => {
-          const { token, _id, username, image } = data.register;
+          const { token, _id, username, image, email } = data.register;
           localStorage.setItem("auth-token", token);
-          localStorage.setItem("user", JSON.stringify({ id: _id, username, image }));
+          localStorage.setItem("user", JSON.stringify({ id: _id, username, image, email }));
         }}
         update={(client, data) => this.updateCache(client, data)}
       >
@@ -67,7 +68,7 @@ class Register extends Component {
                   });
                 }}
               >
-                <Link to="/"><img className="signup-logo" src="/stylesheets/images/paltube.png" /></Link>
+                <Link to="/"><img className="signup-logo" src={src} /></Link>
                 <p className="form-title">Create your PalTube Account</p>
                 <input
                   value={this.state.username}
