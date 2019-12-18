@@ -7,6 +7,7 @@ import Login from "./components/User/Login";
 import AuthRoute from "./util/route_util";
 import NavBar from './components/NavBar';
 import VideoSearch from './components/Videos/VideoSearch';
+import LikedVideos from './components/Videos/LikedVideos'
 const App = () => {
  return(
   <div>
@@ -14,6 +15,7 @@ const App = () => {
     <Switch>
       <AuthRoute path="/register" component={Register} routeType="auth" />
       <Route exact path="/" component={VideoIndex} />
+       <Route exact path="/videos/likes" component={LikedVideos} />
       <Route  path="/videos/:id" component={VideoDetail} />
        <Route path="/search/:criteria" component={VideoSearch} />
       <AuthRoute path="/login" component={Login} routeType="auth" />

@@ -83,5 +83,20 @@ export default {
         }
       }
     }
+  `,
+  FETCH_USER_LIKED_VIDEOS: gql`
+    query FetchUserLikedVideos($id: ID!) {
+      user(_id: $id){
+        _id
+        videos_liked{
+          title
+          url
+          description
+          comments{
+           _id
+          }
+        }
+      }
+    }
   `
 };
