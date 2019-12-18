@@ -72,7 +72,13 @@ class Dislike extends React.Component {
 
       let dislikeArray = video.video.dislikes;
       video = Object.assign({}, video.video, { dislikes: dislikeArray.concat(addVideoDislike) })
-
+      let likeArray = video.video.likes;
+      for (let i = 0; i < likeArray.length; i++) {
+        const el = likeArray[i];
+        if (el._id === addVideoDislike._id) {
+          likeArray.splice(i, 1);
+        }
+      }
       cache.writeQuery({
         query: FETCH_VIDEO,
         variables: { id: this.props.videoId },
@@ -153,13 +159,7 @@ class Dislike extends React.Component {
       }
     }
     
-    if (liked) {
-      return (
-      <div className="dislike-display">
-        <i className="far fa-thumbs-down unliked-thumb"></i>{this.getDislikeCount()}
-      </div>
-      )
-    } else {
+   
     return disliked ? (<Mutation
       mutation={REMOVE_VIDEO_DISLIKE}
       update={(cache, data) => this.updateCache(cache, data)}
@@ -191,7 +191,7 @@ class Dislike extends React.Component {
           )
         }}
       </Mutation>
-      )}
+      )
 
 
   }

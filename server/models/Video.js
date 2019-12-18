@@ -52,7 +52,7 @@ VideoSchema.statics.addLike = (videoId, userId) => {
 
   return Video.findById(videoId).then(video => {
     return User.findById(userId).then(user => {
-     
+      video.dislikes.pull(user._id);
       video.likes.push(user._id);
       user.videos_liked.push(video);
 
@@ -88,7 +88,7 @@ VideoSchema.statics.addDislike = (videoId, userId) => {
 
   return Video.findById(videoId).then(video => {
     return User.findById(userId).then(user => {
-
+      video.likes.pull(user._id);
       video.dislikes.push(user._id);
       user.videos_disliked.push(video);
 
