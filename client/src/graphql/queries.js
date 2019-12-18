@@ -25,6 +25,7 @@ export default {
       _id
       text
       date
+      gif
       author {
         username
       }
@@ -32,6 +33,7 @@ export default {
         _id
         text
         date
+        gif
         author {
           username
         }
@@ -46,6 +48,7 @@ export default {
     _id
     text
     date
+    gif
     author {
       username
     }
@@ -54,6 +57,7 @@ export default {
       _id
       text
       date
+      gif
       author {
         username
       }

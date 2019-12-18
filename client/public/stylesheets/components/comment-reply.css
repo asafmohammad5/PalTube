@@ -2,6 +2,14 @@
   margin-left: 55px;
 }
 
+.comment-index-reply {
+  height: 60px;
+}
+
+.comment-reply-reply {
+   height: 60px;
+}
+
 .comment-index-item-delete {
   position: relative;
   left: 800px;

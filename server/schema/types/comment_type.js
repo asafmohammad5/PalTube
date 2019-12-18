@@ -8,6 +8,7 @@ const CommentType = new GraphQLObjectType({
     _id: { type: GraphQLString },
     text: { type: GraphQLString },
     date: { type: GraphQLString },
+    gif: { type: GraphQLString },
     author: { 
       type: require("./user_type"),
       resolve(parentValue) {

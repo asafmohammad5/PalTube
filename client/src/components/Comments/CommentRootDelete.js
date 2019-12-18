@@ -8,10 +8,7 @@ const { FETCH_VIDEO } = Queries;
 const { UPDATE_COMMENT } = Mutations;
 
 class CommentRootDelete extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
+ 
   handleSubmit(e, updateComment) {
     e.preventDefault();
     updateComment({

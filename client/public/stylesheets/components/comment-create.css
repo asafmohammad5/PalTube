@@ -12,6 +12,7 @@
   margin-top: 10px;
 }
 
+
 .create-comment-button {
   cursor: pointer;
   position: relative;
@@ -36,4 +37,30 @@
 
 .main-comment-text {
   margin-top: 3px;
+}
+
+.main-comment-gif {
+  z-index: 10;
+  height: 200px;
+  width: 200px;
+}
+
+.giphy {
+  position: relative;
+  left: 1180px;
+  height: 400px;
+  width: 270px;
+  bottom: 150px;
+}
+
+.giphy-reply {
+  position: relative;
+  left: 1125px;
+  bottom: 140px;
+}
+
+.giphy-comment {
+  position: relative;
+  left: 1180px;
+  bottom: 140px;
 }

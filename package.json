@@ -30,6 +30,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.1",
     "nodemon": "^2.0.2",
+    "react-giphy-component": "^1.0.5",
     "react-router-dom": "^5.1.2",
     "validator": "^12.1.0"
   }

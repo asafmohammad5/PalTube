@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { currentUser } from '../../util/util'
 import { Link } from 'react-router-dom'
 import { changeTheme } from '../../util/util'
+
 class SideBar extends Component {
 
   constructor(props) {
@@ -21,7 +22,7 @@ class SideBar extends Component {
       <aside className="sidebar show">
         <div className="sidebar-user-info">
           <img src={profileSrc} className="sidebar-avatar" />
-          <p className="sidebar-username">{username}</p>
+          <p className="sidebar-username">{userName}</p>
           <label className="switch">
             <input type="checkbox" onChange={this.changeTheme} />>
             <span className="slider"></span>

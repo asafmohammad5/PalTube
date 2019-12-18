@@ -3,6 +3,7 @@ import { Mutation } from "react-apollo";
 import Mutations from "../../graphql/mutations";
 import Queries from '../../graphql/queries';
 import { currentUser } from "../../util/util";
+import Picker from 'react-giphy-component';
 
 const { REPLY_COMMENT} = Mutations;
 const { FETCH_VIDEO } = Queries;
@@ -12,7 +13,8 @@ class CommentReplyCreate extends React.Component {
     super(props)
 
     this.state = {
-      text: ""
+      text: "",
+      gif: ""
     }
   }
 
@@ -25,17 +27,20 @@ class CommentReplyCreate extends React.Component {
   handleSubmit(e, addReplyComment) {
     e.preventDefault();
     let text = this.state.text;
+    let gif = this.state.gif
 
     addReplyComment({
       variables: {
         text: text,
         author: currentUser().id,
-        parentCommentId: this.props.parentId
+        parentCommentId: this.props.parentId,
+        gif: gif
       }
     })
       .then(data => {
         this.setState({
-          text: ""
+          text: "",
+          gif: ""
         })
       })
   };
@@ -65,6 +70,10 @@ class CommentReplyCreate extends React.Component {
     }
   }
 
+  updategif(gif) {
+    this.setState({ gif: gif.downsized.url }, () => console.log(this.state))
+  }
+
   render() {
     const user = currentUser();
 
@@ -90,6 +99,7 @@ class CommentReplyCreate extends React.Component {
               />
               <button type="submit">Reply</button>
             </form>
+            <div className="giphy-comment"> <Picker apiKey="EeZhW081PZQ2Abce60Y4EQulHVTzcbRA" onSelected={this.updategif.bind(this)} /></div>
           </div>
         )}
       </Mutation>
