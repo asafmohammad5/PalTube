@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "debugBackEnd": "nodemon --inspect index.js",
+    "debug": "nodemon --inspect index.js",
     "client-install": "npm install --prefix client",
     "client": "npm start --prefix client",
     "server": "nodemon index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "devDebugBackEnd": "concurrently \"npm run debugBackEnd\" \"npm run client\""
+    "devDebugBackEnd": "concurrently \"npm run debug\" \"npm run client\""
   },
   "keywords": [],
   "author": "",

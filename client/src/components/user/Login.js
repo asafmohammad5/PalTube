@@ -10,7 +10,8 @@ class Login extends Component {
 
     this.state = {
       emailOrUsername: "",
-      password: ""
+      password: "",
+      error: ""
     };
 
     this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
@@ -47,7 +48,6 @@ class Login extends Component {
     const demoUser = { emailOrUsername: "GuestUser", password: "password" };
     this.demoEffect(demoUser, loginUser)
     
-    // debugger; 
   }
 
   updateCache(client, { data }) {
@@ -57,9 +57,23 @@ class Login extends Component {
   }
 
   render() {
+
     let src = localStorage.theme === "dark" ? window.darkTheme : window.lightTheme;
+
+    let error;
+    if (this.state.error === "password and username is required" ) {
+      error = "password and username is required" 
+    } else if (this.state.error === "password is required") {
+      error = "password is required" 
+    } else if (this.state.error === "username is required") {
+      error = "username is required"
+    } else if (this.state.error === "GraphQL error: Incorrect log in combination") {
+      error = "Incorrect log in combination"
+    }
+
     return (
       <Mutation
+        onError={error => { this.setState({ error: error.message }) }}
         mutation={LOGIN_USER}
         onCompleted={data => {
           const { token, _id, username, image, email } = data.login;
@@ -79,6 +93,16 @@ class Login extends Component {
               className="login-form"
               onSubmit={e => {
                 e.preventDefault();
+                if (this.state.password === "" && this.state.emailOrUsername === "") {
+                  this.setState({ error: "password and username is required" })
+                  return
+                } else if (this.state.password === "") {
+                  this.setState({ error: "password is required" })
+                  return
+                } else if (this.state.emailOrUsername === "") { 
+                  this.setState({ error: "username is required" })
+                  return
+                };
                 loginUser({
                   variables: {
                     emailOrUsername: this.state.emailOrUsername,
@@ -89,12 +113,13 @@ class Login extends Component {
             >
               <Link to="/"><img className="login-logo" src={src} /></Link>
               <p className="form-title">Sign into your account</p>
+              <div>{error}</div>
               <input
                 value={this.state.emailOrUsername}
                 onChange={this.update("emailOrUsername")}
                 placeholder="Email or Username"
                 className="login-email"
-              />
+              />  
               <input
                 value={this.state.password}
                 onChange={this.update("password")}
