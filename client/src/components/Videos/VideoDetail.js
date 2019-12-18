@@ -4,6 +4,7 @@ import { graphql } from 'react-apollo';
 import CommentIndex from "../Comments/CommentIndex";
 import LikeVideo from "../Like/LikeVideo";
 import CommentCreate from "../Comments/CommentCreate";
+import NavBar from '../NavBar';
 import SideBar from '../ui/SideBar'
 const{FETCH_VIDEO_LIKES} = Queries; 
 const {FETCH_VIDEO} = Queries;
@@ -55,21 +56,25 @@ class VideoDetail extends React.Component {
       return null;
     }
     return (
-      <div className="container">
-        <div className="flex-grid">
-          <SideBar />
-          <section className="main">
-            {this.renderVideoDetail()}
-            <hr></hr>
-            <h1 className="video-comments">Comments</h1>
+      <div>
+        <NavBar />
+      
+        <div className="container">
+          <div className="flex-grid">
+            <SideBar />
+            <section className="main">
+              {this.renderVideoDetail()}
+              <hr></hr>
+              <h1 className="video-comments">Comments</h1>
 
-            <div className="rate-likes">
-              <LikeVideo videoId={this.props.data.video._id} video={this.props.data.video} />
-            </div>
+              <div className="rate-likes">
+                <LikeVideo videoId={this.props.data.video._id} video={this.props.data.video} />
+              </div>
 
-            <div className="commentCreate"><CommentCreate videoId={this.props.data.video._id}/></div>
-            <div className="commentIndex"><CommentIndex videoId={this.props.data.video._id}/></div>
-          </section>   
+              <div className="commentCreate"><CommentCreate videoId={this.props.data.video._id}/></div>
+              <div className="commentIndex"><CommentIndex videoId={this.props.data.video._id}/></div>
+            </section>   
+          </div>
         </div>
       </div>
     );
