@@ -14,6 +14,8 @@ const gendersJson = [
   { name: "kids", value: 13 },
   { name: "kids and animals", value: 14 },
   { name: "trolling", value: 15 },
+  { name: "birds", value: 16 },
+  { name: "birds talk like human", value: 17 },
 ]
 
 export default gendersJson
