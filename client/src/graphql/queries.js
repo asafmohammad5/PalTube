@@ -28,16 +28,18 @@ export default {
       gif
       author {
         username
+        image
       }
-    replies {
-      _id
-      text
-      date
-      gif
-      author {
-        username
+      replies {
+        _id
+        text
+        date
+        gif
+        author {
+          username
+          image
+        }
       }
-    }
     }
     favoriteBy{
       _id
@@ -54,6 +56,7 @@ export default {
     gif
     author {
       username
+      image
     }
     date
     replies {
@@ -63,6 +66,7 @@ export default {
       gif
       author {
         username
+        image
       }
     }
   }

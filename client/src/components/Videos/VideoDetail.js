@@ -8,8 +8,11 @@ import SideBar from '../ui/SideBar';
 import MiniSideBar from '../ui/MiniSideBar';
 import Favorite from '../favorite/Favorite';
 import NavBar from '../NavBar';
-const { FETCH_VIDEO_LIKES } = Queries;
-const { FETCH_VIDEO } = Queries;
+import SideBar from '../ui/SideBar'
+
+
+const{FETCH_VIDEO_LIKES} = Queries; 
+const {FETCH_VIDEO} = Queries;
 
 
 class VideoDetail extends React.Component {
@@ -47,7 +50,6 @@ class VideoDetail extends React.Component {
       return;
     }
     if (likes) {
-      // take care of un-nesting things before we write to our cache
       let likesArray = likes.likes;
       cache.writeQuery({
         query: FETCH_VIDEO_LIKES,
@@ -60,6 +62,7 @@ class VideoDetail extends React.Component {
     if (this.props.data.loading || !this.props.data.video) {
       return null;
     }
+
     return (
       <div>
         <NavBar />
@@ -75,6 +78,9 @@ class VideoDetail extends React.Component {
 
               <div className="rate-likes">
                 <LikeVideo videoId={this.props.data.video._id} video={this.props.data.video} />
+              </div>  
+            </section>   
+
               </div>
               <div>
                 <Favorite video={this.props.data.video} />

@@ -5,6 +5,7 @@ import { Query } from 'react-apollo';
 import SideBar from '../ui/SideBar';
 import MiniSideBar from '../ui/MiniSideBar';
 import { currentUser } from "../../util/util";
+import NavBar from '../NavBar'
 const { FETCH_USER_LIKED_VIDEOS } = Queries;
 
 class LikedVideos extends Component {
@@ -62,6 +63,7 @@ class LikedVideos extends Component {
     }
     return (
       <div className="container">
+        <NavBar/>
         <div className="flex-grid">
           <MiniSideBar />
           <SideBar />
