@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import Queries from '../../graphql/queries'
 import { Query } from 'react-apollo';
 import SideBar from '../ui/SideBar'
+import NavBar from '../NavBar';
 const { FETCH_VIDEOS } = Queries;
 
 class VideoSearch extends Component {
@@ -57,6 +58,7 @@ class VideoSearch extends Component {
   render() {
     return (
       <div className="container">
+        <NavBar/>
         <div className="flex-grid">
           <SideBar/>
           <section className="main">
