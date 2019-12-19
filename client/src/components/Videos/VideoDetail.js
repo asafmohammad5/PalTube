@@ -8,7 +8,7 @@ import SideBar from '../ui/SideBar';
 import MiniSideBar from '../ui/MiniSideBar';
 import Favorite from '../favorite/Favorite';
 import NavBar from '../NavBar';
-import SideBar from '../ui/SideBar'
+
 
 
 const{FETCH_VIDEO_LIKES} = Queries; 
@@ -79,9 +79,6 @@ class VideoDetail extends React.Component {
               <div className="rate-likes">
                 <LikeVideo videoId={this.props.data.video._id} video={this.props.data.video} />
               </div>  
-            </section>   
-
-              </div>
               <div>
                 <Favorite video={this.props.data.video} />
               </div>

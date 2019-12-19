@@ -64,7 +64,7 @@ class Like extends React.Component {
     } catch (err) {
       return;
     }
-    debugger; 
+  
     if (video && addVideoLike) {
 
       let likeArray = video.video.likes;
