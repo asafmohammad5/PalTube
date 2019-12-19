@@ -7,7 +7,7 @@
     "debug": "nodemon --inspect index.js",
     "client-install": "npm install --prefix client",
     "client": "npm start --prefix client",
-    "server": "nodemon index.js",
+    "start": "nodemon index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "devDebugBackEnd": "concurrently \"npm run debug\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend"
