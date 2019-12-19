@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Queries from '../../graphql/queries'
 import { Query } from 'react-apollo';
-import SideBar from '../ui/SideBar'
+import SideBar from '../ui/SideBar';
+import NavBar from '../NavBar';
 import { currentUser } from "../../util/util";
 const { FETCH_USER_FAVORITE_VIDEOS } = Queries;
 
@@ -21,7 +22,7 @@ class FavoriteVideos extends Component {
           if (loading) return "Loading...";
           if (error) return `Error! ${error.message}`;
           return (
-            data.user.favoriteVideos.map(({ _id, title, url, description, comments, favoriteVideos }) => {
+            data.user.favoriteVideos.map(({ _id, title, url, description, comments, favoriteBy }) => {
               return (
                 <div className="search-results-container" key={_id}>
                   <div className="video-detail-container ">
@@ -42,8 +43,8 @@ class FavoriteVideos extends Component {
                       </p>
                     </Link>
                     <p>{description}</p>
-                    <p>{comments.length} comments</p>
-                    <p>{favoriteVideos.length} comments</p>
+                    <p>{comments.length} <i class="far fa-comments"></i></p>
+                    <p>{favoriteBy.length} <i class="fas fa-heart"></i></p>
                   </div>
                 </div>
               )
@@ -59,6 +60,7 @@ class FavoriteVideos extends Component {
     }
     return (
       <div className="container">
+        <NavBar />
         <div className="flex-grid">
           <SideBar />
           <section className="main">
