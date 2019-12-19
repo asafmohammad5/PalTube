@@ -10,10 +10,15 @@ class NavBar extends Component {
 
   toggleMenu = ()=>{
     let sideBar = document.getElementsByClassName("sidebar")[0];
-    let toggleClass = sideBar.classList.contains('show') ? "hide": "show";
+    let miniSideBar = document.getElementsByClassName("mini-sidebar")[0];
+    let toggleClassSide = sideBar.classList.contains('show') ? "hide": "show";
+    let toggleClassMini = miniSideBar.classList.contains('show') ? "hide" : "show";
+    miniSideBar.classList.remove('show');
+    miniSideBar.classList.remove('hide');
+    miniSideBar.classList.add(toggleClassMini);
     sideBar.classList.remove('show');
     sideBar.classList.remove('hide');
-    sideBar.classList.add(toggleClass);
+    sideBar.classList.add(toggleClassSide);
   }
 
   render(){

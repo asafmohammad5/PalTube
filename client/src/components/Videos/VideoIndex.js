@@ -3,6 +3,7 @@ import Queries from '../../graphql/queries';
 import { graphql } from 'react-apollo';
 import {Link} from 'react-router-dom';
 import SideBar from '../ui/SideBar';
+import MiniSideBar from '../ui/MiniSideBar';
 import NavBar from '../NavBar';
 const {FETCH_VIDEOS} = Queries;
 
@@ -43,6 +44,7 @@ class VideoIndex extends Component {
         <NavBar />
         <div className="container">
           <div className="flex-grid">
+              <MiniSideBar />
               <SideBar/>
             <section className="main">
               <h3>Recommended Videos</h3>

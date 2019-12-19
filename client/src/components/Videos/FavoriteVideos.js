@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import Queries from '../../graphql/queries'
 import { Query } from 'react-apollo';
 import SideBar from '../ui/SideBar';
+import MiniSideBar from '../ui/MiniSideBar';
 import NavBar from '../NavBar';
+
 import { currentUser } from "../../util/util";
 const { FETCH_USER_FAVORITE_VIDEOS } = Queries;
 
@@ -62,6 +64,7 @@ class FavoriteVideos extends Component {
       <div className="container">
         <NavBar />
         <div className="flex-grid">
+          <MiniSideBar />
           <SideBar />
           <section className="main">
             <div>
