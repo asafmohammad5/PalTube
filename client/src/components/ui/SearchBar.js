@@ -74,8 +74,9 @@ class SearchBar extends Component {
           inputProps={inputProps}
           highlightFirstSuggestion={true}
         />
-        <i className="fas fa-search clickable search-icon" id="searchBtn"
-          onClick={this.handleSearchClick}></i>
+        <button className="clickable search-icon" onClick={this.handleSearchClick}>
+          <i className="fas fa-search" id="searchBtn"></i>
+        </button>
       </div>
     );
   }

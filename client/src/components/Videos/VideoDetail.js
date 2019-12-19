@@ -5,6 +5,7 @@ import CommentIndex from "../Comments/CommentIndex";
 import LikeVideo from "../Like/LikeVideo";
 import CommentCreate from "../Comments/CommentCreate";
 import SideBar from '../ui/SideBar';
+import MiniSideBar from '../ui/MiniSideBar';
 import Favorite from '../favorite/Favorite';
 import NavBar from '../NavBar';
 const { FETCH_VIDEO_LIKES } = Queries;
@@ -65,6 +66,7 @@ class VideoDetail extends React.Component {
 
         <div className="container">
           <div className="flex-grid">
+            <MiniSideBar />
             <SideBar />
             <section className="main">
               {this.renderVideoDetail()}
