@@ -9,7 +9,7 @@ export default {
   FETCH_VIDEO: gql`
   query queryVideo($id:ID!){
   video(_id:$id){
-    _id
+     _id
     title
     description
     category
@@ -41,10 +41,13 @@ export default {
         }
       }
     }
+    favoriteBy{
+      _id
+    }
      }
     }
   `,
- FETCH_COMMENT: gql`
+  FETCH_COMMENT: gql`
   query FetchComment($id: ID!){
   comment (_id: $id) {
     _id
@@ -81,6 +84,9 @@ export default {
       comments{
         _id
       }
+      favoriteBy{
+        _id
+      }
     }
   }
 
@@ -100,13 +106,33 @@ export default {
       user(_id: $id){
         _id
         videos_liked{
+          _id
           title
           url
           description
-          comments{
-           _id
-          }
+        comments{
+          _id
         }
+        favoriteBy{
+          _id
+        }
+        }
+      }
+    }
+  `,
+  FETCH_USER_FAVORITE_VIDEOS: gql`
+    query FetchUserFavoriteVideos($id: ID!) {
+      user(_id: $id){
+        _id, username
+      favoriteVideos{
+        _id, title, url, description
+        comments{
+          _id
+        }
+        favoriteBy{
+          _id
+        }
+      }
       }
     }
   `

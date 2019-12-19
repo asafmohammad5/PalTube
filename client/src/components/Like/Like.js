@@ -11,7 +11,6 @@ const { FETCH_VIDEO } = Queries;
 const { ADD_VIDEO_LIKE } = Mutations;
 const { REMOVE_VIDEO_LIKE } = Mutations;
 
-
 class Like extends React.Component {
   constructor(props) {
  

@@ -7,6 +7,7 @@ import Login from "./components/User/Login";
 import AuthRoute from "./util/route_util";
 import VideoSearch from './components/Videos/VideoSearch';
 import LikedVideos from './components/Videos/LikedVideos'
+import FavoriteVideos from './components/Videos/FavoriteVideos';
 const App = () => {
  return(
   <div>
@@ -14,6 +15,7 @@ const App = () => {
       <AuthRoute path="/register" component={Register} routeType="auth" />
       <Route exact path="/" component={VideoIndex} />
        <Route exact path="/videos/likes" component={LikedVideos} />
+       <Route exact path="/videos/favorites" component={FavoriteVideos} />
       <Route  path="/videos/:id" component={VideoDetail} />
        <Route path="/search/:criteria" component={VideoSearch} />
       <AuthRoute path="/login" component={Login} routeType="auth" />

@@ -11,8 +11,11 @@ const CommentReplyItem = props => {
     const month = date.getMonth();
     const day = date.getDate()
 
-    const gif = props.comment.gif ? <img className="main-comment-gif" src={props.comment.gif} /> : null;
+
+    
     const profileSrc = props.comment.author.image ? props.comment.author.image : "/stylesheets/images/default_avatar_2.png";
+    const gif = props.comment.gif ? <img alt="comment" className="main-comment-gif" src={props.comment.gif} /> : null
+
     
     return (
   

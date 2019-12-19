@@ -1,29 +1,28 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Queries from '../../graphql/queries'
 import { Query } from 'react-apollo';
-import SideBar from '../ui/SideBar'
+import SideBar from '../ui/SideBar';
 import NavBar from '../NavBar';
-const { FETCH_VIDEOS } = Queries;
+import { currentUser } from "../../util/util";
+const { FETCH_USER_FAVORITE_VIDEOS } = Queries;
 
-class VideoSearch extends Component {
+class FavoriteVideos extends Component {
   constructor(props) {
     super(props)
     this.state = { videosLength: 0 }
   }
 
-  renderSearchResult = () => {
-    const criteria = this.props.match.params.criteria;
+  renderVideos = () => {
+    let userId = currentUser().id;
     return (
-
-      <Query query={FETCH_VIDEOS} variables={{ criteria: criteria }}
-        onCompleted={(data) => this.setState({ videosLength: data.videos.length })}
-      >
+      <Query query={FETCH_USER_FAVORITE_VIDEOS} variables={{ id: userId }}
+        onCompleted={(data) => this.setState({ videosLength: data.user.favoriteVideos.length })}>
         {({ loading, error, data }) => {
           if (loading) return "Loading...";
           if (error) return `Error! ${error.message}`;
           return (
-            data.videos.map(({ _id, title, url, description, comments, favoriteBy }) => {
+            data.user.favoriteVideos.map(({ _id, title, url, description, comments, favoriteBy }) => {
               return (
                 <div className="search-results-container" key={_id}>
                   <div className="video-detail-container ">
@@ -34,10 +33,10 @@ class VideoSearch extends Component {
                       <embed src={`${url}?modestbranding=1&amp;version=3&amp;hl=en_US&amp;showinfo=0`}
                         type="application/x-shockwave-flash"
                         className="video-player" allowscriptaccess="always" allowFullScreen={true}></embed>
-                    </object>
+                    </object
+                    >
                   </div>
                   <div className="video-detail-info-container">
-                    {/* <p>{title}</p> */}
                     <Link to={`/videos/${_id}`}>
                       <p className="clickable">
                         {title}
@@ -56,15 +55,18 @@ class VideoSearch extends Component {
     );
   }
   render() {
+    if (!currentUser()) {
+      this.props.history.push('/login')
+    }
     return (
       <div className="container">
-        <NavBar/>
+        <NavBar />
         <div className="flex-grid">
-          <SideBar/>
+          <SideBar />
           <section className="main">
             <div>
-              <h5>we found {this.state.videosLength} videos matches your search...</h5>
-              {this.renderSearchResult()}
+              <h5>you have {this.state.videosLength} favorite videos ... </h5>
+              {this.renderVideos()}
             </div>
           </section>
         </div>
@@ -74,4 +76,4 @@ class VideoSearch extends Component {
 }
 
 
-export default VideoSearch;
+export default FavoriteVideos;

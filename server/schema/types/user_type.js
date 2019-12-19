@@ -28,6 +28,14 @@ const UserType = new GraphQLObjectType({
           .populate("videos_disliked")
           .then(user => user.videos_disliked);
       }
+    }, 
+    favoriteVideos:{
+      type: new GraphQLList(require("./video_type")),
+      resolve(parentValue) {
+        return User.findById(parentValue.id)
+          .populate("favoriteVideos")
+          .then(user => user.favoriteVideos);
+      } 
     }
   })
 });

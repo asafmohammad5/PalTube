@@ -116,5 +116,19 @@ export default {
         _id
       }
     }
+  `,
+  ADD_TO_FAVORITES: gql`
+    mutation AddToFavorites($videoId: ID!, $userId: ID!) {
+      addFavoriteVideo(videoId: $videoId, userId:$userId){
+      _id
+    }
+  }
+  `,
+  REMOVE_FROM_FAVORITES: gql`
+    mutation RemoveFromFavorites($videoId: ID!, $userId: ID!) {
+      removeFavoriteVideo(videoId: $videoId, userId:$userId){
+      _id
+    }
+  }
   `
 }

@@ -4,6 +4,8 @@ import { graphql } from 'react-apollo';
 import CommentIndex from "../Comments/CommentIndex";
 import LikeVideo from "../Like/LikeVideo";
 import CommentCreate from "../Comments/CommentCreate";
+import SideBar from '../ui/SideBar';
+import Favorite from '../favorite/Favorite';
 import NavBar from '../NavBar';
 import SideBar from '../ui/SideBar'
 
@@ -11,13 +13,16 @@ import SideBar from '../ui/SideBar'
 const{FETCH_VIDEO_LIKES} = Queries; 
 const {FETCH_VIDEO} = Queries;
 
+
 class VideoDetail extends React.Component {
- 
+
   renderVideoDetail() {
-    const { _id, title, url, description } = this.props.data.video;
+    const { _id, title, url, description, comments, favoriteBy } = this.props.data.video;
     return (
       <div key={_id}>
         <h3>{title}</h3>
+        <p>{comments.length} <i class="far fa-comments"></i></p>
+        <p>{favoriteBy.length} <i class="fas fa-heart"></i></p>
         <div>
           <object className="video-detail-player">
             <param name="movie" value={`${url}?modestbranding=1&amp;version=3&amp;hl=en_US;showinfo=0`}></param>
@@ -29,20 +34,20 @@ class VideoDetail extends React.Component {
           </object>
         </div>
         <div className="video-info">
-          <p>{description}</p>   
+          <p>{description}</p>
         </div>
       </div>
     );
   }
 
-  updateCache(cache, {data: {newLike}}) {
-    
+  updateCache(cache, { data: { newLike } }) {
+
     let likes;
     try {
-      likes = cache.readQuery({ query: FETCH_VIDEO_LIKES, variables: { id: this.props.data.video._id} });
+      likes = cache.readQuery({ query: FETCH_VIDEO_LIKES, variables: { id: this.props.data.video._id } });
     } catch (err) {
       return;
-    } 
+    }
     if (likes) {
       let likesArray = likes.likes;
       cache.writeQuery({
@@ -60,7 +65,7 @@ class VideoDetail extends React.Component {
     return (
       <div>
         <NavBar />
-      
+
         <div className="container">
           <div className="flex-grid">
             <SideBar />
@@ -72,9 +77,15 @@ class VideoDetail extends React.Component {
               <div className="rate-likes">
                 <LikeVideo videoId={this.props.data.video._id} video={this.props.data.video} />
               </div>  
-                <div className="commentCreate"><CommentCreate videoId={this.props.data.video._id}/></div>
-              <div className="commentIndex"><CommentIndex videoId={this.props.data.video._id}/></div>
             </section>   
+
+              </div>
+              <div>
+                <Favorite video={this.props.data.video} />
+              </div>
+              <div className="commentCreate"><CommentCreate videoId={this.props.data.video._id} /></div>
+              <div className="commentIndex"><CommentIndex videoId={this.props.data.video._id} /></div>
+            </section>
           </div>
         </div>
       </div>

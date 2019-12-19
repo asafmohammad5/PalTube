@@ -4,8 +4,8 @@ import Queries from '../../graphql/queries'
 import { Query } from 'react-apollo';
 import SideBar from '../ui/SideBar'
 import { currentUser } from "../../util/util";
+import NavBar from '../NavBar'
 const { FETCH_USER_LIKED_VIDEOS } = Queries;
-
 
 class LikedVideos extends Component {
   constructor(props) {
@@ -17,18 +17,14 @@ class LikedVideos extends Component {
     let userId = currentUser().id;
     
     return (
-
       <Query query={FETCH_USER_LIKED_VIDEOS} variables={{ id: userId }}
         onCompleted={(data) => this.setState({ videosLength: data.user.videos_liked.length })}
       >
         {({ loading, error, data }) => {
           if (loading) return "Loading...";
           if (error) return `Error! ${error.message}`;
-          
-
           return (
-
-            data.user.videos_liked.map(({ _id, title, url, description, comments }) => {
+            data.user.videos_liked.map(({ _id, title, url, description, comments, favoriteBy }) => {
               return (
                 <div className="search-results-container" key={_id}>
                   <div className="video-detail-container ">
@@ -39,7 +35,8 @@ class LikedVideos extends Component {
                       <embed src={`${url}?modestbranding=1&amp;version=3&amp;hl=en_US&amp;showinfo=0`}
                         type="application/x-shockwave-flash"
                         className="video-player" allowscriptaccess="always" allowFullScreen={true}></embed>
-                    </object>
+                    </object
+                    >
                   </div>
                   <div className="video-detail-info-container">
                     <Link to={`/videos/${_id}`}>
@@ -48,7 +45,8 @@ class LikedVideos extends Component {
                       </p>
                     </Link>
                     <p>{description}</p>
-                    <p>{comments.length} comments</p>
+                    <p>{comments.length} <i class="far fa-comments"></i></p>
+                    <p>{favoriteBy.length} <i class="fas fa-heart"></i></p>
                   </div>
                 </div>
               )
@@ -64,6 +62,7 @@ class LikedVideos extends Component {
     }
     return (
       <div className="container">
+        <NavBar/>
         <div className="flex-grid">
           <SideBar />
           <section className="main">
