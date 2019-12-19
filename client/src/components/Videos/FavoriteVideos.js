@@ -4,9 +4,9 @@ import Queries from '../../graphql/queries'
 import { Query } from 'react-apollo';
 import SideBar from '../ui/SideBar'
 import { currentUser } from "../../util/util";
-const { FETCH_USER_LIKED_VIDEOS } = Queries;
+const { FETCH_USER_FAVORITE_VIDEOS } = Queries;
 
-class LikedVideos extends Component {
+class FavoriteVideos extends Component {
   constructor(props) {
     super(props)
     this.state = { videosLength: 0 }
@@ -14,16 +14,14 @@ class LikedVideos extends Component {
 
   renderVideos = () => {
     let userId = currentUser().id;
-    
     return (
-      <Query query={FETCH_USER_LIKED_VIDEOS} variables={{ id: userId }}
-        onCompleted={(data) => this.setState({ videosLength: data.user.videos_liked.length })}
-      >
+      <Query query={FETCH_USER_FAVORITE_VIDEOS} variables={{ id: userId }}
+        onCompleted={(data) => this.setState({ videosLength: data.user.favoriteVideos.length })}>
         {({ loading, error, data }) => {
           if (loading) return "Loading...";
           if (error) return `Error! ${error.message}`;
           return (
-            data.user.videos_liked.map(({ _id, title, url, description, comments, favoriteBy }) => {
+            data.user.favoriteVideos.map(({ _id, title, url, description, comments, favoriteVideos }) => {
               return (
                 <div className="search-results-container" key={_id}>
                   <div className="video-detail-container ">
@@ -44,8 +42,8 @@ class LikedVideos extends Component {
                       </p>
                     </Link>
                     <p>{description}</p>
-                    <p>{comments.length} <i class="far fa-comments"></i></p>
-                    <p>{favoriteBy.length} <i class="fas fa-heart"></i></p>
+                    <p>{comments.length} comments</p>
+                    <p>{favoriteVideos.length} comments</p>
                   </div>
                 </div>
               )
@@ -56,7 +54,7 @@ class LikedVideos extends Component {
     );
   }
   render() {
-    if (!currentUser()){
+    if (!currentUser()) {
       this.props.history.push('/login')
     }
     return (
@@ -65,7 +63,7 @@ class LikedVideos extends Component {
           <SideBar />
           <section className="main">
             <div>
-              <h5>you have liked {this.state.videosLength} videos...</h5>
+              <h5>you have {this.state.videosLength} favorite videos ... </h5>
               {this.renderVideos()}
             </div>
           </section>
@@ -76,4 +74,4 @@ class LikedVideos extends Component {
 }
 
 
-export default LikedVideos;
+export default FavoriteVideos;

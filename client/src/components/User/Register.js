@@ -89,7 +89,7 @@ class Register extends Component {
                   });
                 }}
               >
-                <Link to="/"><img className="signup-logo" src={src} /></Link>
+                <Link to="/"><img className="signup-logo" src={src} alt="signup"/></Link>
                 <p className="form-title">Create your PalTube Account</p>
                 <div>{error}</div>
                 <input
@@ -127,7 +127,7 @@ class Register extends Component {
               </form>
               <div className="signup-pic">
               <img src={this.state.image} className="signup-avatar"/>
-                <img src="/stylesheets/images/signuppic.png" />
+                <img src="/stylesheets/images/signuppic.png" alt="signup" />
                 <p className="signup-pic-info">Join. Watch. Laugh.</p>
               </div>
           </div>
