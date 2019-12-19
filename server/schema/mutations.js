@@ -138,8 +138,27 @@ const mutation = new GraphQLObjectType({
       resolve(parentValue, { videoId, userId }) {
         return Video.removeDislike(videoId, userId);
       }
+    },
+    addFavoriteVideo: {
+      type: VideoType,
+      args: {
+        videoId: { type: new GraphQLNonNull(GraphQLID) },
+        userId: { type: new GraphQLNonNull(GraphQLID) }
+      },
+      resolve(_, { videoId, userId }) {
+        return Video.addFavorite(videoId, userId);
+      }
+    },
+    removeFavoriteVideo: {
+      type: VideoType,
+      args: {
+        videoId: { type: new GraphQLNonNull(GraphQLID) },
+        userId: { type: new GraphQLNonNull(GraphQLID) }
+      },
+      resolve(_, { videoId, userId }) {
+        return Video.removeFavorite(videoId, userId);
+      }
     }
-
   }
 });
 

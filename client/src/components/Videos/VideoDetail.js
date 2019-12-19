@@ -4,9 +4,11 @@ import { graphql } from 'react-apollo';
 import CommentIndex from "../Comments/CommentIndex";
 import LikeVideo from "../Like/LikeVideo";
 import CommentCreate from "../Comments/CommentCreate";
-import SideBar from '../ui/SideBar'
+import SideBar from '../ui/SideBar';
+import Favorite from '../favorite/Favorite';
 const{FETCH_VIDEO_LIKES} = Queries; 
 const {FETCH_VIDEO} = Queries;
+
 
 class VideoDetail extends React.Component {
  
@@ -66,7 +68,9 @@ class VideoDetail extends React.Component {
             <div className="rate-likes">
               <LikeVideo videoId={this.props.data.video._id} video={this.props.data.video} />
             </div>
-
+            <div>
+              <Favorite video={this.props.data.video} />
+            </div>
             <div className="commentCreate"><CommentCreate videoId={this.props.data.video._id}/></div>
             <div className="commentIndex"><CommentIndex videoId={this.props.data.video._id}/></div>
           </section>   
