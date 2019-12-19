@@ -3,15 +3,14 @@ import { currentUser } from "../../util/util";
 import Mutations from "../../graphql/mutations";
 import Query from "../../graphql/queries";
 import { Mutation } from "react-apollo";
-
+import { Link } from 'react-router-dom';
 const { ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES } = Mutations;
 const { FETCH_VIDEO } = Query;
-
 class Favorite extends Component {
 
-  handleAddToFavorite(e, AddToFavorites) {
+  handleAddRemoveFavorite(e, func) {
     e.preventDefault();
-    AddToFavorites({
+    func({
       variables: {
         videoId: this.props.video._id,
         userId: currentUser().id
@@ -19,49 +18,49 @@ class Favorite extends Component {
     });
   };
 
+  handleToggle(e) {
+    e.preventDefault();
+    var popup = document.getElementById("myPopup");
+    if (popup) {
+      popup.classList.toggle("show");
+    }
+  }
+
   renderFavorite() {
+    if (!currentUser() || !currentUser().id) {
+      return (
+        <div className="popup" onClick={(e) => this.handleToggle(e)}><i className="fas far fa-heart"></i>
+          <div className="popuptext" id="myPopup"><Link className="like-sign-in" to="/login">Sign in!</Link></div>
+        </div>
+      )
+    }
     return (
-      (<Mutation mutation={ADD_TO_FAVORITES}
-        refetchQueries={() => {
-          return [{ query: FETCH_VIDEO, variables: { id: this.props.video._id } }];
-        }}>
-        {(AddToFavorites, { data }) => {
+      (<Mutation mutation={ADD_TO_FAVORITES} refetchQueries={() => {
+        return [{ query: FETCH_VIDEO, variables: { id: this.props.video._id } }];
+      }}>
+        {(AddToFavorites, { loading, error, data  }) => {
+          if (loading) return <i class="fas fa-spinner"></i>
+          if(error)return <p>Error :( Please try again</p>
           return (
-            <div>
-              <form onSubmit={(e) => this.handleAddToFavorite(e, AddToFavorites)}>
-                <button type="submit"><i className="far fa-heart"></i></button>
-              </form>
-            </div>
-          )
+            <i className="far fa-heart" style={{cursor: 'pointer'}}
+            onClick={(e) => this.handleAddRemoveFavorite(e, AddToFavorites)}></i>)
         }}
       </Mutation>
       )
     )
   }
 
-  handleRemoveFromFavorite(e, AddToFavorites) {
-    e.preventDefault();
-    AddToFavorites({
-      variables: {
-        videoId: this.props.video._id,
-        userId: currentUser().id
-      }
-    });
-  };
-
   renderUnFavorite() {
     return (
-      (<Mutation mutation={REMOVE_FROM_FAVORITES}
-        refetchQueries={() => {
+      (<Mutation mutation={REMOVE_FROM_FAVORITES} refetchQueries={() => {
           return [{ query: FETCH_VIDEO, variables: { id: this.props.video._id } }];
         }}>
-        {(RemoveFromFavorites, { data }) => {
-          return (
-            <div>
-              <form onSubmit={(e) => this.handleRemoveFromFavorite(e, RemoveFromFavorites)}>
-                <button type="submit"><i className="fas fa-heart"></i></button>
-              </form>
-            </div>
+        {(RemoveFromFavorites, { loading, error, data  }) => {
+          if (loading) return <i class="fas fa-spinner"></i>
+          if (error) return <p>Error :( Please try again</p>
+          return (  
+            <i className="fas fa-heart" style={{cursor:'pointer'}}
+              onClick={(e) => this.handleAddRemoveFavorite(e, RemoveFromFavorites)}></i>
           )
         }}
       </Mutation>
@@ -70,11 +69,11 @@ class Favorite extends Component {
   }
 
   render() {
-    if (!currentUser) {
-      return
+    let inUserFavorites = [];
+    if (currentUser() && currentUser().id) {
+      let userId = currentUser().id;
+      inUserFavorites = this.props.video.favoriteBy.filter(user => user._id.toString() === userId);
     }
-    let userId = currentUser().id;
-    let inUserFavorites = this.props.video.favoriteBy.filter(user => user._id.toString() === userId);
     return (
       <>
         {inUserFavorites.length === 0 ?

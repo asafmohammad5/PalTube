@@ -21,11 +21,8 @@ class VideoSearch extends Component {
         {({ loading, error, data }) => {
           if (loading) return "Loading...";
           if (error) return `Error! ${error.message}`;
-
-
           return (
-
-            data.videos.map(({ _id, title, url, description, comments }) => {
+            data.videos.map(({ _id, title, url, description, comments, favoriteBy }) => {
               return (
                 <div className="search-results-container" key={_id}>
                   <div className="video-detail-container ">
@@ -46,7 +43,8 @@ class VideoSearch extends Component {
                       </p>
                     </Link>
                     <p>{description}</p>
-                    <p>{comments.length} comments</p>
+                    <p>{comments.length} <i class="far fa-comments"></i></p>
+                    <p>{favoriteBy.length} <i class="fas fa-heart"></i></p>
                   </div>
                 </div>
               )

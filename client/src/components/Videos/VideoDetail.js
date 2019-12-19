@@ -4,13 +4,9 @@ import { graphql } from 'react-apollo';
 import CommentIndex from "../Comments/CommentIndex";
 import LikeVideo from "../Like/LikeVideo";
 import CommentCreate from "../Comments/CommentCreate";
-<<<<<<< HEAD
 import SideBar from '../ui/SideBar';
 import Favorite from '../favorite/Favorite';
-=======
 import NavBar from '../NavBar';
-import SideBar from '../ui/SideBar'
->>>>>>> 0689877f86ee5843c16fe3cc1c53254a407aa744
 const { FETCH_VIDEO_LIKES } = Queries;
 const { FETCH_VIDEO } = Queries;
 
@@ -18,10 +14,12 @@ const { FETCH_VIDEO } = Queries;
 class VideoDetail extends React.Component {
 
   renderVideoDetail() {
-    const { _id, title, url, description } = this.props.data.video;
+    const { _id, title, url, description, comments, favoriteBy } = this.props.data.video;
     return (
       <div key={_id}>
         <h3>{title}</h3>
+        <p>{comments.length} <i class="far fa-comments"></i></p>
+        <p>{favoriteBy.length} <i class="fas fa-heart"></i></p>
         <div>
           <object className="video-detail-player">
             <param name="movie" value={`${url}?modestbranding=1&amp;version=3&amp;hl=en_US;showinfo=0`}></param>

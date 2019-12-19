@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { currentUser } from '../../util/util'
 import { Link } from 'react-router-dom'
-import { changeTheme } from '../../util/util'
+import { changeTheme, getCurrentTheme } from '../../util/util'
 
 class SideBar extends Component {
 
   constructor(props) {
     super(props)
+  }
+  componentDidMount() {
+    document.getElementById("chkTheme").checked = getCurrentTheme() === 'dark';
   }
 
   changeTheme = (event) => {
@@ -24,7 +27,7 @@ class SideBar extends Component {
           <img src={profileSrc} className="sidebar-avatar" />
           <p className="sidebar-username">{username}</p>
           <label className="switch">
-            <input type="checkbox" onChange={this.changeTheme} />>
+            <input id="chkTheme" type="checkbox" onChange={this.changeTheme} />>
             <span className="slider"></span>
           </label>
         </div>
@@ -41,11 +44,11 @@ class SideBar extends Component {
             <>
               <li className="clickable sidebar-section-header">
                 <i className="far fa-thumbs-up">&nbsp;</i>
-              <Link to="/videos/likes" className="">Liked Videos</Link>
+                <Link to="/videos/likes" className="">Liked Videos</Link>
               </li>
               <li className="clickable sidebar-section-header">
                 <i className="fas fa-hand-holding-heart">&nbsp;</i>
-                <span className="">Favorite Videos</span>
+                <Link to="/videos/favorites">Favorite Videos</Link>
               </li>
             </>
           }
