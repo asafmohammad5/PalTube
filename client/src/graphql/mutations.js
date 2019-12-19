@@ -39,9 +39,10 @@ export default {
         text
         author {
           username
+          image
         }
         replies {
-          _id
+          _id  
         }
         date
         gif
@@ -55,9 +56,10 @@ export default {
         text
         author {
           username
+          image
         }
         replies {
-          _id
+          _id  
         }
         date
         gif
@@ -79,6 +81,7 @@ export default {
       date
       author {
         username
+        image
       }
       replies {
         _id

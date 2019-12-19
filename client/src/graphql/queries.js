@@ -28,6 +28,7 @@ export default {
       gif
       author {
         username
+        image
       }
       replies {
         _id
@@ -36,6 +37,7 @@ export default {
         gif
         author {
           username
+          image
         }
       }
     }
@@ -51,6 +53,7 @@ export default {
     gif
     author {
       username
+      image
     }
     date
     replies {
@@ -60,6 +63,7 @@ export default {
       gif
       author {
         username
+        image
       }
     }
   }

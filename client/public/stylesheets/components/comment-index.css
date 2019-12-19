@@ -1,0 +1,10 @@
+.main-comment-index {
+  width: 100vw;
+  height: auto;
+}
+
+.reply-comment-index{
+  width: 100vw;
+  height: 280px;
+  margin-bottom: 120px;
+}
