@@ -34,5 +34,8 @@
     "react-giphy-component": "^1.0.5",
     "react-router-dom": "^5.1.2",
     "validator": "^12.1.0"
-  }
+  },
+  "engines": {
+    "node": "12.10.0",
+    "npm": "6.11.3"
 }
