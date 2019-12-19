@@ -37,7 +37,15 @@ const VideoType = new GraphQLObjectType({
           .populate("comments")
           .then(video => video.comments);
       }
-    }
+    }, 
+    favoriteBy: {
+      type: new GraphQLList(UserType),
+      resolve(parentValue) {
+        return Video.findById(parentValue.id)
+          .populate("favoriteBy")
+          .then(video => video.favoriteBy);
+      }
+    },
   })
 });
 

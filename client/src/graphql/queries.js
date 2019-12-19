@@ -9,7 +9,7 @@ export default {
   FETCH_VIDEO: gql`
   query queryVideo($id:ID!){
   video(_id:$id){
-    _id
+     _id
     title
     description
     category
@@ -29,15 +29,18 @@ export default {
       author {
         username
       }
-      replies {
-        _id
-        text
-        date
-        gif
-        author {
-          username
-        }
+    replies {
+      _id
+      text
+      date
+      gif
+      author {
+        username
       }
+    }
+    }
+    favoriteBy{
+      _id
     }
      }
     }

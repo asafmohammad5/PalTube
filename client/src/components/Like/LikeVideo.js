@@ -30,7 +30,6 @@ class LikeVideo extends React.Component {
           <LikeDislike likes={likes} dislikes={dislikes} videoId={this.props.videoId} /> 
         </div>
         )     
-
       }}
     </Query>
   }

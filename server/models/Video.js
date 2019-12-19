@@ -33,13 +33,19 @@ const VideoSchema = new Schema({
   ],
   likes: [
     {
-      type: Schema.Types.ObjectId, 
+      type: Schema.Types.ObjectId,
       ref: "users"
     }
   ],
   dislikes: [
     {
-      type: Schema.Types.ObjectId, 
+      type: Schema.Types.ObjectId,
+      ref: "users"
+    }
+  ],
+  favoriteBy: [
+    {
+      type: Schema.Types.ObjectId,
       ref: "users"
     }
   ]
@@ -70,16 +76,16 @@ VideoSchema.statics.removeLike = (videoId, userId) => {
   const User = mongoose.model("users");
 
   return Video.findById(videoId).then(video => {
-      return User.findById(userId).then(user => {
-          video.likes.pull(user);
-          user.videos_liked.pull(video);
+    return User.findById(userId).then(user => {
+      video.likes.pull(user);
+      user.videos_liked.pull(video);
 
-          return Promise.all([video.save(), user.save()])
-            .then(([video, user]) => {
-              return user;
-            });
+      return Promise.all([video.save(), user.save()])
+        .then(([video, user]) => {
+          return user;
         });
     });
+  });
 };
 
 VideoSchema.statics.addDislike = (videoId, userId) => {
@@ -130,6 +136,48 @@ VideoSchema.statics.searchVideos = (criteria) => {
   })
     .sort({ keywords: -1, category: -1, title: -1 })
     .then(videos => videos);
+};
+
+VideoSchema.statics.addFavorite = async (videoId, userId) => {
+  const VideoModel = mongoose.model("videos");
+  const UserModel = mongoose.model("users");
+
+  let video = await VideoModel.findById(videoId);
+  let user = await UserModel.findById(userId);
+
+  // let isExist = await UserModel.find({
+  //     favoriteVideos: { $in: [ObjectId(videoId)] }
+  //   });
+  let isExist = user.favoriteVideos.includes(video.id)
+
+  if (isExist) {
+    throw new Error("video already in your favorite list");
+  } else {
+    video.favoriteBy.push(user._id);
+    user.favoriteVideos.push(video);
+    return Promise.all([video.save(), user.save()]).then(
+      ([video, user]) => {
+        return video;
+      }
+    );
+  }
+};
+
+
+VideoSchema.statics.removeFavorite = (videoId, userId) => {
+  const Video = mongoose.model("videos");
+  const User = mongoose.model("users");
+  return Video.findById(videoId).then(video => {
+    return User.findById(userId).then(user => {
+      video.favoriteBy.pull(user._id);
+      user.favoriteVideos.pull(video);
+      return Promise.all([video.save(), user.save()]).then(
+        ([video, user]) => {
+          return video;
+        }
+      );
+    });
+  });
 };
 
 module.exports = mongoose.model("videos", VideoSchema);
