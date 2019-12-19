@@ -24,7 +24,7 @@ class SideBar extends Component {
     return (
       <aside className="sidebar hide">
         <div className="sidebar-user-info">
-          <img src={profileSrc} className="sidebar-avatar" />
+          <img src={profileSrc} className="sidebar-avatar" alt={username} />
           <p className="sidebar-username">{username}</p>
           <label className="switch">
             <input id="chkTheme" type="checkbox" onChange={this.changeTheme} />>

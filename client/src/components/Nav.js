@@ -26,7 +26,7 @@ const Nav = props => {
               let profileUsername = currentUser() ? currentUser().username : "";
              
               return (
-                <div className="navbar-logout" onClick={(e) => handleToggle(e)}><img src={profileSrc} className="navbar-pic" />
+                <div className="navbar-logout" onClick={(e) => handleToggle(e)}><img alt="PalTube" src={profileSrc} className="navbar-pic" />
                   <div className="navPopup" id="navLogoutPopup">
                     <div className="logout-info">
                       <p className="nav-popup-username">{profileUsername}</p>

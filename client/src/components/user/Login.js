@@ -86,7 +86,7 @@ class Login extends Component {
         {loginUser => (
           <div className="login-form-page">
             <div className="login-pic">
-              <img src="/stylesheets/images/loginpic.png" />
+              <img src="/stylesheets/images/loginpic.png" alt="login"/>
               <p className="login-pic-info">Welcome back to PalTube!</p>
             </div>
             <form
@@ -111,7 +111,7 @@ class Login extends Component {
                 });
               }}
             >
-              <Link to="/"><img className="login-logo" src={src} /></Link>
+              <Link to="/"><img className="login-logo" src={src} alt="login"/></Link>
               <p className="form-title">Sign into your account</p>
               <div>{error}</div>
               <input

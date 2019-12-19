@@ -11,7 +11,7 @@ const CommentReplyItem = props => {
     const month = date.getMonth();
     const day = date.getDate()
 
-    const gif = props.comment.gif ? <img className="main-comment-gif" src={props.comment.gif} /> : null
+    const gif = props.comment.gif ? <img alt="comment" className="main-comment-gif" src={props.comment.gif} /> : null
     
     return (
   
