@@ -66,7 +66,6 @@ class VideoDetail extends React.Component {
     return (
       <div>
         <NavBar />
-
         <div className="container">
           <div className="flex-grid">
             <MiniSideBar />
