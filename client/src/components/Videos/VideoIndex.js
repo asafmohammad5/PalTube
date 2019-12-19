@@ -3,7 +3,7 @@ import Queries from '../../graphql/queries';
 import { graphql } from 'react-apollo';
 import {Link} from 'react-router-dom';
 import SideBar from '../ui/SideBar';
-
+import NavBar from '../NavBar';
 const {FETCH_VIDEOS} = Queries;
 
 class VideoIndex extends Component {
@@ -39,15 +39,18 @@ class VideoIndex extends Component {
       return null;
     }
     return (
-      <div className="container">
-        <div className="flex-grid">
-            <SideBar/>
-          <section className="main">
-            <h3>Recommended Videos</h3>
-            <div className="row">
-              {this.renderVideos()}
-            </div>
-          </section>
+      <div>
+        <NavBar />
+        <div className="container">
+          <div className="flex-grid">
+              <SideBar/>
+            <section className="main">
+              <h3>Recommended Videos</h3>
+              <div className="row">
+                {this.renderVideos()}
+              </div>
+            </section>
+          </div>
         </div>
       </div>
     );

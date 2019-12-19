@@ -61,7 +61,7 @@ VideoSchema.statics.addLike = (videoId, userId) => {
       video.dislikes.pull(user._id);
       video.likes.push(user._id);
       user.videos_liked.push(video);
-
+      user.videos_disliked.pull(video);
       return Promise.all([video.save(), user.save()]).then(
         ([video, user]) => {
           return user;
@@ -97,7 +97,7 @@ VideoSchema.statics.addDislike = (videoId, userId) => {
       video.likes.pull(user._id);
       video.dislikes.push(user._id);
       user.videos_disliked.push(video);
-
+      user.videos_liked.pull(video);
       return Promise.all([video.save(), user.save()]).then(
         ([video, user]) => {
           return user;

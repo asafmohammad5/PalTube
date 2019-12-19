@@ -52,7 +52,7 @@ const mutation = new GraphQLObjectType({
         gif: { type: GraphQLString }
       },
       resolve(_, { text, author, videoId, gif }) {
-        return Comment.addVideoComment(videoId, text, author, gif);
+        return Comment.addVideoComment(videoId, text, author, gif)
       }
     },
     addReplyComment: {

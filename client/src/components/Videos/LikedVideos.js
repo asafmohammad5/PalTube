@@ -15,7 +15,7 @@ class LikedVideos extends Component {
 
   renderVideos = () => {
     let userId = currentUser().id;
-    console.log(userId)
+    
     return (
 
       <Query query={FETCH_USER_LIKED_VIDEOS} variables={{ id: userId }}

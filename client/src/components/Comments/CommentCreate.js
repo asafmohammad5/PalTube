@@ -16,7 +16,8 @@ class CommentCreate extends React.Component {
 
     this.state = {
       text: "",
-      gif: ""
+      gif: "",
+      error: ""
     }
 
   }
@@ -32,6 +33,11 @@ class CommentCreate extends React.Component {
     let text = this.state.text;
     let gif = this.state.gif;
 
+    if (this.state.text === "") {
+      this.setState({ error: "GraphQL error: Cannot return null for non-nullable field CommentType.text." })
+      return
+    }
+
     addVideoComment({
       variables: {
         text: text,
@@ -43,7 +49,8 @@ class CommentCreate extends React.Component {
       .then(data => {
         this.setState({
           text: "",
-          gif: ""
+          gif: "",
+          error: ""
         })
         
       })
@@ -86,8 +93,13 @@ class CommentCreate extends React.Component {
       />
       </div>
     } else {
+      let error;
+      if (this.state.error === "GraphQL error: Cannot return null for non-nullable field CommentType.text.") {
+        error = "Comment must have text"
+      }
       return (
       <Mutation
+        onError={error => { this.setState({error: error.message})}}
         mutation={VIDEO_COMMENT}
         update={(cache, data) => this.updateCache(cache, data)}
       >
@@ -100,6 +112,7 @@ class CommentCreate extends React.Component {
                 onChange={this.update("text")}
                 placeholder={`Commenting publicly as ${currentUser().username}`}
               />
+             <div>{error}</div>
               <button className="create-comment-button" type="submit">COMMENT</button>
             </form>
             <div className="giphy"> <Picker apiKey="EeZhW081PZQ2Abce60Y4EQulHVTzcbRA" onSelected={this.updategif.bind(this)}/></div>

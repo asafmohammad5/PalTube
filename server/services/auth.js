@@ -8,7 +8,6 @@ const validateRegisterInput = require("../validation/register");
 
 const register = async data => {
   try {
-    debugger
     const { message, isValid } = validateRegisterInput(data);
 
     if (!isValid) {

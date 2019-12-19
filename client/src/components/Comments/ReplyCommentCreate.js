@@ -14,7 +14,8 @@ class ReplyCommentCreate extends React.Component {
 
     this.state = {
       text: "@" + this.props.user,
-      gif: ""
+      gif: "",
+      error: ""
     }
   }
 
@@ -29,6 +30,11 @@ class ReplyCommentCreate extends React.Component {
     let text = this.state.text;
     let gif = this.state.gif
 
+    if (this.state.text === "@" + this.props.user) {
+      this.setState({ error: "cannot be empty"})
+      return
+    }
+
     addReplyComment({
       variables: {
         text: text,
@@ -40,7 +46,8 @@ class ReplyCommentCreate extends React.Component {
       .then(data => {
         this.setState({
           text: "@" + this.props.user,
-          gif: ""
+          gif: "",
+          error: ""
         })
       })
   };
@@ -85,8 +92,13 @@ class ReplyCommentCreate extends React.Component {
     } 
     else {
     if (currentUser().username !== this.props.user) {
+      let error;
+      if (this.state.error === "cannot be empty") {
+        error = "Comment must have text"
+      }
     return (
       <Mutation
+        onError={error => { this.setState({ error: error.message }) }}
         mutation={REPLY_COMMENT}
         update={(cache, data) => this.updateCache(cache, data)}
       >
@@ -98,6 +110,7 @@ class ReplyCommentCreate extends React.Component {
                 onChange={this.update("text")}
                 placeholder={`Commenting publicly as ${currentUser().username}`}
               />
+              <div>{error}</div>
               <button type="submit">Reply</button>
             </form>
             <div className="giphy-reply"> <Picker apiKey="EeZhW081PZQ2Abce60Y4EQulHVTzcbRA" onSelected={this.updategif.bind(this)} /></div>

@@ -5,7 +5,9 @@ export const currentUser = () => {
 window.addEventListener('DOMContentLoaded', (event) => {
   let currentTheme = localStorage.getItem("theme");
   let src = currentTheme === "dark" ? window.darkTheme : window.lightTheme;
-  document.getElementById("site-logo").src = src; 
+  if (document.getElementById("site-logo")) {
+    document.getElementById("site-logo").src = src; 
+  }
 });
 
 export const changeThemeLogo = () => {

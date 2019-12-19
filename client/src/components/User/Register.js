@@ -13,7 +13,8 @@ class Register extends Component {
       email: "",
       password: "",
       password2: "",
-      image: "/stylesheets/images/default_avatar_2.png"
+      image: "/stylesheets/images/default_avatar_2.png",
+      error: ""
     };
   }
 
@@ -40,13 +41,30 @@ class Register extends Component {
   }
 
   render() {
+
+    let src = localStorage.theme === "dark" ? window.darkTheme : window.lightTheme;
+
+    let error;
+    if (this.state.error === "please fill in missing fields") {
+      error = "Please fill in missing fields"
+    } else if (this.state.error === "GraphQL error: Email is invalid") {
+      error = "Invalid email"
+    } else if (this.state.error === "GraphQL error: This user already exists") {
+      error = "User already exists"
+    } else if (this.state.error === "GraphQL error: This username already exists") {
+      error = "Username already exists"
+    } else if (this.state.error === "GraphQL error: Passwords do not match") {
+      error = "Passwords do not match"
+    }
+
     return (
       <Mutation
+        onError={error => {  this.setState({ error: error.message }) }}
         mutation={REGISTER_USER}
         onCompleted={data => {
-          const { token, _id, username, image } = data.register;
+          const { token, _id, username, image, email } = data.register;
           localStorage.setItem("auth-token", token);
-          localStorage.setItem("user", JSON.stringify({ id: _id, username, image }));
+          localStorage.setItem("user", JSON.stringify({ id: _id, username, image, email }));
         }}
         update={(client, data) => this.updateCache(client, data)}
       >
@@ -56,6 +74,10 @@ class Register extends Component {
                 className="sign-up-form"
                 onSubmit={e => {
                   e.preventDefault();
+                  if (this.state.password === "" || this.state.username === "" || this.state.email === "" || this.state.password2 === "") {
+                    this.setState({ error: "please fill in missing fields" })
+                    return
+                  } 
                   registerUser({
                     variables: {
                       username: this.state.username,
@@ -67,8 +89,9 @@ class Register extends Component {
                   });
                 }}
               >
-                <Link to="/"><img className="signup-logo" src="/stylesheets/images/paltube.png" /></Link>
+                <Link to="/"><img className="signup-logo" src={src} /></Link>
                 <p className="form-title">Create your PalTube Account</p>
+                <div>{error}</div>
                 <input
                   value={this.state.username}
                   onChange={this.update("username")}

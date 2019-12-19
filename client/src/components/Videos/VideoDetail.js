@@ -4,14 +4,19 @@ import { graphql } from 'react-apollo';
 import CommentIndex from "../Comments/CommentIndex";
 import LikeVideo from "../Like/LikeVideo";
 import CommentCreate from "../Comments/CommentCreate";
+<<<<<<< HEAD
 import SideBar from '../ui/SideBar';
 import Favorite from '../favorite/Favorite';
-const{FETCH_VIDEO_LIKES} = Queries; 
-const {FETCH_VIDEO} = Queries;
+=======
+import NavBar from '../NavBar';
+import SideBar from '../ui/SideBar'
+>>>>>>> 0689877f86ee5843c16fe3cc1c53254a407aa744
+const { FETCH_VIDEO_LIKES } = Queries;
+const { FETCH_VIDEO } = Queries;
 
 
 class VideoDetail extends React.Component {
- 
+
   renderVideoDetail() {
     const { _id, title, url, description } = this.props.data.video;
     return (
@@ -28,20 +33,20 @@ class VideoDetail extends React.Component {
           </object>
         </div>
         <div className="video-info">
-          <p>{description}</p>   
+          <p>{description}</p>
         </div>
       </div>
     );
   }
 
-  updateCache(cache, {data: {newLike}}) {
-    
+  updateCache(cache, { data: { newLike } }) {
+
     let likes;
     try {
-      likes = cache.readQuery({ query: FETCH_VIDEO_LIKES, variables: { id: this.props.data.video._id} });
+      likes = cache.readQuery({ query: FETCH_VIDEO_LIKES, variables: { id: this.props.data.video._id } });
     } catch (err) {
       return;
-    } 
+    }
     if (likes) {
       // take care of un-nesting things before we write to our cache
       let likesArray = likes.likes;
@@ -57,23 +62,27 @@ class VideoDetail extends React.Component {
       return null;
     }
     return (
-      <div className="container">
-        <div className="flex-grid">
-          <SideBar />
-          <section className="main">
-            {this.renderVideoDetail()}
-            <hr></hr>
-            <h1 className="video-comments">Comments</h1>
+      <div>
+        <NavBar />
 
-            <div className="rate-likes">
-              <LikeVideo videoId={this.props.data.video._id} video={this.props.data.video} />
-            </div>
-            <div>
-              <Favorite video={this.props.data.video} />
-            </div>
-            <div className="commentCreate"><CommentCreate videoId={this.props.data.video._id}/></div>
-            <div className="commentIndex"><CommentIndex videoId={this.props.data.video._id}/></div>
-          </section>   
+        <div className="container">
+          <div className="flex-grid">
+            <SideBar />
+            <section className="main">
+              {this.renderVideoDetail()}
+              <hr></hr>
+              <h1 className="video-comments">Comments</h1>
+
+              <div className="rate-likes">
+                <LikeVideo videoId={this.props.data.video._id} video={this.props.data.video} />
+              </div>
+              <div>
+                <Favorite video={this.props.data.video} />
+              </div>
+              <div className="commentCreate"><CommentCreate videoId={this.props.data.video._id} /></div>
+              <div className="commentIndex"><CommentIndex videoId={this.props.data.video._id} /></div>
+            </section>
+          </div>
         </div>
       </div>
     );

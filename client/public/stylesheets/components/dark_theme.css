@@ -3,7 +3,8 @@
   --secondary-bg-color: #272727;
   --main-font-color: #F0FFFF;
   --hover-text-color: #065FD4;
-  --signin-link-color: #FFFFFF; 
+  --logout-display-text-color: #FFFFFF; 
+  --logout-display-border-color: #4d4b50; 
 }
 body{
   color: var(--main-font-color);
