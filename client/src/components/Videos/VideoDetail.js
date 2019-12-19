@@ -21,9 +21,6 @@ class VideoDetail extends React.Component {
     const { _id, title, url, description, comments, favoriteBy } = this.props.data.video;
     return (
       <div key={_id}>
-        <h3>{title}</h3>
-        <p>{comments.length} <i class="far fa-comments"></i></p>
-        <p>{favoriteBy.length} <i class="fas fa-heart"></i></p>
         <div>
           <object className="video-detail-player">
             <param name="movie" value={`${url}?modestbranding=1&amp;version=3&amp;hl=en_US;showinfo=0`}></param>
@@ -34,8 +31,18 @@ class VideoDetail extends React.Component {
               className="video-player" allowscriptaccess="always" allowFullScreen={true}></embed>
           </object>
         </div>
-        <div className="video-info">
-          <p>{description}</p>
+        <div className="video-title-detail">
+          <h3>{title}</h3>
+        </div>
+        <div className="video-info-detail">
+          <p>{comments.length} <i class="far fa-comments"></i></p>
+          <p className="video-fav-detail">{favoriteBy.length} <Favorite video={this.props.data.video} /></p>
+          <div className="rate-likes">
+            <LikeVideo videoId={this.props.data.video._id} video={this.props.data.video} />
+          </div>
+        </div>
+        <div className="video-description-detail">
+          <p className="video-description-body">{description}</p>
         </div>
       </div>
     );
@@ -76,12 +83,7 @@ class VideoDetail extends React.Component {
               <hr></hr>
               <h1 className="video-comments">Comments</h1>
 
-              <div className="rate-likes">
-                <LikeVideo videoId={this.props.data.video._id} video={this.props.data.video} />
-              </div>  
-              <div>
-                <Favorite video={this.props.data.video} />
-              </div>
+    
               <div className="commentCreate"><CommentCreate videoId={this.props.data.video._id} /></div>
               <div className="commentIndex"><CommentIndex videoId={this.props.data.video._id} /></div>
             </section>

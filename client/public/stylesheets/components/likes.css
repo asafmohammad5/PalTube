@@ -5,7 +5,7 @@
 }
 
 .unliked-thumb {
-  padding: 6px; 
+  padding: 0px 6px 8px 6px; 
 }
 
 .unliked-thumb:hover {
@@ -17,9 +17,10 @@
 }
 
 .liked-thumb {
-  padding: 6px;
-  background: lightblue;
-  border-radius: 50%;  
+  padding: 0px 6px 8px 6px; 
+  color: lightblue; 
+  border-bottom: 1px solid lightblue;
+    
 }
 
 .popup {
@@ -41,7 +42,8 @@
 }
 
 .like-display {
-  display: flex; 
+  display: flex;
+  margin-right: 10px;  
 }
 
 .dislike-display {
