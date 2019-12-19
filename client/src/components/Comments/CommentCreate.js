@@ -78,7 +78,7 @@ class CommentCreate extends React.Component {
   }
 
   updategif (gif) {
-    this.setState({ gif: gif.downsized.url}, () => console.log(this.state))
+    this.setState({ gif: gif.downsized.url})
   }
 
   render() {

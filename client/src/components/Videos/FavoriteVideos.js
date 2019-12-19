@@ -58,6 +58,7 @@ class FavoriteVideos extends Component {
     if (!currentUser()) {
       this.props.history.push('/login')
     }
+
     return (
       <div className="container">
         <NavBar />

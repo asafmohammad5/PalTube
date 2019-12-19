@@ -5,7 +5,7 @@ import Query from "../../graphql/queries";
 import { Mutation } from "react-apollo";
 import { Link } from 'react-router-dom';
 const { ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES } = Mutations;
-const { FETCH_VIDEO } = Query;
+const { FETCH_VIDEO, FETCH_USER_FAVORITE_VIDEOS } = Query;
 class Favorite extends Component {
 
   handleAddRemoveFavorite(e, func) {
@@ -36,7 +36,7 @@ class Favorite extends Component {
     }
     return (
       (<Mutation mutation={ADD_TO_FAVORITES} refetchQueries={() => {
-        return [{ query: FETCH_VIDEO, variables: { id: this.props.video._id } }];
+        return [{ query: FETCH_VIDEO, variables: { id: this.props.video._id } }, { query: FETCH_USER_FAVORITE_VIDEOS, variables: { id: currentUser().id } }];
       }}>
         {(AddToFavorites, { loading, error, data  }) => {
           if (loading) return <i class="fas fa-spinner"></i>

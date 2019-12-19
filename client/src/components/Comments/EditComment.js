@@ -30,9 +30,6 @@ class EditComment extends React.Component {
         text: this.state.text
       }
     })
-      .then(data => {
-        console.log("Comment edited")
-      })
   }
 
 
