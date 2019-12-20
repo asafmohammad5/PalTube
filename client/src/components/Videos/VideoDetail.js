@@ -11,7 +11,6 @@ import Favorite from '../favorite/Favorite';
 import NavBar from '../NavBar';
 
 
-
 const{FETCH_VIDEO_LIKES} = Queries; 
 const {FETCH_VIDEO} = Queries;
 

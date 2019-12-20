@@ -4,6 +4,7 @@ import { ApolloConsumer } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import SideBar from '../ui/SideBar';
 import NavBar from '../NavBar';
+import MiniSideBar from '../ui/MiniSideBar'
 const { FETCH_VIDEOS } = Queries;
 
 class VideoIndex extends Component {
@@ -94,6 +95,7 @@ class VideoIndex extends Component {
             <NavBar />
             <div className="container">
               <div className="flex-grid">
+                <MiniSideBar/>
                 <SideBar />
                 <section className="main">
                   <h3>Recommended Videos</h3>

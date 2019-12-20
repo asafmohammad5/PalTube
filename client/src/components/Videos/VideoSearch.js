@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Queries from '../../graphql/queries'
-import { Query, ApolloConsumer } from 'react-apollo';
+import { ApolloConsumer } from 'react-apollo';
 import SideBar from '../ui/SideBar'
 import NavBar from '../NavBar';
+import MiniSideBar from '../ui/MiniSideBar'
 import { withRouter } from 'react-router';
 const { FETCH_VIDEOS } = Queries;
 
@@ -122,6 +123,8 @@ class VideoSearch extends Component {
             <NavBar />
             <div className="container">
               <div className="flex-grid">
+                <MiniSideBar />
+
                 <SideBar />
                 <section className="main">
                   <h3>Searching for {this.state.criteria}</h3>
