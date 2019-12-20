@@ -6,6 +6,7 @@ import Queries from '../../graphql/queries';
 const { FETCH_VIDEO } = Queries;
 
 class CommentIndex extends React.Component {
+ 
 
   render () {
   
@@ -14,13 +15,13 @@ class CommentIndex extends React.Component {
         if (loading) return <p>Loading...</p>;
         if (error) return <p>Error</p>;
       
-       const comments = data.video.comments.map(comment => {
+       const comments = data.video.comments.map((comment) => { 
          return <div>
-           <div><CommentIndexItem comment={comment} videoId={this.props.videoId}/> </div>
-         </div>
-       })
+                  <CommentIndexItem comment={comment} videoId={this.props.videoId}/> 
+               </div>
+          })
     return <div className="comment-index">
-            {comments}
+              {comments}
            </div>
 
   }}

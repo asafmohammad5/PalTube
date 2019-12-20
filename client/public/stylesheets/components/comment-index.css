@@ -1,0 +1,51 @@
+.edit-comment {
+  width: 100%;
+  display: flex; 
+  justify-content: space-between; 
+}
+
+.edit-button {
+  color: var(--main-font-color);
+  margin-right: 10px;
+}
+
+.edit-button:hover {
+  transition: .5s; 
+  color: var(--hover-text-color);
+  cursor: pointer; 
+}
+
+.options-popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.options-popup {
+  display: flex; 
+}
+
+.options-popup .optionstext {
+  visibility: hidden;
+  /* width: 160px; */
+  /* background-color: #065fd4;
+  color: #fff; */
+  /* text-align: center;
+  border-radius: 6px;
+  padding: 4px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px; */
+}
+
+.options-popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}

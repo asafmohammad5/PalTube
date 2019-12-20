@@ -50,9 +50,9 @@ class VideoDetail extends React.Component {
               <div className="commentCreate">
                 <CommentCreate videoId={this.props.data.video._id} />
               </div>
-              {/* <div className="commentIndex">
+              <div className="commentIndex">
                 <CommentIndex videoId={this.props.data.video._id} />
-              </div>  */}
+              </div> 
         </div>
           <MiniIndex className="mini-index"/>
         </div>
