@@ -15,10 +15,11 @@ const token = localStorage.getItem("auth-token");
 const cache = new InMemoryCache({ dataIdFromObject: object => object._id || null});
 
 const httpLink = createHttpLink({
-  credentials: 'same-origin'
+  credentials: 'same-origin' 
 });
 
 // uri: "http://localhost:5000/graphql"
+
 
 const errorLink = onError(({ graphQLErrors }) => {
   if (graphQLErrors) graphQLErrors.map(({ message }) => console.log(message));
