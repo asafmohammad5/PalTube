@@ -1,0 +1,28 @@
+:root{
+  --main-bg-color: #1F1F1F;
+  --secondary-bg-color: #272727;
+  --main-font-color: #F0FFFF;
+  --hover-text-color: #065FD4;
+  --logout-display-text-color: #FFFFFF; 
+  --logout-display-border-color: #4d4b50; 
+  --search-bg-color: #4a4b46;
+}
+body{
+  color: var(--main-font-color);
+  background-color: var(--main-bg-color);
+}
+.sidebar{
+  background-color: var(--secondary-bg-color);
+}
+.navbar{
+  background-color: var(--secondary-bg-color);
+}
+.react-autosuggest__input{
+  background-color: var(--main-bg-color);
+}
+.search-icon {
+  background-color: var(--search-bg-color);
+}
+.mini-sidebar{
+  background-color: var(--secondary-bg-color);
+}

@@ -1,0 +1,155 @@
+.navbar {
+  display: flex;
+  padding: 18px 18px 10px 18px; 
+  justify-content: space-between;  
+}
+
+.navbar-logo {
+  margin-left: 18px; 
+  height: 25px; 
+  width: auto; 
+}
+
+.nav-links {
+  font-size: 14px;
+  color: #0693d4;  
+  font-family: Roboto; 
+  font-weight: bold; 
+}
+
+.navbar-pic {
+  height: 30px;
+  width: 30px;
+  border: 2px solid #0693d4;
+  border-radius: 15px;
+  margin-right: 14px; 
+}
+
+.navbar-pic:hover {
+  transition-duration: 1s;
+  border: 1px solid #065FD4;
+  cursor: pointer;
+}
+
+.nav-sign-in {
+  border: 1px solid #0693d4;
+  border-radius: 2px; 
+  padding: 10px; 
+}
+
+.nav-sign-up {
+  border: 1px solid #0693d4;
+  border-radius: 2px; 
+  margin-right: 14px; 
+  padding: 10px;
+}
+
+/* Burger-Menu */
+.burger-menu-icon{
+  max-height: 20px;
+  max-width: 20px;
+  padding: 0px 12px 0px 6px;
+  margin: 0px;
+  cursor: pointer;
+  
+}
+
+.logo-container{
+  display: flex;
+}
+
+.navbar-logout {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-top: -6px; 
+}
+
+.like-sign-in{
+  font-family: Roboto; 
+}
+
+.like-sign-in:hover {
+  text-decoration: underline; 
+}
+
+.navbar-logout{
+  display: flex; 
+}
+
+.nav-popup-username {
+  padding-top: 12px;
+  margin-bottom: 6px;  
+}
+
+.nav-popup-email {
+  padding-bottom: 12px; 
+}
+
+.logout-info {
+  font-family: Roboto; 
+  border-bottom: 1px solid var(--logout-display-border-color); 
+}
+
+.logout-likes {
+  font-family: Roboto; 
+  padding: 10px 0px 10px 0px; 
+  width: 275px; 
+}
+
+.logout-likes:hover {
+  background: var(--logout-display-border-color); 
+}
+
+.logout-button {
+  padding: 10px 0px 10px 0px; 
+  width: 275px; 
+}
+
+.logout-button:hover {
+  background: var(--logout-display-border-color); 
+}
+
+.nav-log-out {
+  font-family: Roboto; 
+}
+
+.navbar-logout .navPopup {
+  visibility: hidden;
+  width: 275px;
+  background-color: var(--main-bg-color);
+  color: var(--logout-display-text-color);
+  text-align: center;
+  border-left: 1px solid var(--logout-display-border-color); 
+  padding: 0px 0px 0px 0px;
+  position: absolute;
+  z-index: 1;
+  right: 120%; 
+  top: -28%;
+  margin-left: -80px;
+  box-shadow: 1px 2px 1px var(--logout-display-border-color);
+}
+
+.sign-out-icon {
+  margin-right: 10px; 
+}
+
+.navbar-logout .display {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}

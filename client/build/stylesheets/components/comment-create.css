@@ -1,0 +1,93 @@
+.create-form {
+  width: 90%;
+  height: 100px;
+}
+
+.create-form-1 {
+  display: flex;
+}
+
+.comment-create-input-nuser {
+  width: 1050px;
+  height: 33px;
+  margin-left: 15px;
+  border-bottom: 2px solid black;
+  background-color: rgb(242, 248, 248);
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+
+.comment-create-input {
+  width: 1050px;
+  height: 33px;
+  margin-left: 15px;
+  border-bottom: 2px solid black;
+  background-color: rgb(242, 248, 248);
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+
+
+.create-comment-button {
+  cursor: pointer;
+  position: relative;
+  margin-left: 15px;
+  left: 970px;
+  height: 38px;
+  width: 85px;
+  background-color: #065fd4;
+  color: white;
+} 
+
+.main-comment-top {
+  display: flex;
+  margin-top: 20px;
+}
+
+.main-comment-name {
+  font-weight: bold;
+  font-family: sans-serif;
+  margin-right: 10px;
+}
+
+.main-comment-text {
+  margin-top: 3px;
+}
+
+.main-comment-gif {
+  z-index: 10;
+  height: 200px;
+  width: 200px;
+}
+
+.giphy {
+  position: relative;
+  left: 1180px;
+  height: 400px;
+  width: 270px;
+  bottom: 190px;
+}
+
+.giphy-reply {
+  position: relative;
+  left: 1125px;
+  bottom: 140px;
+}
+
+.giphy-comment {
+  position: relative;
+  left: 1180px;
+  bottom: 140px;
+}
+
+.comment-create-position {
+  display: flex;
+  margin-top: 15px;
+}
+
+.comment-create-avatar {
+  height: 70px;
+  width: 70px;
+  border-radius: 50px;
+
+}
