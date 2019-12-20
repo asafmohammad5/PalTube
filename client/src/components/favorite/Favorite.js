@@ -59,7 +59,7 @@ class Favorite extends Component {
           if (loading) return <i class="fas fa-spinner"></i>
           if (error) return <p>Error :( Please try again</p>
           return (  
-            <i className="fas fa-heart" style={{cursor:'pointer'}}
+            <i className="fas fa-heart fav-heart" style={{cursor:'pointer'}}
               onClick={(e) => this.handleAddRemoveFavorite(e, RemoveFromFavorites)}></i>
           )
         }}
