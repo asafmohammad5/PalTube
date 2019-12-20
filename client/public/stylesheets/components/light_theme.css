@@ -3,9 +3,11 @@
   --secondary-bg-color: #FFFFFF;
   --main-font-color: black;
   --hover-text-color: #065FD4; 
+  --likes-font-color: black;
   --logout-display-text-color: #4d4b50;
   --logout-display-border-color: lightgray;  
   --search-bg-color: lightgray;
+  --like-color: #065FD4;
 }
 
 body {

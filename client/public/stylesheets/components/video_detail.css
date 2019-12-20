@@ -12,7 +12,7 @@
 }
 
 .detail-left-col {
-    width: 65%;
+    width: 60%;
     min-width: 520px;
 }
 
@@ -37,13 +37,18 @@
     font-family: Roboto; 
     border-bottom: 1px solid gray; 
     padding: 0px 0px 14px 0px;
-    color: gray; 
+    color: var(--likes-font-color); 
     /* border-bottom: gray;  */
+}
+
+.rate-likes {
+    margin-right: 10px; 
 }
 
 .video-description-body {
     font-weight: 200;
     font-family: Roboto; 
+    margin-right: 10px; 
 }
 
 .video-detail-main {

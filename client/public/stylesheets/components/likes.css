@@ -9,7 +9,7 @@
 }
 
 .unliked-thumb:hover {
-  border-bottom: 1px solid lightblue; 
+  border-bottom: 1px solid var(--like-color); 
 }
 
 .like-bar {
@@ -18,12 +18,22 @@
 
 .liked-thumb {
   padding: 0px 6px 8px 6px; 
-  color: lightblue; 
-  border-bottom: 1px solid lightblue;
+  color: var(--like-color); 
+  border-bottom: 1px solid var(--like-color);
     
 }
 
 .popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.popup2 {
   position: relative;
   display: inline-block;
   cursor: pointer;
@@ -73,7 +83,7 @@
   content: "";
   position: absolute;
   top: 100%;
-  left: 50%;
+  left: 48%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
@@ -81,6 +91,38 @@
 }
 
 .popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+.popup2 .popuptext2 {
+  visibility: hidden;
+  width: 160px;
+  background-color: #065fd4;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+.popup2 .popuptext2::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.popup2 .show {
   visibility: visible;
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
