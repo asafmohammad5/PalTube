@@ -9,11 +9,43 @@
   padding: 1rem;
 }
 
+.mini-sidebar {
+  /* flex: 0.5; */
+  padding-left: 14px;
+  width: 70px;
+  height: 85vh;
+  background-color: var(--main-bg-color);
+  color: var(--main-font-color);
+}
+
+.mini-icon {
+  /* margin: 0 auto;  */
+  text-align: center; 
+  font-size: 18px; 
+}
+
+.mini-sidebar-section-header {
+  padding: 7px 0px 7px 0px;
+  text-align: center; 
+  width: 70px;
+}
+
+.mini-sidebar-section-header:hover {
+  background-color: var(--search-bg-color);
+}
+
 .sidebar-avatar{
   height: 100px;
   width: 100px;
   border-radius: 50px;
   margin: 0 auto;
+}
+
+.mini-description {
+  text-align: center; 
+  font-size: 10px; 
+  font-family: Roboto; 
+  /* margin: 0 auto;  */
 }
 
 
@@ -96,6 +128,7 @@ margin-bottom: 5px;
   letter-spacing: .007px;
   padding-left: 5px;
   padding-bottom: 5px;
+  width: 200px;
 }
 
 .sidebar-item{

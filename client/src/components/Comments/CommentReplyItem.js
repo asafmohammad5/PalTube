@@ -11,12 +11,17 @@ const CommentReplyItem = props => {
     const month = date.getMonth();
     const day = date.getDate()
 
+
+    
+    const profileSrc = props.comment.author.image ? props.comment.author.image : "/stylesheets/images/default_avatar_2.png";
     const gif = props.comment.gif ? <img alt="comment" className="main-comment-gif" src={props.comment.gif} /> : null
+
     
     return (
   
-          <div className="main-comment-index">
+          <div className="reply-comment-index">
             <div className="main-comment-top">
+              <img src={profileSrc} className="comment-create-avatar" />
               <div className="main-comment-name">{props.comment.author.username}</div>
               <div className="main-comment-year">{year + "-" + month + "-" + day}</div>
             </div>

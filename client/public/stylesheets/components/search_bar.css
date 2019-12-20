@@ -3,14 +3,19 @@
 }
 
 .react-autosuggest__input {
-  width: 350px;
-  height: 30px;
+  width: 480px;
+  height: 28px;
   padding: 10px 20px;
   font-family: Helvetica, sans-serif;
   font-weight: 300;
   font-size: 16px;
   border: 1px solid #aaa;
-  border-radius: 4px;
+  margin-top: -15px; 
+}
+
+.react-autosuggest__input:focus {
+  transition-duration: 1s;
+  border: 1px solid #0693d4;
 }
 
 .react-autosuggest__input--focused {
@@ -30,7 +35,7 @@
   display: block;
   position: absolute;
   top: 31px;
-  width: 350px;
+  width: 480px;
   border: 1px solid #aaa;
   background-color: var(--main-bg-color);
   font-family: Helvetica, sans-serif;
@@ -58,7 +63,9 @@
 }
 
 .search-icon{
-  z-index: '1';
-  margin-left: -22px;
-  padding-top: 6px;
+  height: 28px;
+  border: 1px solid var(--search-bg-color); 
+  width: 65px;
+  text-align: center; 
+  margin: -5px 0px 0px 0px;  
 }

@@ -236,7 +236,7 @@ class LikeDislike extends React.Component {
 
     if (!liked && !disliked) {
       return (
-      <div>
+      <div className="like-bar">
         <Mutation
           mutation={ADD_VIDEO_LIKE}
           update={(cache, data) => this.updateCache(cache, data)}
@@ -269,7 +269,7 @@ class LikeDislike extends React.Component {
           </Mutation>
         </div>)
     } else if (liked && !disliked) {
-      return (<div>
+      return (<div className="like-bar">
         <Mutation
           mutation={REMOVE_VIDEO_LIKE}
           update={(cache, data) => this.updateCache(cache, data)}
@@ -302,7 +302,7 @@ class LikeDislike extends React.Component {
         </Mutation>
       </div>)
     } else if (!liked && disliked) {
-      return (<div>
+      return (<div className="like-bar">
         <Mutation
           mutation={ADD_VIDEO_LIKE}
           update={(cache, data) => this.updateCache(cache, data)}

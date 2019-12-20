@@ -19,7 +19,7 @@ class CommentIndex extends React.Component {
            <div><CommentIndexItem comment={comment} videoId={this.props.videoId}/> </div>
          </div>
        })
-    return <div>
+    return <div className="comment-index">
             {comments}
            </div>
 

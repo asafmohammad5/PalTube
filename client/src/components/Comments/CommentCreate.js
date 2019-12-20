@@ -78,16 +78,18 @@ class CommentCreate extends React.Component {
   }
 
   updategif (gif) {
-    this.setState({ gif: gif.downsized.url}, () => console.log(this.state))
+    this.setState({ gif: gif.downsized.url})
   }
 
   render() {
     const user = currentUser();
+    const profileSrc = user && user.image ? user.image : "/stylesheets/images/default_avatar_2.png";
    
     if (!user) {
-      return <div className="create-form"> 
+      return <div className="create-form-1"> 
+      <img src={profileSrc} className="comment-create-avatar" />
       <input
-        className="comment-create-input"
+        className="comment-create-input-nuser"
         value={this.state.text}
         placeholder="Must Be Signed In to Comment"
       />
@@ -105,16 +107,19 @@ class CommentCreate extends React.Component {
       >
         {(addVideoComment, { data }) => (
           <div className="create-form">
-            <form onSubmit={e => this.handleSubmit(e, addVideoComment)}>
-              <input 
-                className="comment-create-input"
-                value={this.state.text}
-                onChange={this.update("text")}
-                placeholder={`Commenting publicly as ${currentUser().username}`}
-              />
-             <div>{error}</div>
-              <button className="create-comment-button" type="submit">COMMENT</button>
-            </form>
+            <div className="comment-create-position">
+              <img src={profileSrc} className="comment-create-avatar" />
+               <form onSubmit={e => this.handleSubmit(e, addVideoComment)}>
+               <input 
+                  className="comment-create-input"
+                  value={this.state.text}
+                  onChange={this.update("text")}
+                  placeholder={`Commenting publicly as ${currentUser().username}`}
+               />
+               <div>{error}</div>
+               <button className="create-comment-button" type="submit">COMMENT</button>
+               </form>
+            </div>
             <div className="giphy"> <Picker apiKey="EeZhW081PZQ2Abce60Y4EQulHVTzcbRA" onSelected={this.updategif.bind(this)}/></div>
           </div>
         )}

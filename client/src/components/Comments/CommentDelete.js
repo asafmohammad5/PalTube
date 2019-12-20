@@ -17,9 +17,6 @@ class CommentDelete extends React.Component {
       id: this.props.commentId
       }
     })
-      .then(data => {
-       console.log("Comment deleted")
-      })
   }
 
  
