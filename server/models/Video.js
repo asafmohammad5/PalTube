@@ -124,16 +124,26 @@ VideoSchema.statics.removeDislike = (videoId, userId) => {
   });
 };
 
-VideoSchema.statics.searchVideos = (criteria) => {
-  const regCriteria = new RegExp(criteria, 'i');
 
+VideoSchema.statics.searchVideos = (criteria, perPage, pageNumber) => {
   const Video = mongoose.model("videos");
+  if(!criteria){
+    return Video.find({})
+    .limit(perPage)
+    .skip(perPage * pageNumber)
+    .then(videos => videos)
+  };
+  const regCriteria = new RegExp(criteria, 'i');
+  console.log(regCriteria)
   return Video.find({
     "$or": [
       { "keywords": { $regex: regCriteria } },
       { "category": { $regex: regCriteria } },
-      { "title": { $regex: regCriteria } }]
+      { "title": { $regex: regCriteria } }
+    ]
   })
+    .limit(perPage)
+    .skip(perPage * pageNumber)
     .sort({ keywords: -1, category: -1, title: -1 })
     .then(videos => videos);
 };
