@@ -2,10 +2,12 @@
   --main-bg-color: #1F1F1F;
   --secondary-bg-color: #272727;
   --main-font-color: #F0FFFF;
+  --likes-font-color: gray;
   --hover-text-color: #065FD4;
   --logout-display-text-color: #FFFFFF; 
   --logout-display-border-color: #4d4b50; 
   --search-bg-color: #4a4b46;
+  --like-color: lightblue;
 }
 body{
   color: var(--main-font-color);

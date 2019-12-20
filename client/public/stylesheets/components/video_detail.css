@@ -37,7 +37,7 @@
     font-family: Roboto; 
     border-bottom: 1px solid gray; 
     padding: 0px 0px 14px 0px;
-    color: gray; 
+    color: var(--likes-font-color); 
     /* border-bottom: gray;  */
 }
 

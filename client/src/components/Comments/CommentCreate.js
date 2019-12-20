@@ -98,7 +98,7 @@ class CommentCreate extends React.Component {
       return <div className="create-form-1"> 
       <img src={profileSrc} className="comment-create-avatar" />
       <input
-        className="comment-create-input-nuser"
+        className="comment-create-input"
         value={this.state.text}
         placeholder="Must Be Signed In to Comment"
       />
