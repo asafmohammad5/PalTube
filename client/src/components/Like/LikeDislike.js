@@ -205,7 +205,7 @@ class LikeDislike extends React.Component {
     if (!user) {
       return (
         <div className="popup" onClick={(e) => this.handleToggle(e)}><i className="far fa-thumbs-up unliked-thumb"></i>{this.getLikeCount()}
-          <i className="far fa-thumbs-down unliked-thumb"></i>{this.getLikeCount()}
+          <i className="far fa-thumbs-down unliked-thumb"></i>{this.getDislikeCount()}
           <div class="popuptext" id="myPopup"><Link className="like-sign-in" to="/login">Sign in!</Link></div>
         </div>
       )

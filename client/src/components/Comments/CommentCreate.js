@@ -22,6 +22,15 @@ class CommentCreate extends React.Component {
 
   }
 
+  handleToggle(e) {
+    e.preventDefault();
+    var giphy = document.getElementById("myGiphy");
+
+    if (giphy) {
+      giphy.classList.toggle("show");
+    }
+  }
+
   update(field) {
     return e => {
       this.setState({ [field]: e.target.value })
@@ -109,19 +118,32 @@ class CommentCreate extends React.Component {
           <div className="create-form">
             <div className="comment-create-position">
               <img src={profileSrc} className="comment-create-avatar" />
-               <form onSubmit={e => this.handleSubmit(e, addVideoComment)}>
+               <form className="comment-submit-form" onSubmit={e => this.handleSubmit(e, addVideoComment)}>
                <input 
+                  type="text-area"
                   className="comment-create-input"
                   value={this.state.text}
                   onChange={this.update("text")}
                   placeholder={`Commenting publicly as ${currentUser().username}`}
                />
                <div>{error}</div>
-               <button className="create-comment-button" type="submit">COMMENT</button>
+               <div className="comment-create-buttons">
+                 <div className="comment-create-btns">
+                      <div className="gif-popup">
+                        <button className="create-comment-button" onClick={(e) => this.handleToggle(e)}>Gif</button>
+                        <div className="giftext" id="myGiphy">
+                          
+                          <Picker id="giphy-picker" apiKey="EeZhW081PZQ2Abce60Y4EQulHVTzcbRA" onSelected={this.updategif.bind(this)} /> 
+                        </div>
+                      </div>
+                   <button className="create-comment-button" type="submit">Comment</button>
+                 </div>
+                  
+               </div>
                </form>
             </div>
-            <div className="giphy"> <Picker apiKey="EeZhW081PZQ2Abce60Y4EQulHVTzcbRA" onSelected={this.updategif.bind(this)}/></div>
-          </div>
+            
+            </div>
         )}
       </Mutation>
     )};

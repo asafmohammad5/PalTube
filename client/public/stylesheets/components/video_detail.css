@@ -12,7 +12,7 @@
 }
 
 .detail-left-col {
-    width: 65%;
+    width: 60%;
     min-width: 520px;
 }
 
@@ -41,9 +41,14 @@
     /* border-bottom: gray;  */
 }
 
+.rate-likes {
+    margin-right: 10px; 
+}
+
 .video-description-body {
     font-weight: 200;
     font-family: Roboto; 
+    margin-right: 10px; 
 }
 
 .video-detail-main {
