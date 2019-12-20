@@ -134,7 +134,6 @@ VideoSchema.statics.searchVideos = (criteria, perPage, pageNumber) => {
     .then(videos => videos)
   };
   const regCriteria = new RegExp(criteria, 'i');
-  console.log(regCriteria)
   return Video.find({
     "$or": [
       { "keywords": { $regex: regCriteria } },
@@ -155,9 +154,6 @@ VideoSchema.statics.addFavorite = async (videoId, userId) => {
   let video = await VideoModel.findById(videoId);
   let user = await UserModel.findById(userId);
 
-  // let isExist = await UserModel.find({
-  //     favoriteVideos: { $in: [ObjectId(videoId)] }
-  //   });
   let isExist = user.favoriteVideos.includes(video.id)
 
   if (isExist) {

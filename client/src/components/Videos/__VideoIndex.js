@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import Queries from '../../graphql/queries';
-import { compose, graphql, ApolloConsumer, useQuery, Query, withApollo } from 'react-apollo';
+import { graphql, ApolloConsumer, Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import SideBar from '../ui/SideBar';
 import NavBar from '../NavBar';
-import { merge } from 'lodash';
 const { FETCH_VIDEOS } = Queries;
 
 class VideoIndex extends Component {
@@ -60,12 +59,7 @@ class VideoIndex extends Component {
     this.setState({ pageNumber: newPageNumber });
   }
 
-  updatePageNumber = () =>{
-    // let newPageNumber = this.state.pageNumber + 1
-    // this.setState({pageNumber: newPageNumber})
-    // debugger
-    this.pageNumber += 1
-  }
+ 
 
   onFetchMore = (event) => {
     const { data: { fetchMore } } = this.props;
@@ -73,10 +67,6 @@ class VideoIndex extends Component {
       variables: { criteria: undefined, perPage: this.state.perPage, pageNumber: this.state.pageNumber },
       notifyOnNetworkStatusChange: true,
       updateQuery: (previousResult, { fetchMoreResult, queryVariables }) => {
-        // if (!fetchMoreResult) return previousResult;
-        // return Object.assign({}, previousResult, {
-        //   videos: [...previousResult.videos, ...fetchMoreResult.videos]
-        // });
 
         this.onVideosFetched(fetchMoreResult)
       },
@@ -94,8 +84,6 @@ class VideoIndex extends Component {
         if (loading) return <p>Loading...</p>;
         if (error) return <p>Error</p>;
         this.pageNumber += 1
-          // this.onVideosFetched(data)
-        // debugger
         const videos = this.state.data.videos.map(video => {
           return <div>
             <div>{video.title} </div>
@@ -149,9 +137,6 @@ class VideoIndex extends Component {
   }
 }
 
-// export default VideoIndex;
-// export default withApollo(VideoIndex)
-// export default graphql(FETCH_VIDEOS)(VideoIndex)
 
 export default graphql(FETCH_VIDEOS, {
   options: (props) => { return { variables: { criteria: undefined, perPage: 5, pageNumber: 0 } } }
