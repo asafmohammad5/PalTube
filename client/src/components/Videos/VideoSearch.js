@@ -19,11 +19,7 @@ class VideoSearch extends Component {
     }
 
     this.props.history.listen((location, action) => {
-      // debugger
-      // console.log(this.props.match.params.criteria)
-      // debugger
-      // console.log(window.location.pathname.split('/')[2])
-      //  this.setState({criteria: location.pathname.split('/')[2]})
+  
       this.setState({
         data: { videos: [] }, pageNumber: 0, perPage: 16,
         loading: false, firstLoad: true, documentsFullyLoaded: false,
@@ -136,7 +132,6 @@ class VideoSearch extends Component {
                       onClick={async (e) => {
                         e.preventDefault();
                         this.setState({ loading: true });
-                        // console.log(this.state.criteria)
                         const { data } = await client.query({
                           query: FETCH_VIDEOS,
                           variables: { criteria: this.state.criteria, perPage: this.state.perPage, pageNumber: this.state.pageNumber },
