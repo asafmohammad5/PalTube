@@ -20,7 +20,7 @@ class Favorite extends Component {
 
   handleToggle(e) {
     e.preventDefault();
-    var popup = document.getElementById("myPopup");
+    var popup = document.getElementById("myPopup2");
     if (popup) {
       popup.classList.toggle("show");
     }
@@ -29,8 +29,8 @@ class Favorite extends Component {
   renderFavorite() {
     if (!currentUser() || !currentUser().id) {
       return (
-        <div className="popup" onClick={(e) => this.handleToggle(e)}><i className="fas far fa-heart"></i>
-          <div className="popuptext" id="myPopup"><Link className="like-sign-in" to="/login">Sign in!</Link></div>
+        <div className="popup2" onClick={(e) => this.handleToggle(e)}><i className="fas far fa-heart"></i>
+          <div className="popuptext2" id="myPopup2"><Link className="like-sign-in" to="/login">Sign in!</Link></div>
         </div>
       )
     }

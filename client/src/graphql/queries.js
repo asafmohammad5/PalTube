@@ -73,8 +73,8 @@ export default {
 }
 `,
   FETCH_VIDEOS: gql`
-  query filterVideos($criteria: String){
-  videos(criteria: $criteria){
+  query filterVideos($criteria: String, $perPage: Int!, $pageNumber: Int!){
+  videos(criteria: $criteria, perPage: $perPage, pageNumber: $pageNumber){
       _id
       title
       description

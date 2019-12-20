@@ -55,4 +55,9 @@ class MiniIndex extends Component {
   }
 }
 
-export default graphql(FETCH_VIDEOS)(MiniIndex);
+
+export default graphql(FETCH_VIDEOS, {
+  options: (props) => { return { variables: { criteria: undefined, perPage: 0, pageNumber: 0 } } }
+})(MiniIndex);
+
+// export default graphql(FETCH_VIDEOS)(MiniIndex);

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLList, GraphQLID,
-  GraphQLString, GraphQLNonNull } = graphql;
+  GraphQLString, GraphQLNonNull, GraphQLInt } = graphql;
 
 const UserType = require("./user_type");
 const User = mongoose.model("users");
@@ -29,13 +29,13 @@ const RootQueryType = new GraphQLObjectType({
     },
     videos: {
       type: GraphQLList(VideoType),
-      args: { criteria: { type: GraphQLString } },
+      args: { 
+        criteria: { type: GraphQLString },
+        perPage: { type: GraphQLInt},
+        pageNumber: { type: GraphQLInt}
+      },
       resolve(_, args) {
-        if (args.criteria) {
-          return Video.searchVideos(args.criteria);
-        } else {
-          return Video.find({});
-        }
+        return Video.searchVideos(args.criteria, args.perPage, args.pageNumber);
       }
     },
     video: {
