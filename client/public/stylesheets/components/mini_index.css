@@ -1,0 +1,46 @@
+.mini-container {
+  width: 300px;
+  margin: auto;
+  font-family: sans-serif;
+  line-height: 1.5;
+  margin-left: 5px; 
+}
+
+.mini-vid-player {
+  width: 150px; 
+  height: auto; 
+}
+
+.mini-index-title {
+  font-family: Roboto; 
+  font-size: 16px; 
+}
+
+.mini-video-container {
+  display: flex; 
+  width: 300px;
+  height: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.mini-video-player {
+  width: 150px !important;
+  height: 100px !important;
+}
+
+.mini-video-info {
+  width: 150px;
+  display: block;
+}
+
+.mini-video-title {
+  margin: 5px;
+  padding: 5px;
+  font-size: 10px;
+}
+
+.mini-video-title:hover {
+  transition: 1s;
+  color: #0693D4;
+}
