@@ -53,7 +53,7 @@ class EditComment extends React.Component {
           {(updateComment, { data }) => (
             <div>
               <form onSubmit={e => this.handleSubmit(e, updateComment)}>
-                <textarea
+                <input
                   value={this.state.text}
                   onChange={this.update("text")}
                 />

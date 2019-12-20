@@ -51,6 +51,9 @@ class VideoDetail extends React.Component {
               <div className="commentCreate">
                 <CommentCreate videoId={this.props.data.video._id} />
               </div>
+              {/* <div className="commentIndex">
+                <CommentIndex videoId={this.props.data.video._id} />
+              </div>  */}
         </div>
           <MiniIndex className="mini-index"/>
         </div>
@@ -90,9 +93,7 @@ class VideoDetail extends React.Component {
               <SideBar />
            <section className="detail-main">
               <div className="row">{this.renderVideoDetail()}</div> 
-              
-              {/* <div className="commentIndex"><CommentIndex videoId={this.props.data.video._id} /></div> */} 
-            </section> 
+           </section> 
           </div>
         </div>
       </div>
