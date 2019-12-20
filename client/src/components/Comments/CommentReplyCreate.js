@@ -85,7 +85,7 @@ class CommentReplyCreate extends React.Component {
     const user = currentUser();
 
     if (!user) {
-      return <textarea
+      return <input
         value={this.state.text}
         onChange={this.update("text")}
         placeholder="Must Be Signed In to Comment"
@@ -104,7 +104,7 @@ class CommentReplyCreate extends React.Component {
         {(addReplyComment, { data }) => (
           <div>
             <form onSubmit={e => this.handleSubmit(e, addReplyComment)}>
-              <textarea
+              <input
                 value={this.state.text}
                 onChange={this.update("text")}
                 placeholder={`Commenting publicly as ${currentUser().username}`}
