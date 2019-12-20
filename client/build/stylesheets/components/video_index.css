@@ -1,0 +1,52 @@
+.container {
+  width: 90wh;
+  margin: auto;
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+.flex-grid {
+  display: flex;
+  margin: auto -1rem 1rem;
+}
+
+.main {
+  flex: 3.5;
+  background-color: var(--main-bg-color);
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
+  padding: 1rem;
+  padding-left: 50px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.video-container {
+  width: 320px;
+  height: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.video-player {
+  width: 100% !important;
+  height: 164px !important;
+}
+
+.video-info {
+  display: block;
+}
+
+.video-title {
+  margin: 5px;
+  padding: 5px;
+  font-size: 12px;
+}
+.video-title:hover {
+  text-decoration: underline;
+}

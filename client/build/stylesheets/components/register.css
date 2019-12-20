@@ -1,0 +1,116 @@
+.sign-up-form-page {
+  display: flex; 
+  justify-content: space-between;
+  border: 1px solid lightgray;
+  box-shadow: 2px 4px 3px lightgray; 
+  border-radius: 12px; 
+  height: 550px; 
+  width: 700px;
+  margin: 30px auto; 
+}
+
+.signup-pic-info {
+  color: gray;
+  font-family: Roboto; 
+  text-align: center;
+  margin-top: -45px; 
+}
+
+.sign-up-form {
+  margin: 35px 0px 0px 35px;
+  width: 320px; 
+  display: flex;
+  flex-direction: column; 
+  font-family: Roboto; 
+  font-size: 14px; 
+}
+
+.signup-logo {
+  width: 140px; 
+  height: auto; 
+  margin-bottom: 18px;
+}
+
+.form-title {
+  font-size: 22px; 
+  margin-bottom: 18px; 
+  color: #065FD4;
+}
+
+.signup-pic {
+  width: 260px; 
+  margin-right: 45px;
+  padding-top: 100px; 
+}
+
+.signup-username, .signup-email, .signup-password, .signup-password2 {
+  margin-bottom: 18px; 
+  width: 320px;
+  border: 1px solid lightgray;
+  border-radius: 2px; 
+  padding: 10px;
+}
+
+.signup-username:focus {
+  border: 2px solid #065FD4; 
+  border-radius: 5px; 
+}
+
+.signup-email:focus {
+  border: 2px solid #065FD4; 
+  border-radius: 5px; 
+}
+
+.signup-password:focus {
+  border: 2px solid #065FD4; 
+  border-radius: 5px; 
+}
+
+.signup-password2:focus {
+  border: 2px solid #065FD4; 
+  border-radius: 5px; 
+}
+
+.signup-button {
+  background:#065FD4;
+  border-radius: 4px; 
+  text-align: center; 
+  padding: 10px 20px;
+  color: white; 
+  font-family: Roboto;
+  width: 110px; 
+}
+
+.signup-direct {
+  width: 320px; 
+  display: flex; 
+  justify-content: space-between; 
+}
+
+.link-login {
+  font-family: Roboto; 
+  margin: 10px 0px 0px 0px; 
+  color: red;
+  font-weight: bold; 
+}
+
+.link-login:hover {
+  transition: 1s; 
+  text-decoration: underline; 
+}
+
+.signup-button:hover {
+  transition-duration: 1s; 
+  background:#064ed4; 
+}
+
+.signup-avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 0 auto;
+  border: 0.5px solid lightgray;
+  height: 100px;
+  width: 100px;
+}

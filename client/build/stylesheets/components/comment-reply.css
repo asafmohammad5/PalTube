@@ -1,0 +1,36 @@
+.comment-reply-index {
+  margin-left: 55px;
+}
+
+.comment-index-reply {
+  height: 60px;
+}
+
+.comment-reply-reply {
+   height: 60px;
+}
+
+.comment-index-item-delete {
+  position: relative;
+  left: 800px;
+  bottom: 35px;
+}
+
+.comment-index-item-edit {
+  position: relative;
+  left: 300px;
+  bottom: 50px;
+  width: 400px;
+}
+
+.edit-button {
+  position: relative;
+  left: 20px;
+  bottom: 30px;
+  cursor: pointer;
+}
+
+.deleted-comment {
+  font-style: italic;
+}
+
