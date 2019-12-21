@@ -50,3 +50,12 @@
 .video-title:hover {
   text-decoration: underline;
 }
+
+.video-index-loading-div{
+   background-color: var(--main-bg-color);
+   height: 100vh;
+   width: 100wh;
+   text-align : center;
+   margin: 0 auto;
+  line-height: 100vh;
+}

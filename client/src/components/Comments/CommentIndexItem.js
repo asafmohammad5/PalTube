@@ -43,9 +43,11 @@ if (props.comment.text !== "!(!DELETE!)!" ) {
             <div className="main-comment-text">{props.comment.text}</div>
             {gif}
             <div className="comment-index-reply"><CommentReplyCreate parentId={props.comment._id} videoId={props.videoId}/></div>
+
             <div className="comment-reply-index">
               <CommentReplyIndex commentId={props.comment._id} videoId={props.videoId}/>
             </div>  
+
           </div>
   )
     } else {
