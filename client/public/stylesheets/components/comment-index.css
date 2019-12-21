@@ -34,10 +34,22 @@
   color: #fff;
   padding: 4px;
   position: absolute;
-  left: 110%;
+  left: 140%;
+  top: -18%;
   background-color: var(--hover-text-color);
-  width: 200px; 
+  width: 220px; 
 }
+
+.options-popup .optionstext::after {
+  content: "";
+  position: absolute;
+  top: 1.5%;
+  left: -6.5%;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent var(--hover-text-color) transparent transparent;
+}
+
 
 .options-popup .show {
   visibility: visible;

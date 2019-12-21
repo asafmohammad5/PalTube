@@ -66,6 +66,10 @@
   font-family: Roboto;
 }
 
+.main-comment-year {
+  color: var(--likes-font-color);
+}
+
 .main-comment-name {
   font-size: 13px; 
   font-family: Roboto;
@@ -203,7 +207,7 @@ div > .sc-bwzfXH {
   position: absolute;
   z-index: 1;
   bottom: 125%;
-  left: 4%;
+  left: 53%;
   margin-left: -80px;
 }
 
