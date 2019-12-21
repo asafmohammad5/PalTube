@@ -178,6 +178,52 @@ div > .sc-bwzfXH {
   border-radius: 12.5px;
 }
 
+.gif-popup-reply {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.gif-popup-reply {
+  display: flex; 
+}
+
+.gif-popup-reply .giftext-reply {
+  visibility: hidden;
+  /* width: 160px; */
+  /* background-color: #065fd4;
+  color: #fff; */
+  text-align: center;
+  border-radius: 6px;
+  padding: 4px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 4%;
+  margin-left: -80px;
+}
+
+.gif-popup-reply .giftext-reply::after {
+  content: "";
+  position: absolute;
+  top: 99%;
+  left: 19%;
+  margin-left: -5px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.gif-popup-reply .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
 @-webkit-keyframes fadeIn {
   from {opacity: 0;} 
   to {opacity: 1;}
