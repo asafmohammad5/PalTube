@@ -1,4 +1,70 @@
 .reply-comment {
   margin-top: 8px; 
   display: flex; 
+  flex-direction: column; 
 }
+
+.reply-comment-index {
+  margin: 14px 0px 12px 30px; 
+}
+
+.reply-comment-top {
+  display: flex; 
+  font-family: Roboto; 
+  font-size: 12px; 
+}
+
+.reply-comment-button {
+  cursor: pointer;
+  padding: 2px 10px; 
+  background-color: var(--search-bg-color);
+  color: var(--main-font-color);
+  text-align: center; 
+  border-radius: 4px;
+  font-size: 14px; 
+  font-family: Roboto; 
+  align-self: flex-end;
+  margin-left: 8px;   
+} 
+
+.reply-comment-button:hover {
+  transition: .5s; 
+  color: gray;  
+}
+
+.reply-buttons {
+  display: flex; 
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+
+.reply-comment-create-avatar {
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+}
+
+.reply-comment-name  {
+  margin-left: 10px;
+  margin-top: 4px; 
+}
+
+.reply-comment-year  {
+  margin-left: 10px;
+  margin-top: 4px; 
+  color: var(--likes-font-color);
+}
+
+.reply-comment-text {
+  font-size: 12px;
+  margin: 10px 0px 8px 30px; 
+}
+
+.reply-comment-gif {
+    z-index: 10;
+    height: auto;
+    width: 130px;
+    border-radius: 20px;
+    margin: 10px 0px 0px 30px;
+}
+

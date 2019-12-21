@@ -26,7 +26,7 @@ const CommentIndexItem = props => {
     const gif = props.comment.gif ? <img alt={props.comment.text} className="main-comment-gif" src={props.comment.gif} />: null
 
 if (props.comment.text !== "!(!DELETE!)!" ) {
-    debugger; 
+    
     return (
           <div className="main-comment-index">
            <div className="main-comment-top">
@@ -43,7 +43,11 @@ if (props.comment.text !== "!(!DELETE!)!" ) {
             <div className="main-comment-text">{props.comment.text}</div>
             {gif}
             <div className="comment-index-reply"><CommentReplyCreate parentId={props.comment._id} videoId={props.videoId}/></div>
-             <div className="comment-reply-index"><CommentReplyIndex commentId={props.comment._id} videoId={props.videoId}/></div> 
+
+            <div className="comment-reply-index">
+              <CommentReplyIndex commentId={props.comment._id} videoId={props.videoId}/>
+            </div>  
+
           </div>
   )
     } else {

@@ -20,10 +20,20 @@ class CommentReplyCreate extends React.Component {
   }
 
   handleToggle(e, id) {
+    if (e) {
     e.preventDefault();
+    }
+    var giphy = document.getElementById(id);
+ 
+    if (giphy) {
+      giphy.classList.toggle("show");
+    }
+  }
+
+  handleToggleSubmit(id) {
     var giphy = document.getElementById(id);
 
-    if (giphy) {
+    if (giphy && giphy.classList.contains("show")) {
       giphy.classList.toggle("show");
     }
   }
@@ -58,6 +68,8 @@ class CommentReplyCreate extends React.Component {
           gif: "",
           error: ""
         })
+      }).then(data => {
+        this.handleToggleSubmit(this.props.parentId.concat("options"));
       })
   };
 
@@ -120,15 +132,17 @@ class CommentReplyCreate extends React.Component {
                 className="comment-create-input"
               />
               <div>{error}</div>
-              <button type="submit">Reply</button>
-            </form>
-            <div className="gif-popup-reply">
-              <button className="create-comment-button" onClick={(e) => this.handleToggle(e, commentId)}>Gif</button>
-              <div className="giftext-reply" id={commentId}>
-
-                <Picker id="giphy-picker" apiKey="EeZhW081PZQ2Abce60Y4EQulHVTzcbRA" onSelected={this.updategif.bind(this)} />
+              <div className="reply-buttons">
+              <div className="gif-popup-reply">
+                <button className="create-comment-button" onClick={(e) => this.handleToggle(e, commentId)}>Gif</button>
+                <div className="giftext-reply" id={commentId}>
+                  <Picker id="giphy-picker" apiKey="EeZhW081PZQ2Abce60Y4EQulHVTzcbRA" onSelected={this.updategif.bind(this)} />
+                </div>
               </div>
-            </div>
+              <button className="reply-comment-button" type="submit">Reply</button>
+              </div>
+            </form>
+            
           </div>
         )}
       </Mutation>

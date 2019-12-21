@@ -23,10 +23,20 @@ class CommentCreate extends React.Component {
   }
 
   handleToggle(e) {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
     var giphy = document.getElementById("myGiphy");
 
     if (giphy) {
+      giphy.classList.toggle("show");
+    }
+  }
+
+  handleSubmitToggle() {
+    var giphy = document.getElementById("myGiphy");
+
+    if (giphy && giphy.classList.contains("show")) {
       giphy.classList.toggle("show");
     }
   }
@@ -62,6 +72,10 @@ class CommentCreate extends React.Component {
           error: ""
         })
         
+      }).then(data => {
+        if (gif) {
+          this.handleSubmitToggle()
+        }
       })
   };
 
