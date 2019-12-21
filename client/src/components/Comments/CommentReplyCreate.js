@@ -19,6 +19,15 @@ class CommentReplyCreate extends React.Component {
     }
   }
 
+  handleToggle(e, id) {
+    e.preventDefault();
+    var giphy = document.getElementById(id);
+
+    if (giphy) {
+      giphy.classList.toggle("show");
+    }
+  }
+
   update(field) {
     return e => {
       this.setState({ [field]: e.target.value })
@@ -83,7 +92,7 @@ class CommentReplyCreate extends React.Component {
 
   render() {
     const user = currentUser();
-
+    const commentId = this.props.parentId.concat("options"); 
     if (!user) {
       return <input
         value={this.state.text}
@@ -113,7 +122,13 @@ class CommentReplyCreate extends React.Component {
               <div>{error}</div>
               <button type="submit">Reply</button>
             </form>
-            <div className="giphy-comment"><Picker apiKey="EeZhW081PZQ2Abce60Y4EQulHVTzcbRA" onSelected={this.updategif.bind(this)} /></div>
+            <div className="gif-popup-reply">
+              <button className="create-comment-button" onClick={(e) => this.handleToggle(e, commentId)}>Gif</button>
+              <div className="giftext-reply" id={commentId}>
+
+                <Picker id="giphy-picker" apiKey="EeZhW081PZQ2Abce60Y4EQulHVTzcbRA" onSelected={this.updategif.bind(this)} />
+              </div>
+            </div>
           </div>
         )}
       </Mutation>
