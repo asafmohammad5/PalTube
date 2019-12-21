@@ -31,7 +31,6 @@ class SideBar extends Component {
             <span className="slider"></span>
           </label>
         </div>
-
         <hr />
         <ul>
           <li className="clickable sidebar-section-header">
@@ -74,6 +73,14 @@ class SideBar extends Component {
           <li className="sidebar-item clickable">
             <i className="fas fa-horse">&nbsp;</i>
             <Link to="/search/horse">horses</Link>
+          </li>
+           <li className="sidebar-item clickable">
+            <i style={{'font-size':'16px'}} className="icofont-monkey">&nbsp;</i>
+            <Link to="/search/monkey">funny monkeys</Link>
+          </li>
+           <li className="sidebar-item clickable">
+            <i style={{'font-size':'16px'}} className="icofont-penguin">&nbsp;</i>
+            <Link to="/search/penguin">funny penguins</Link>
           </li>
         </ul>
       </aside>

@@ -134,7 +134,6 @@ VideoSchema.statics.searchVideos = (criteria, perPage, pageNumber) => {
     .then(videos => videos)
   };
   const regCriteria = new RegExp(criteria, 'i');
-  console.log(regCriteria)
   return Video.find({
     "$or": [
       { "keywords": { $regex: regCriteria } },

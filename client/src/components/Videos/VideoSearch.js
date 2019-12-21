@@ -19,11 +19,6 @@ class VideoSearch extends Component {
     }
 
     this.props.history.listen((location, action) => {
-      // debugger
-      // console.log(this.props.match.params.criteria)
-      // debugger
-      // console.log(window.location.pathname.split('/')[2])
-      //  this.setState({criteria: location.pathname.split('/')[2]})
       this.setState({
         data: { videos: [] }, pageNumber: 0, perPage: 16,
         loading: false, firstLoad: true, documentsFullyLoaded: false,
@@ -39,11 +34,7 @@ class VideoSearch extends Component {
   }
   renderSearchResult() {
     if (this.state.loading) {
-      return <div
-        style={{
-          backgroundColor: '#1F1F1F', height: '100vh', width: '100wh', 'textAlign': 'center', margin: '0 auto',
-          'lineHeight': '100vh'
-        }} >loading...</div>
+      return <div className="video-index-loading-div">loading...</div>
     }
     if (Object.values(this.state.data).length === 0) {
       return null
@@ -63,7 +54,6 @@ class VideoSearch extends Component {
             </object>
           </div>
           <div className="video-detail-info-container">
-            {/* <p>{title}</p> */}
             <Link to={`/videos/${_id}`}>
               <p className="clickable">
                 {title}

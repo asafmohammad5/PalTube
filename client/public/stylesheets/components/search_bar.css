@@ -10,7 +10,6 @@
   font-weight: 300;
   font-size: 16px;
   border: 1px solid #aaa;
-  margin-top: -15px; 
 }
 
 .react-autosuggest__input:focus {
@@ -67,5 +66,5 @@
   border: 1px solid var(--search-bg-color); 
   width: 65px;
   text-align: center; 
-  margin: -5px 0px 0px 0px;  
+  margin: 0px 0px 0px 0px;
 }

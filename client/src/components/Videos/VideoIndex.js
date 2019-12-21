@@ -18,11 +18,7 @@ class VideoIndex extends Component {
 
   renderVideos() {
     if (this.state.loading) {
-      return <div
-        style={{
-          backgroundColor: '#1F1F1F', height: '100vh', width: '100wh', 'textAlign': 'center', margin: '0 auto',
-          'lineHeight': '100vh'
-        }} >loading...</div>
+      return <div className="video-index-loading-div">loading...</div>
     }
     if (Object.values(this.state.data).length === 0) {
       return null
