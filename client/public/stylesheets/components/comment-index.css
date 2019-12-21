@@ -31,21 +31,26 @@
 
 .options-popup .optionstext {
   visibility: hidden;
-  /* width: 160px; */
-  /* background-color: #065fd4;
-  color: #fff; */
-  /* text-align: center;
-  border-radius: 6px;
+  color: #fff;
   padding: 4px;
   position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -80px; */
+  left: 110%;
+  background-color: var(--hover-text-color);
+  width: 200px; 
 }
 
 .options-popup .show {
   visibility: visible;
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
+  text-align: center; 
+  border-radius: 2px; 
+}
+
+.edit-text {
+  color: black; 
+}
+.edit-form {
+  display: flex; 
+  flex-direction: column; 
 }

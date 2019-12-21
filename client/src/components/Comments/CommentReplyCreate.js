@@ -103,16 +103,17 @@ class CommentReplyCreate extends React.Component {
       >
         {(addReplyComment, { data }) => (
           <div>
-            <form onSubmit={e => this.handleSubmit(e, addReplyComment)}>
+            <form className="reply-comment" onSubmit={e => this.handleSubmit(e, addReplyComment)}>
               <input
                 value={this.state.text}
                 onChange={this.update("text")}
-                placeholder={`Commenting publicly as ${currentUser().username}`}
+                placeholder={`${currentUser().username} leave your reply, be nice :)`}
+                className="comment-create-input"
               />
               <div>{error}</div>
               <button type="submit">Reply</button>
             </form>
-            <div className="giphy-comment"> <Picker apiKey="EeZhW081PZQ2Abce60Y4EQulHVTzcbRA" onSelected={this.updategif.bind(this)} /></div>
+            <div className="giphy-comment"><Picker apiKey="EeZhW081PZQ2Abce60Y4EQulHVTzcbRA" onSelected={this.updategif.bind(this)} /></div>
           </div>
         )}
       </Mutation>
