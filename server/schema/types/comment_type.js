@@ -22,9 +22,8 @@ const CommentType = new GraphQLObjectType({
       type: new GraphQLList(CommentType),
       resolve(parentValue) {
         return Comment.findById(parentValue.id)
-          .sort({date: -1})
           .populate("replies")
-          .then(comment => comment.replies);
+          .then(comment => comment.replies.sort((a, b) => b.date - a.date));
       }
     }
   })
