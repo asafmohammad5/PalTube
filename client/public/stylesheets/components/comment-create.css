@@ -5,13 +5,22 @@
 
 .video-comments {
   font-family: Roboto; 
-  margin: 10px; 
+  margin: 25px 0px 25px 0px; 
 }
 
 .create-form-1 {
   display: flex;
 }
 
+.main-comment-index {
+  margin-top: 18px; 
+  padding-bottom: 8px; 
+}
+
+.main-comment-index:hover {
+  transition: .25s; 
+  background-color: var(--secondary-bg-color); 
+}
 
 .comment-create-input {
   width: 98%;
@@ -53,23 +62,29 @@
 
 .main-comment-top {
   display: flex;
-  margin-top: 20px;
+  font-size: 13px; 
+  font-family: Roboto;
 }
 
 .main-comment-name {
-  font-weight: bold;
+  font-size: 13px; 
   font-family: Roboto;
   margin-right: 10px;
+  margin-left: 10px; 
 }
 
 .main-comment-text {
+  font-size: 13px; 
   margin-top: 3px;
+  margin-left: 35px;
 }
 
 .main-comment-gif {
-  z-index: 10;
-  height: 200px;
-  width: 200px;
+    z-index: 10;
+    height: auto;
+    width: 150px;
+    border-radius: 20px;
+    margin: 10px 0px 0px 30px;
 }
 
 .gif-popup {

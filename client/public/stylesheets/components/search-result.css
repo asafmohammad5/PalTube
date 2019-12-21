@@ -1,6 +1,7 @@
 .search-results-container {
   display: flex;
   height: 200px;
+  margin-right: 200px;
 }
 
 .video-detail-container {

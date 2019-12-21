@@ -63,7 +63,6 @@
 }
 
 .search-icon{
-  z-index: 20;
   height: 28px;
   border: 1px solid var(--search-bg-color); 
   width: 65px;

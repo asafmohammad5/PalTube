@@ -52,8 +52,10 @@ class EditComment extends React.Component {
         >
           {(updateComment, { data }) => (
             <div>
-              <form onSubmit={e => this.handleSubmit(e, updateComment)}>
+              <form className="edit-form" onSubmit={e => this.handleSubmit(e, updateComment)}>
                 <input
+                  className="edit-text"
+
                   value={this.state.text}
                   onChange={this.update("text")}
                 />
