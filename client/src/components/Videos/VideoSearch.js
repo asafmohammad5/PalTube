@@ -126,7 +126,6 @@ class VideoSearch extends Component {
                       onClick={async (e) => {
                         e.preventDefault();
                         this.setState({ loading: true });
-                        // console.log(this.state.criteria)
                         const { data } = await client.query({
                           query: FETCH_VIDEOS,
                           variables: { criteria: this.state.criteria, perPage: this.state.perPage, pageNumber: this.state.pageNumber },

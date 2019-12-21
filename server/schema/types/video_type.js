@@ -35,7 +35,7 @@ const VideoType = new GraphQLObjectType({
       resolve(parentValue) {
         return Video.findById(parentValue.id)
           .populate("comments")
-          .then(video => video.comments);
+          .then(video => video.comments.sort((a, b) => parseFloat(a.date) - parseFloat(b.date)));
       }
     }, 
     favoriteBy: {
