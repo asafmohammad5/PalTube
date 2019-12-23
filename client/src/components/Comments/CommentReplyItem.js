@@ -27,7 +27,7 @@ const CommentReplyItem = props => {
             </div>
               <div className="reply-comment-text">{props.comment.text}</div>
               {gif}
-            {/* <div className="comment-reply-reply"><ReplyCommentCreate videoId={props.videoId} parentId={props.parentId} user={props.comment.author.username}/></div> */}
+            <div className="comment-reply-reply"><ReplyCommentCreate videoId={props.videoId} parentId={props.parentId} user={props.comment.author.username}/></div>
             {/* <div className="comment-index-item-delete"><CommentDelete commentId={props.comment._id} videoId={props.videoId} user={props.comment.author.username}/></div> */}
             {/* <div className="comment-index-item-edit"><EditComment videoId={props.videoId} comment={props.comment} /></div> */}
            </div>
