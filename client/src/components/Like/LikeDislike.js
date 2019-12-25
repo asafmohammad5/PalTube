@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Queries from '../../graphql/queries';
 import { graphql } from 'react-apollo';
@@ -216,7 +216,6 @@ class LikeDislike extends React.Component {
 
     let liked;
     for (let i = 0; i < likes.length; i++) {
-      const el = likes[i];
       if (likes[i]._id === this.state.currentUser.id) {
         liked = true;
         break;
@@ -227,7 +226,6 @@ class LikeDislike extends React.Component {
     }
     let disliked;
     for (let i = 0; i < dislikes.length; i++) {
-      const el = dislikes[i];
       if (dislikes[i]._id === this.state.currentUser.id) {
         disliked = true;
         break;

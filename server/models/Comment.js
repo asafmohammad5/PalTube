@@ -23,6 +23,10 @@ const CommentSchema = new Schema({
   gif: {
     type: String,
     required: false
+  },
+  replyTo: {
+    type: String,
+    required: false
   }
 });
 
@@ -38,6 +42,20 @@ CommentSchema.statics.addReplyComment = (parentCommentId, text, author, gif) => 
       .then(([child, comment]) => child).catch(err => err.message)
   })
 }
+
+CommentSchema.statics.replyReplyComment = (parentCommentId, text, author, gif, replyTo) => {
+  const Comment = mongoose.model("comments");
+
+  return Comment.findById({
+    _id: parentCommentId
+  }).then(comment => {
+    const child = new Comment({ text, author, gif, replyTo })
+    comment.replies.push(child);
+    return Promise.all([child.save(), comment.save()])
+      .then(([child, comment]) => child).catch(err => err.message)
+  })
+}
+
 
 CommentSchema.statics.addVideoComment = async (videoId, text, author, gif) => {
   const Video = mongoose.model("videos");

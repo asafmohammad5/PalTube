@@ -5,9 +5,6 @@ import { changeTheme, getCurrentTheme } from '../../util/util'
 
 class MiniSideBar extends Component {
 
-  constructor(props) {
-    super(props)
-  }
   componentDidMount() {
     document.getElementById("chkTheme").checked = getCurrentTheme() === 'dark';
   }

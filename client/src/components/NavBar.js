@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Nav from "./Nav";
 import SearchBar from './ui/SearchBar';
-import { initializeTheme, getCurrentTheme } from '../util/util';
+import { initializeTheme } from '../util/util';
 
 
 class NavBar extends Component {

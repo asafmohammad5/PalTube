@@ -6,6 +6,23 @@ export default {
       isLoggedIn @client
     }
   `,
+  FETCH_USER: gql`
+  query FetchUser($id: ID!) {
+    user(_id: $id) {
+      _id
+      username
+      image
+      date
+      email
+      favoriteVideos {
+        _id, title, url, description
+      }
+      videos_liked {
+        _id, title, url, description
+      }
+    }
+  }
+  `,
   FETCH_VIDEO: gql`
   query queryVideo($id:ID!){
   video(_id:$id){
@@ -35,7 +52,9 @@ export default {
         text
         date
         gif
+        replyTo
         author {
+          _id
           username
           image
         }
@@ -64,6 +83,7 @@ export default {
       text
       date
       gif
+      replyTo
       author {
         username
         image
