@@ -19,6 +19,25 @@ class ReplyCommentCreate extends React.Component {
     }
   }
 
+  handleToggle(e, id) {
+    if (e) {
+      e.preventDefault();
+    }
+    var giphy = document.getElementById(id);
+
+    if (giphy) {
+      giphy.classList.toggle("show");
+    }
+  }
+
+  handleToggleSubmit(id) {
+    var giphy = document.getElementById(id);
+
+    if (giphy && giphy.classList.contains("show")) {
+      giphy.classList.toggle("show");
+    }
+  }
+
   update(field) {
     return e => {
       this.setState({ [field]: e.target.value })
@@ -52,6 +71,8 @@ class ReplyCommentCreate extends React.Component {
           gif: "",
           error: ""
         })
+      }).then(data => {
+        this.handleToggleSubmit(this.props.parentId.concat("replyoptions"));
       })
   };
 
@@ -86,6 +107,7 @@ class ReplyCommentCreate extends React.Component {
 
   render() {
     const user = currentUser();
+    const commentId = this.props.parentId.concat("replyoptions");
     if (!user) {
       return <input
         value={this.state.text}
@@ -112,11 +134,20 @@ class ReplyCommentCreate extends React.Component {
                 value={this.state.text}
                 onChange={this.update("text")}
                 placeholder={"@" + this.props.user}
+                className="comment-create-input"
               />
               <div>{error}</div>
-              <button type="submit">Reply</button>
+              <div className="reply-buttons">
+              <div className="gif-popup-reply">
+                <button className="create-comment-button" onClick={(e) => this.handleToggle(e, commentId)}>Gif</button>
+                <div className="giftext-reply" id={commentId}>
+                  <Picker id="giphy-picker" apiKey="EeZhW081PZQ2Abce60Y4EQulHVTzcbRA" onSelected={this.updategif.bind(this)} />
+                </div>
+              </div>
+              <button className="reply-comment-button" type="submit">Reply</button>
+              </div>
             </form>
-            <div className="giphy-reply"> <Picker apiKey="EeZhW081PZQ2Abce60Y4EQulHVTzcbRA" onSelected={this.updategif.bind(this)} /></div>
+           
           </div>
         )}
       </Mutation>

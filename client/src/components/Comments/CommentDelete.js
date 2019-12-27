@@ -39,7 +39,7 @@ class CommentDelete extends React.Component {
       >
         {(deleteComment, { data }) => (
           <div>
-            <form onSubmit={e => this.handleSubmit(e, deleteComment)}>
+            <form className="delete-button" onSubmit={e => this.handleSubmit(e, deleteComment)}>
               <button type="submit">Delete</button>
             </form>
           </div>
