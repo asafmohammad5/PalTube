@@ -6,7 +6,7 @@
 
 .edit-button {
   color: var(--main-font-color);
-  margin-right: 10px;
+  margin-right: 3px;
 }
 
 .edit-button:hover {
@@ -14,6 +14,23 @@
   color: var(--hover-text-color);
   cursor: pointer; 
 }
+
+.delete-button:hover {
+  transition: .5s; 
+  color: var(--hover-text-color);
+  cursor: pointer; 
+}
+
+.edit-button-font {
+  margin-right: 12px; 
+}
+
+.edit-button-font:hover {
+  transition: .5s; 
+  color: var(--hover-text-color);
+  cursor: pointer; 
+}
+
 
 .options-popup {
   position: relative;
@@ -36,7 +53,7 @@
   position: absolute;
   left: 140%;
   top: -18%;
-  background-color: var(--hover-text-color);
+  background-color: var(--secondary-bg-color);
   width: 220px; 
 }
 
@@ -47,7 +64,7 @@
   left: -6.5%;
   border-width: 8px;
   border-style: solid;
-  border-color: transparent var(--hover-text-color) transparent transparent;
+  border-color: transparent var(--secondary-bg-color) transparent transparent;
 }
 
 
@@ -56,11 +73,14 @@
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
   text-align: center; 
-  border-radius: 2px; 
+  border-radius: 4px; 
 }
 
 .edit-text {
-  color: black; 
+  border: 1px solid black; 
+  color: var(--main-bg-color); 
+  background: var(--main-font-color); 
+  border-radius: 4px; 
 }
 .edit-form {
   display: flex; 

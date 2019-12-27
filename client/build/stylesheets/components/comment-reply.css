@@ -23,12 +23,6 @@
   width: 400px;
 }
 
-.edit-button {
-  position: relative;
-  left: 20px;
-  bottom: 30px;
-  cursor: pointer;
-}
 
 .deleted-comment {
   font-style: italic;

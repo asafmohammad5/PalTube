@@ -33,6 +33,7 @@ const CommentReplyItem = props => {
             <div className="comment-reply-reply"><ReplyCommentCreate videoId={props.videoId} parentId={props.parentId} replyTo={props.comment.author._id} user={props.comment.author.username}/></div> 
             <div className="comment-index-item-delete"><CommentDelete commentId={props.comment._id} videoId={props.videoId} user={props.comment.author.username}/></div> 
             <div className="comment-index-item-edit"><EditComment videoId={props.videoId} comment={props.comment} /></div> 
+
            </div>
         )
 }

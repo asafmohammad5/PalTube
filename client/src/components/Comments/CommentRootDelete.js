@@ -52,7 +52,7 @@ class CommentRootDelete extends React.Component {
           {(updateComment, { data }) => (
             <div>
               <form onSubmit={e => this.handleSubmit(e, updateComment)}>
-                <button type="submit">Delete</button>
+                <button className="delete-button" type="submit">Delete</button>
               </form>
             </div>
           )}
@@ -73,7 +73,7 @@ class CommentRootDelete extends React.Component {
           {(deleteComment, { data }) => (
             <div>
               <form onSubmit={e => this.handleSubmit2(e, deleteComment)}>
-                <button type="submit">Delete</button>
+                <button className="delete-button" type="submit">Delete</button>
               </form>
             </div>
           )}
