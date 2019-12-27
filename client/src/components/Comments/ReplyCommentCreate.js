@@ -5,7 +5,7 @@ import Queries from '../../graphql/queries';
 import { currentUser } from "../../util/util";
 import Picker from 'react-giphy-component';
 
-const { REPLY_COMMENT } = Mutations;
+const { REPLY_REPLY_COMMENT } = Mutations;
 const { FETCH_VIDEO } = Queries;
 
 class ReplyCommentCreate extends React.Component {
@@ -13,7 +13,7 @@ class ReplyCommentCreate extends React.Component {
     super(props)
 
     this.state = {
-      text: "@" + this.props.user,
+      text: "",
       gif: "",
       error: ""
     }
@@ -25,34 +25,37 @@ class ReplyCommentCreate extends React.Component {
     }
   }
 
-  handleSubmit(e, addReplyComment) {
+  handleSubmit(e, replyReplyComment) {
     e.preventDefault();
-    let text = this.state.text;
-    let gif = this.state.gif
-
-    if (this.state.text === "@" + this.props.user) {
-      this.setState({ error: "cannot be empty"})
+    if (this.state.text === "") {
+      this.setState({ error: "cannot be empty" })
       return
     }
 
-    addReplyComment({
+    let text = this.state.text;
+    let gif = this.state.gif
+    let text1; 
+    text1 = this.props.user + " " + text
+
+    replyReplyComment({
       variables: {
-        text: text,
+        text: text1,
         author: currentUser().id,
         parentCommentId: this.props.parentId,
-        gif: gif
+        gif: gif,
+        replyTo: this.props.replyTo
       }
     })
       .then(data => {
         this.setState({
-          text: "@" + this.props.user,
+          text: "",
           gif: "",
           error: ""
         })
       })
   };
 
-  updateCache(cache, { data: { addReplyComment } }) {
+  updateCache(cache, { data: { replyReplyComment } }) {
     let video;
     try {
       video = cache.readQuery({ query: FETCH_VIDEO, variables: { id: this.props.videoId } });
@@ -65,7 +68,7 @@ class ReplyCommentCreate extends React.Component {
       let commentsArray = video.comments;
       for (let i = 0; i < commentsArray.length; i++) {
         if (this.props.parentId === commentsArray[i]._id) {
-          commentsArray[i].replies.push(addReplyComment)
+          commentsArray[i].replies.push(replyReplyComment)
         }
 
       }
@@ -99,16 +102,16 @@ class ReplyCommentCreate extends React.Component {
     return (
       <Mutation
         onError={error => { this.setState({ error: error.message }) }}
-        mutation={REPLY_COMMENT}
+        mutation={REPLY_REPLY_COMMENT}
         update={(cache, data) => this.updateCache(cache, data)}
       >
-        {(addReplyComment, { data }) => (
+        {(replyReplyComment, { data }) => (
           <div>
-            <form onSubmit={e => this.handleSubmit(e, addReplyComment)}>
+            <form className="reply-reply-create" onSubmit={e => this.handleSubmit(e, replyReplyComment)}>
               <input
                 value={this.state.text}
                 onChange={this.update("text")}
-                placeholder={`Commenting publicly as ${currentUser().username}`}
+                placeholder={"@" + this.props.user}
               />
               <div>{error}</div>
               <button type="submit">Reply</button>

@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { currentUser } from '../../util/util'
 import { Link } from 'react-router-dom'
-import { changeTheme, getCurrentTheme } from '../../util/util'
+import { changeTheme, getCurrentTheme } from '../../util/util';
+
 
 class SideBar extends Component {
 
-  constructor(props) {
-    super(props)
-  }
   componentDidMount() {
     document.getElementById("chkTheme").checked = getCurrentTheme() === 'dark';
   }
@@ -19,6 +17,17 @@ class SideBar extends Component {
   }
 
   render() {
+    let profile;
+    if (currentUser()) {
+      profile = <li className="clickable sidebar-section-header">
+         <Link to={`/profile/${currentUser().id}`}>
+          <i className="far fa-user">&nbsp;</i>
+          <span className="">Profile</span>
+          </Link>
+        </li>
+    } else {
+      profile = null;
+    }
     let profileSrc = currentUser() ? currentUser().image : "/stylesheets/images/default_avatar_2.png";
     let username = currentUser() ? currentUser().username : "guest";
     return (
@@ -39,6 +48,7 @@ class SideBar extends Component {
               <span className="">Home</span>
             </Link>
           </li>
+          {profile}
           {currentUser() &&
             <>
               <li className="clickable sidebar-section-header">
@@ -64,23 +74,23 @@ class SideBar extends Component {
           </li>
           <li className="sidebar-item clickable">
             <i className="fas fa-child">&nbsp;</i>
-            <Link to="/search/kids">kids</Link>
+            <Link to="/search/kids">Funny kids</Link>
           </li>
           <li className="sidebar-item clickable">
             <i className="fas fa-dove">&nbsp;</i>
-            <Link to="/search/birds">birds</Link>
+            <Link to="/search/birds">Funny birds</Link>
           </li>
           <li className="sidebar-item clickable">
             <i className="fas fa-horse">&nbsp;</i>
-            <Link to="/search/horse">horses</Link>
+            <Link to="/search/horse">Funny horses</Link>
           </li>
            <li className="sidebar-item clickable">
             <i style={{'font-size':'16px'}} className="icofont-monkey">&nbsp;</i>
-            <Link to="/search/monkey">funny monkeys</Link>
+            <Link to="/search/monkey">Funny monkeys</Link>
           </li>
            <li className="sidebar-item clickable">
             <i style={{'font-size':'16px'}} className="icofont-penguin">&nbsp;</i>
-            <Link to="/search/penguin">funny penguins</Link>
+            <Link to="/search/penguin">Funny penguins</Link>
           </li>
         </ul>
       </aside>

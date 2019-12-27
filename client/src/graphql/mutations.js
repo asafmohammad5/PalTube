@@ -55,6 +55,7 @@ export default {
         _id
         text
         author {
+          _id
           username
           image
         }
@@ -63,6 +64,25 @@ export default {
         }
         date
         gif
+      }
+    }
+  `,
+  REPLY_REPLY_COMMENT: gql`
+    mutation ReplyComment($text: String!, $author: ID!, $parentCommentId: ID!, $gif: String!, $replyTo: String!) {
+      replyReplyComment(text: $text, author: $author, parentCommentId: $parentCommentId, gif: $gif, replyTo: $replyTo) {
+        _id
+        text
+        author {
+          _id
+          username
+          image
+        }
+        replies {
+          _id  
+        }
+        date
+        gif
+        replyTo
       }
     }
   `,
@@ -80,12 +100,14 @@ export default {
       text
       date
       author {
+        _id
         username
         image
       }
       replies {
         _id
        }
+      replyTo
     }
   }
 `,

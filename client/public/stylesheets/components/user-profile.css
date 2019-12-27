@@ -1,0 +1,26 @@
+.user-profile {
+  position: absolute;
+  left: 360px;
+  height: 740px;
+  width: 700px;
+  margin-top: 10px;
+  box-shadow: 4px 2px 24px 4px lightgrey;
+  text-align: center;
+ 
+}
+
+.user-profile-image {
+  margin: auto;
+  margin-top: 15px;
+  height: 230px;
+  width: 230px;
+  border-radius: 113px;
+}
+
+.user-profile-name {
+  margin-top: 12px;
+}
+
+.user-profile-email {
+  margin-top: 10px;
+}

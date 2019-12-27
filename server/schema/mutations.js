@@ -67,6 +67,19 @@ const mutation = new GraphQLObjectType({
         return Comment.addReplyComment(parentCommentId, text, author, gif)
       }
     },
+    replyReplyComment: {
+      type: CommentType,
+      args: {
+        text: { type: new GraphQLNonNull(GraphQLString) },
+        author: { type: new GraphQLNonNull(GraphQLID) },
+        parentCommentId: { type: new GraphQLNonNull(GraphQLID) },
+        replyTo: { type: GraphQLString },
+        gif: { type: GraphQLString }
+      },
+      resolve(_, { text, author, parentCommentId, gif, replyTo }) {
+        return Comment.replyReplyComment(parentCommentId, text, author, gif, replyTo)
+      }
+    },
     deleteComment: {
       type: CommentType,
       args: { 

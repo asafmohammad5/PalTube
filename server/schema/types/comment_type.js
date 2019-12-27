@@ -9,6 +9,7 @@ const CommentType = new GraphQLObjectType({
     text: { type: new GraphQLNonNull(GraphQLString) },
     date: { type: GraphQLString },
     gif: { type: GraphQLString },
+    replyTo: { type: GraphQLString },
     author: { 
       type: require("./user_type"),
       resolve(parentValue) {
@@ -23,7 +24,7 @@ const CommentType = new GraphQLObjectType({
       resolve(parentValue) {
         return Comment.findById(parentValue.id)
           .populate("replies")
-          .then(comment => comment.replies.sort((a, b) => b.date - a.date));
+          .then(comment => comment.replies);
       }
     }
   })
