@@ -16,10 +16,16 @@ class CommentIndex extends React.Component {
         if (error) return <p>Error</p>;
       
        const comments = data.video.comments.map((comment) => { 
+        
          return <div>
                   <CommentIndexItem comment={comment} videoId={this.props.videoId}/> 
                </div>
           })
+      // let comments = [];
+      //  for (let i = data.video.comments.length - 1; i >= 0; i--) {
+      //    let comment = data.video.comments[i];
+      //    comments.push(<div><CommentIndexItem comment={comment} videoId={this.props.videoId} /></div>)
+      // }
     return <div className="comment-index">
               {comments}
            </div>
