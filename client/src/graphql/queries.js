@@ -44,6 +44,7 @@ export default {
       date
       gif
       author {
+        _id
         username
         image
       }
