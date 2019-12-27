@@ -38,6 +38,7 @@ export default {
         _id
         text
         author {
+          _id
           username
           image
         }
@@ -59,6 +60,7 @@ export default {
           username
           image
         }
+        replyTo
         replies {
           _id  
         }
