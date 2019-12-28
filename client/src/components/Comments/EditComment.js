@@ -24,7 +24,7 @@ class EditComment extends React.Component {
 
   handleSubmit(e, updateComment) {
     e.preventDefault();
-    debugger;
+
     updateComment({
       variables: {
         id: this.props.comment._id,

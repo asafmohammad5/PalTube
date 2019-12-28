@@ -8,6 +8,12 @@ const { FETCH_VIDEO } = Queries;
 const { UPDATE_COMMENT, DELETE_COMMENT } = Mutations;
 
 class CommentRootDelete extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.handleSubmitToggle = this.handleSubmitToggle.bind(this)
+  }
+
  
   handleSubmit(e, updateComment) {
     e.preventDefault();
@@ -20,6 +26,15 @@ class CommentRootDelete extends React.Component {
     }) 
   }
 
+  handleSubmitToggle(optionsName) {
+    var options = document.getElementById(optionsName);
+
+    if (options && options.classList.contains("show")) {
+      options.classList.toggle("show");
+    }
+  }
+
+
   handleSubmit2(e, deleteComment) {
     e.preventDefault();
 
@@ -27,10 +42,9 @@ class CommentRootDelete extends React.Component {
       variables: {
         id: this.props.commentId
       }
-    })
+    }).then(() => this.handleSubmitToggle(`${this.props.commentId}`))
   }
-
-
+  
 
   render() {
     const user = currentUser();
