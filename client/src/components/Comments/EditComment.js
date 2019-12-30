@@ -17,6 +17,7 @@ class EditComment extends React.Component {
   }
 
   update(field) {
+    debugger; 
     return e => {
       this.setState({ [field]: e.target.value })
     }
@@ -24,7 +25,7 @@ class EditComment extends React.Component {
 
   handleSubmit(e, updateComment) {
     e.preventDefault();
-    debugger;
+   
     updateComment({
       variables: {
         id: this.props.comment._id,

@@ -106,11 +106,8 @@ class CommentReplyCreate extends React.Component {
     const user = currentUser();
     const commentId = this.props.parentId.concat("options"); 
     if (!user) {
-      return <input
-        value={this.state.text}
-        onChange={this.update("text")}
-        placeholder="Must Be Signed In to Comment"
-      />}
+      return <div></div>
+    }
       else {
       let error;
       if (this.state.error === "GraphQL error: Cannot return null for non-nullable field CommentType.text.") {

@@ -8,7 +8,7 @@ import { currentUser } from '../../util/util';
 
 const handleToggle = (e, commentName) => {
   e.preventDefault();
- 
+
   let commentOptions = document.getElementById(commentName);
 
   if (commentOptions) {
@@ -56,7 +56,9 @@ if (props.comment.text !== "!(!DELETE!)!" ) {
            </div>
             <div className="main-comment-text">{props.comment.text}</div>
             {gif}
-            <div className="comment-index-reply"><CommentReplyCreate parentId={props.comment._id} videoId={props.videoId}/></div>
+            <div className="comment-index-reply">
+              <CommentReplyCreate parentId={props.comment._id} videoId={props.videoId}/>
+            </div>
 
             <div className="comment-reply-index">
               <CommentReplyIndex commentId={props.comment._id} videoId={props.videoId}/>
