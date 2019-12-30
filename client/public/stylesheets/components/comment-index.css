@@ -48,7 +48,7 @@
 
 .options-popup .optionstext {
   visibility: hidden;
-  color: #fff;
+  color: var(--main-font-color);
   padding: 4px;
   position: absolute;
   left: 140%;

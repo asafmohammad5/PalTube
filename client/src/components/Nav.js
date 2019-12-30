@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { currentUser } from '../util/util'
 import { Query, ApolloConsumer } from "react-apollo";
 import Queries from "../graphql/queries";
+
 const { IS_LOGGED_IN } = Queries;
 
 const handleToggle = (e) => {
@@ -15,6 +16,11 @@ const handleToggle = (e) => {
 }
 
 const Nav = props => {
+  let profilePath = "/";
+  const user = currentUser();
+  if (user) {
+    profilePath = "profile/".concat(user.id);
+  }
   return (
     <ApolloConsumer>
       {client => (
@@ -33,7 +39,10 @@ const Nav = props => {
                       <p className="nav-popup-email">{profileEmail}</p>
                     </div>
                     <div className="logout-likes">
-                      <Link to="/videos/likes"><i className="fas fa-thumbs-up sign-out-icon"></i>My Likes</Link> 
+                      <Link to={profilePath}><i className="fas fa-user sign-out-icon"></i>My Profile</Link> 
+                    </div>
+                    <div className="logout-likes">
+                      <Link to="/videos/likes"><i className="fas fa-thumbs-up sign-out-icon"></i>My Likes</Link>
                     </div>
                     <button
                       className="logout-button"
