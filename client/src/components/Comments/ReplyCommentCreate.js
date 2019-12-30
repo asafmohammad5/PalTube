@@ -109,11 +109,7 @@ class ReplyCommentCreate extends React.Component {
     const user = currentUser();
     const commentId = this.props.parentId.concat("replyoptions");
     if (!user) {
-      return <input
-        value={this.state.text}
-        onChange={this.update("text")}
-        placeholder="Must Be Signed In to Comment"
-      />
+      return <div></div>
     } 
     else {
     if (currentUser().username !== this.props.user) {
