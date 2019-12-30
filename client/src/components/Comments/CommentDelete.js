@@ -8,16 +8,29 @@ const { FETCH_VIDEO } = Queries;
 const { DELETE_COMMENT } = Mutations;
 
 class CommentDelete extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.handleSubmitToggle = this.handleSubmitToggle.bind(this)
+  }
   
   handleSubmit(e, deleteComment) {
     e.preventDefault();
-
     deleteComment({
       variables: {
       id: this.props.commentId
       }
-    })
+    }).then(() => this.handleSubmitToggle(`${this.props.commentId}`))
   }
+
+  handleSubmitToggle(optionsName) {
+    var options = document.getElementById(optionsName);
+
+    if (options && options.classList.contains("show")) {
+      options.classList.toggle("show");
+    }
+  }
+
 
  
   render() {
