@@ -115,7 +115,6 @@ input:checked+.slider:before {
 .sidebar-username{
 margin-top: 7px;
 margin-bottom: 5px;
-font-family: Roboto; 
 }
 
 .sidebar-user-info{
@@ -137,9 +136,7 @@ font-family: Roboto;
   padding-bottom: 5px;
   font-size: 0.9rem;
   text-transform: lowercase;
-  font-family: Roboto; 
 }
-
 .clickable:hover{
   color: var(--hover-text-color);
   cursor: pointer;

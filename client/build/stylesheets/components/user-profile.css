@@ -1,0 +1,54 @@
+.user-profile {
+  position: absolute;
+  left: 360px;
+  height: 740px;
+  width: 700px;
+  margin-top: 10px;
+  box-shadow: 4px 2px 24px 4px lightgrey;
+  text-align: center;
+}
+
+.user-profile-image {
+  margin: auto;
+  margin-top: 15px;
+  height: 230px;
+  width: 230px;
+  border-radius: 113px;
+ 
+}
+
+.user-profile-name {
+  margin-top: 20px;
+  font-family: Roboto; 
+}
+
+.user-profile-email {
+  margin-top: 20px;
+  font-family: Roboto; 
+}
+
+.user-profile-date {
+  margin-top: 22px;
+  font-family: Roboto; 
+  margin-bottom: 40px;
+}
+
+.video-container-1 {
+  width: 320px;
+  height: auto;
+  margin: auto;
+  font-family: Roboto; 
+}
+
+.video-player-1 {
+  width: 100%;
+  height: 164px;
+  margin-top: 10px;
+}
+
+.user-profile-novideo {
+  margin-top: 10px;
+  font-size: 160px;
+  color: rgb(158, 124, 124);
+}
+
