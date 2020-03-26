@@ -15,8 +15,8 @@ const token = localStorage.getItem("auth-token");
 const cache = new InMemoryCache({ dataIdFromObject: object => object._id || null});
 
 const httpLink = createHttpLink({
-  // credentials: 'same-origin'
-  uri: "http://localhost:5000/graphql" 
+  credentials: 'same-origin'
+  // uri: "http://localhost:5000/graphql" 
 });
 
 
