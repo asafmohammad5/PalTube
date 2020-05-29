@@ -44,3 +44,5 @@ PalTube will use YouTube pet videos as seed data. The content will be dynamic an
 # Sample Pictures
 
 ![GitHub Logo](/client/public/stylesheets/images/paltube-main.png)
+
+![GitHub Logo](/client/public/stylesheets/images/paltube-search.png)
