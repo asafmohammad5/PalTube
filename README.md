@@ -38,4 +38,61 @@ PalTube will use YouTube pet videos as seed data. The content will be dynamic an
 * YouTube API
 * Giphy API
 
+# Sample Code
 
+
+
+```
+  VIDEO_COMMENT: gql`
+    mutation VideoComment($text: String!, $author: ID!, $videoId: ID!, $gif: String!) {
+      addVideoComment(text: $text, author: $author, videoId: $videoId, gif: $gif) {
+        _id
+        text
+        author {
+          _id
+          username
+          image
+        }
+        replies {
+          _id  
+        }
+        date
+        gif
+      }
+    }
+  `
+```
+-------------
+```
+addVideoComment: {
+      type: CommentType,
+      args: {
+        text: { type: new GraphQLNonNull(GraphQLString) },
+        author: { type: new GraphQLNonNull(GraphQLID) },
+        videoId: { type: new GraphQLNonNull(GraphQLID) },
+        gif: { type: GraphQLString }
+      },
+      resolve(_, { text, author, videoId, gif }) {
+        return Comment.addVideoComment(videoId, text, author, gif)
+      }
+    },
+    addReplyComment: {
+      type: CommentType,
+      args: {
+        text: { type: new GraphQLNonNull(GraphQLString) },
+        author: { type: new GraphQLNonNull(GraphQLID) },
+        parentCommentId: { type: new GraphQLNonNull(GraphQLID) },
+        gif: { type: GraphQLString }
+      },
+      resolve(_, { text, author, parentCommentId, gif }) {
+        return Comment.addReplyComment(parentCommentId, text, author, gif)
+      }
+    }
+```
+
+
+# Sample Pictures
+
+![GitHub Logo](/client/public/stylesheets/images/paltube-main.png)
+
+![GitHub Logo](/client/public/stylesheets/images/paltube-search.png)
