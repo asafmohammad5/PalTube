@@ -40,6 +40,8 @@ PalTube will use YouTube pet videos as seed data. The content will be dynamic an
 
 # Sample Code
 
+### Mutation:
+
 ```
   VIDEO_COMMENT: gql`
     mutation VideoComment($text: String!, $author: ID!, $videoId: ID!, $gif: String!) {
