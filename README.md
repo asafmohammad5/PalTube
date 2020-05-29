@@ -95,4 +95,4 @@ addVideoComment: {
 
 ![GitHub Logo](/client/public/stylesheets/images/paltube-main.png)
 
-![GitHub Logo](/client/public/stylesheets/images/Paltube-search.png)
+![GitHub Logo](/client/public/stylesheets/images/paltube-search.png)
