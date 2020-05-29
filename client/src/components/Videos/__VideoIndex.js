@@ -7,9 +7,11 @@ import NavBar from '../NavBar';
 const { FETCH_VIDEOS } = Queries;
 
 class VideoIndex extends Component {
+
   constructor(props) {
     super(props)
     this.state = { data: { videos: [] }, pageNumber: 0, perPage: 4 }
+    
     this.pageNumber = 0;
   }
 
