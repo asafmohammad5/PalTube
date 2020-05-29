@@ -40,7 +40,7 @@ PalTube will use YouTube pet videos as seed data. The content will be dynamic an
 
 # Sample Code
 
-### Frontend Mutation:
+
 
 ```
   VIDEO_COMMENT: gql`
@@ -62,8 +62,7 @@ PalTube will use YouTube pet videos as seed data. The content will be dynamic an
     }
   `
 ```
-### Backend Mutation:
-
+-------------
 ```
 addVideoComment: {
       type: CommentType,
